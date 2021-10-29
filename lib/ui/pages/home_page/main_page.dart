@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mp3_mobile/ui/pages/home_page/widgets/help_view_widget.dart';
+import 'package:mp3_mobile/ui/pages/home_page/widgets/orders_list_view_widget.dart';
+import 'package:mp3_mobile/ui/pages/home_page/widgets/statistic_view_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -8,12 +11,28 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  var _selectedTab = 0;
+  var _selectedTabIndex = 0;
+
+  static const _widgetOptions = [
+    Statistic(),
+    OrdersList(),
+    HelpView(),
+  ];
+
+  static const _appBarLables = [
+    'Статистика',
+    'Заказы',
+    'Помощь',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          _appBarLables[_selectedTabIndex],
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () => Navigator.of(context).pushNamed('/settings'),
@@ -23,9 +42,12 @@ class _MainPageState extends State<MainPage> {
           )
         ],
       ),
-      body: Container(),
+      body: _widgetOptions[_selectedTabIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTab,
+        currentIndex: _selectedTabIndex,
+        onTap: _onSelectTab,
+        showSelectedLabels: false,
+        selectedIconTheme: const IconThemeData(size: 40),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.stacked_line_chart_sharp),
@@ -42,5 +64,11 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
     );
+  }
+
+  void _onSelectTab(index) {
+    if (index != _selectedTabIndex) {
+      setState(() => _selectedTabIndex = index);
+    }
   }
 }
