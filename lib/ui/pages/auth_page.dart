@@ -139,7 +139,9 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   void _authenticate() {
-    Navigator.of(context).pushReplacementNamed('/home');
+    if (_formKey.currentState!.validate()) {
+      Navigator.of(context).pushReplacementNamed('/home');
+    }
   }
 
   void _setObscure() {
