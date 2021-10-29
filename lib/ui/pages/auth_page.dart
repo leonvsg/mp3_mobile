@@ -10,6 +10,16 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   var _isObscuredPassword = true;
+  final _loginController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _loginController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,97 +38,98 @@ class _AuthPageState extends State<AuthPage> {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(50.0),
-              child: Column(
-                children: [
-                  const Text(
-                    'Альфа-Банк',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 54,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          // borderSide: BorderSide(
-                          //   color: Colors.white,
-                          // ),
-                          ),
-                      label: Text(
-                        'Логин',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const Text(
+                      'Альфа-Банк',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 54,
+                        fontWeight: FontWeight.bold,
                       ),
-                      prefixIcon: Icon(
-                        Icons.person_pin_rounded,
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: _loginController,
+                      validator: _validateTextField,
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    obscureText: _isObscuredPassword,
-                    obscuringCharacter: '*',
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(
-                          // borderSide: BorderSide(
-                          //   color: Colors.white,
-                          // ),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        label: Text(
+                          'Логин',
+                          style: TextStyle(
+                            color: Colors.white,
                           ),
-                      label: const Text(
-                        'Пароль',
-                        style: TextStyle(
+                        ),
+                        prefixIcon: Icon(
+                          Icons.person_pin_rounded,
                           color: Colors.white,
                         ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                      prefixIcon: const Icon(
-                        Icons.shield,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: _passwordController,
+                      validator: _validateTextField,
+                      obscureText: _isObscuredPassword,
+                      obscuringCharacter: '*',
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        label: const Text(
+                          'Пароль',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.shield,
                           color: Colors.white,
                         ),
-                      ),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isObscuredPassword
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.white,
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
                         ),
-                        onPressed: _setObscure,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _authenticate,
-                    child: const Text('ВОЙТИ'),
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 16,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isObscuredPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.white,
+                          ),
+                          onPressed: _setObscure,
                         ),
                       ),
                     ),
-                  )
-                ],
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _authenticate,
+                      child: const Text('ВОЙТИ'),
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 16,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -134,4 +145,7 @@ class _AuthPageState extends State<AuthPage> {
   void _setObscure() {
     setState(() => _isObscuredPassword = !_isObscuredPassword);
   }
+
+  String? _validateTextField(value) =>
+      value.isNotEmpty ? null : 'Пожалуйста введите значение';
 }
