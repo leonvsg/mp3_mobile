@@ -1,5 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mp3_mobile/resources/resources.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -28,9 +30,7 @@ class _AuthPageState extends State<AuthPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: CachedNetworkImageProvider(
-              'https://web.rbsuat.com/ab/mportal3/static/media/login-background.d2e86e51.jpg',
-            ),
+            image: AssetImage(AppImages.loginBackground),
             fit: BoxFit.cover,
           ),
         ),
@@ -42,41 +42,28 @@ class _AuthPageState extends State<AuthPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    const Text(
-                      'Альфа-Банк',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 54,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    SvgPicture.asset(
+                      AppSvgs.fullLogo,
+                      height: 70,
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
                       controller: _loginController,
                       validator: _validateTextField,
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
+                      style: const TextStyle(),
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text(
-                          'Логин',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                        label: Text('Логин'),
                         prefixIcon: Icon(
                           Icons.person_pin_rounded,
                           color: Colors.white,
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          ),
-                        ),
                       ),
+                      cursorColor: Colors.white,
                       autocorrect: false,
                       enableSuggestions: false,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.none,
+                      textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -84,25 +71,11 @@ class _AuthPageState extends State<AuthPage> {
                       validator: _validateTextField,
                       obscureText: _isObscuredPassword,
                       obscuringCharacter: '*',
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
                       decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        label: const Text(
-                          'Пароль',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                        label: const Text('Пароль'),
                         prefixIcon: const Icon(
                           Icons.shield,
                           color: Colors.white,
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          ),
                         ),
                         suffixIcon: IconButton(
                           icon: Icon(
@@ -114,6 +87,11 @@ class _AuthPageState extends State<AuthPage> {
                           onPressed: _setObscure,
                         ),
                       ),
+                      cursorColor: Colors.white,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.none,
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(

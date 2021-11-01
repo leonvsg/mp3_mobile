@@ -13,10 +13,10 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   var _selectedTabIndex = 0;
 
-  static const _widgetOptions = [
-    Statistic(),
-    OrdersList(),
-    HelpView(),
+  final _widgetOptions = [
+    const Statistic(),
+    OrdersListWidget(),
+    const HelpView(),
   ];
 
   static const _appBarLables = [
@@ -42,7 +42,10 @@ class _MainPageState extends State<MainPage> {
           )
         ],
       ),
-      body: _widgetOptions[_selectedTabIndex],
+      body: IndexedStack(
+        index: _selectedTabIndex,
+        children: _widgetOptions,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTabIndex,
         onTap: _onSelectTab,
