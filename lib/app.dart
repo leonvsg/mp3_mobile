@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mp3_mobile/models/simple_order.dart';
 import 'package:mp3_mobile/ui/pages/auth_page.dart';
 import 'package:mp3_mobile/ui/pages/home_page/main_page.dart';
+import 'package:mp3_mobile/ui/pages/order_details_page.dart';
 import 'package:mp3_mobile/ui/pages/settings_page.dart';
 import 'package:mp3_mobile/ui/pages/splashscreen_page.dart';
 
@@ -42,6 +44,14 @@ class Mp3MobileApp extends StatelessWidget {
         '/auth': (context) => const AuthPage(),
         '/home': (context) => const MainPage(),
         '/settings': (context) => const SettingsPage(),
+        '/order': (context) {
+          var orderData = ModalRoute.of(context)?.settings.arguments;
+          if (orderData is SimpleOrderData) {
+            return OrderDetailsPage(orderData);
+          } else {
+            return const AuthPage();
+          }
+        }
       },
     );
   }

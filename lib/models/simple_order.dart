@@ -1,9 +1,12 @@
 import 'dart:convert';
 
+import 'package:mp3_mobile/models/payment_system.dart';
+import 'package:mp3_mobile/utils/payment_system_mapper.dart';
+
 class SimpleOrderData {
   String actionCode; //"(0) Запрос успешно обработан"
   String amount; //"2.00"
-  String createdDate; //"2021-10-19T15:54:54+03:00"
+  DateTime createdDate; //"2021-10-19T15:54:54+03:00"
   String currency; //"RUR"
   String feeAmount; //"0.00"
   String mdOrder; //"06d5386a-ce26-79b9-b68d-cc7b00006aec"
@@ -11,7 +14,7 @@ class SimpleOrderData {
   String? ofdStatus; //"DELIVERED"
   String orderNumber; //"1634648052"
   String? paymentDate; //"2021-10-19T15:54:59+03:00"
-  String paymentSystem; //"VISA"
+  PaymentSystem paymentSystem; //"VISA"
   String paymentType; //"CARD"
   String paymentTypeExtension; //"CARD"
   String refundedAmount; //"0.00"
@@ -40,7 +43,7 @@ class SimpleOrderData {
   SimpleOrderData copyWith({
     String? actionCode,
     String? amount,
-    String? createdDate,
+    DateTime? createdDate,
     String? currency,
     String? feeAmount,
     String? mdOrder,
@@ -48,7 +51,7 @@ class SimpleOrderData {
     String? ofdStatus,
     String? orderNumber,
     String? paymentDate,
-    String? paymentSystem,
+    PaymentSystem? paymentSystem,
     String? paymentType,
     String? paymentTypeExtension,
     String? refundedAmount,
@@ -87,7 +90,7 @@ class SimpleOrderData {
       'ofd_status': ofdStatus,
       'order_number': orderNumber,
       'payment_date': paymentDate,
-      'payment_system': paymentSystem,
+      'payment_system': mapPaymentSystemToString(paymentSystem),
       'payment_type': paymentType,
       'payment_type_extension': paymentTypeExtension,
       'refunded_amount': refundedAmount,
@@ -100,7 +103,7 @@ class SimpleOrderData {
     return SimpleOrderData(
       actionCode: map['action_code'],
       amount: map['amount'],
-      createdDate: map['created_date'],
+      createdDate: DateTime.parse(map['created_date']),
       currency: map['currency'],
       feeAmount: map['fee_amount'],
       mdOrder: map['md_order'],
@@ -108,7 +111,7 @@ class SimpleOrderData {
       ofdStatus: map['ofd_status'],
       orderNumber: map['order_number'],
       paymentDate: map['payment_date'],
-      paymentSystem: map['payment_system'],
+      paymentSystem: mapStringToPaymentSystem(map['payment_system']),
       paymentType: map['payment_type'],
       paymentTypeExtension: map['payment_type_extension'],
       refundedAmount: map['refunded_amount'],
