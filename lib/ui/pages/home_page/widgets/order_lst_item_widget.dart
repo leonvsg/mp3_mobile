@@ -90,6 +90,9 @@ class OrderListItemWidget extends StatelessWidget {
       case PaymentSystem.visa:
         path = AppSvgs.visa;
         break;
+      case PaymentSystem.unknown:
+        path = AppSvgs.card;
+        break;
     }
     return path;
   }

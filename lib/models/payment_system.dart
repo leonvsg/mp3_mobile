@@ -1,9 +1,1 @@
-enum PaymentSystem{
-  visa,
-  mastercard,
-  mir,
-  jcb,
-  amex,
-  belcard,
-  unknown
-}
+enum PaymentSystem { visa, unknown }

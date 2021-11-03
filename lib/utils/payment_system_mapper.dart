@@ -16,23 +16,8 @@ String mapPaymentSystemToString(PaymentSystem paymentSystem) {
     case PaymentSystem.visa:
       string = 'VISA';
       break;
-    case PaymentSystem.mastercard:
-      // TODO: Handle this case.
-      break;
-    case PaymentSystem.mir:
-      // TODO: Handle this case.
-      break;
-    case PaymentSystem.jcb:
-      // TODO: Handle this case.
-      break;
-    case PaymentSystem.amex:
-      // TODO: Handle this case.
-      break;
-    case PaymentSystem.belcard:
-      // TODO: Handle this case.
-      break;
     case PaymentSystem.unknown:
-      // TODO: Handle this case.
+      string = 'UNKNOWN';
       break;
   }
   return string;
