@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mp3_mobile/models/simple_order.dart';
 import 'package:mp3_mobile/ui/pages/auth_page.dart';
 import 'package:mp3_mobile/ui/pages/home_page/main_page.dart';
@@ -11,6 +12,7 @@ class Mp3MobileApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

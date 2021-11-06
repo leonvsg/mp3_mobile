@@ -13,10 +13,12 @@ class OrderDetailsPage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => Navigator.of(context).pushNamed('/settings'),
-            icon: const Icon(
-              Icons.settings,
-            ),
+            onPressed: () {},
+            icon: const Icon(Icons.download),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.share),
           )
         ],
         title: Text(
