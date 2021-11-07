@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:mp3_mobile/dummy/dummy_data.dart';
 import 'package:mp3_mobile/models/payment_system.dart';
-
 import 'package:mp3_mobile/models/simple_order.dart';
 import 'package:mp3_mobile/resources/resources.dart';
+
+class OrdersListWidget extends StatelessWidget {
+  final orderList = DummyData.orderList;
+
+  OrdersListWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (context, index) => InkWell(
+        child: OrderListItemWidget(order: orderList[index]),
+        onTap: () => _navigateToOrderInfo(context, orderList[index]),
+      ),
+      separatorBuilder: (context, index) => const Divider(thickness: 2),
+      itemCount: orderList.length,
+    );
+  }
+
+  void _navigateToOrderInfo(BuildContext context, SimpleOrderData order) {
+    Navigator.of(context).pushNamed('/order', arguments: order);
+  }
+}
 
 class OrderListItemWidget extends StatelessWidget {
   final SimpleOrderData order;

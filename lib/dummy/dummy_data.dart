@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:mp3_mobile/models/simple_order.dart';
-import 'package:mp3_mobile/ui/pages/home_page/widgets/order_lst_item_widget.dart';
 
-class OrdersListWidget extends StatelessWidget {
-  final orderList = [
+abstract class DummyData {
+  static final orderList = [
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"VISA","created_date":"2021-10-19T15:54:54+03:00","amount":"2.00","currency":"RUR","merchant_login":"sup_test","order_number":"06c10fa0-1d1f-70cd-9e2d-6e5100006aec","state":"DEPOSITED","payment_date":"2021-10-19T15:54:59+03:00","action_code":"(0) Запрос успешно обработан","md_order":"06d5386a-ce26-79b9-b68d-cc7b00006aec","fee_amount":"0.00","refunded_amount":"0.00","ofd_status":"DELIVERED","with_loyalty":false}',
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"VISA","created_date":"2021-10-15T13:24:07+03:00","amount":"2 000 000 000 000 000 000.00","currency":"RUR","merchant_login":"sup_test","order_number":"1634293406","state":"DECLINED","action_code":"(71015) Введённая информация неверна","md_order":"06c10fa0-1d1f-70cd-9e2d-6e5100006aec","fee_amount":"0.00","refunded_amount":"0.00","with_loyalty":false}',
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"VISA","created_date":"2021-10-15T13:16:28+03:00","amount":"2.00","currency":"RUR","merchant_login":"sup_test","order_number":"1634292946","state":"DECLINED","action_code":"(71015) Введённая информация неверна","md_order":"06c108f1-5f7c-7d43-8933-8f9900006aec","fee_amount":"0.00","refunded_amount":"0.00","with_loyalty":false}',
@@ -35,23 +33,4 @@ class OrdersListWidget extends StatelessWidget {
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"UNKNOWN","created_date":"2021-10-14T17:23:01+03:00","amount":"2.00","currency":"RUR","merchant_login":"sup_test","order_number":"1634221340","state":"DECLINED","action_code":"(-2007) Время сессии истекло","md_order":"06bcf6ec-2dd4-734c-8396-9d2400006aec","fee_amount":"0.00","refunded_amount":"0.00","with_loyalty":false}',
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"VISA","created_date":"2021-10-13T17:07:48+03:00","amount":"1.00","currency":"RUB","merchant_login":"sup_test","order_number":"1634134067586","state":"DECLINED","action_code":"(-2007) Время сессии истекло","md_order":"06b80059-7acb-794b-bc49-1b5a00006aec","fee_amount":"0.00","refunded_amount":"0.00","with_loyalty":false}',
   ].map((json) => SimpleOrderData.fromJson(json)).toList();
-
-  OrdersListWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, index) => InkWell(
-        child: OrderListItemWidget(order: orderList[index]),
-        onTap: () => _navigateToOrderInfo(context, orderList[index]),
-      ),
-      separatorBuilder: (context, index) => const Divider(thickness: 2),
-      itemCount: orderList.length,
-    );
-  }
-
-  void _navigateToOrderInfo(BuildContext context, SimpleOrderData order) {
-    Navigator.of(context).pushNamed('/order', arguments: order);
-  }
 }

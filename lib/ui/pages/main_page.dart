@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/ui/pages/home_page/widgets/help_view_widget.dart';
-import 'package:mp3_mobile/ui/pages/home_page/widgets/orders_list_view_widget.dart';
-import 'package:mp3_mobile/ui/pages/home_page/widgets/statistic_view_widget.dart';
+import 'package:mp3_mobile/ui/components/help_view_widget.dart';
+import 'package:mp3_mobile/ui/components/orders_list_view_widget.dart';
+import 'package:mp3_mobile/ui/components/statistic_view_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
