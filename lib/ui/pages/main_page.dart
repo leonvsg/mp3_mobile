@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:mp3_mobile/ui/components/help_view_widget.dart';
 import 'package:mp3_mobile/ui/components/orders_list_view_widget.dart';
 import 'package:mp3_mobile/ui/components/statistic_view_widget.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  final String sessionId;
+
+  const MainPage({
+    Key? key,
+    required this.sessionId,
+  }) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -24,6 +30,17 @@ class _MainPageState extends State<MainPage> {
     'Заказы',
     'Помощь',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _showSnackBar());
+  }
+
+  void _showSnackBar() {
+    final snackBar = SnackBar(content: Text(widget.sessionId));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {

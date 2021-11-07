@@ -44,7 +44,14 @@ class Mp3MobileApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/auth': (context) => const AuthPage(),
-        '/home': (context) => const MainPage(),
+        '/home': (context) {
+          var sessionId = ModalRoute.of(context)?.settings.arguments;
+          if (sessionId is String) {
+            return MainPage(sessionId: sessionId);
+          } else {
+            return const AuthPage();
+          }
+        },
         '/settings': (context) => const SettingsPage(),
         '/order': (context) {
           var orderData = ModalRoute.of(context)?.settings.arguments;
