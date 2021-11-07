@@ -42,9 +42,12 @@ class _AuthPageState extends State<AuthPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    SvgPicture.asset(
-                      AppSvgs.fullLogo,
-                      height: 70,
+                    Hero(
+                      tag: 'logoHero',
+                      child: SvgPicture.asset(
+                        AppSvgs.fullLogo,
+                        height: 70,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     TextFormField(

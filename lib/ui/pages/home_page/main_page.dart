@@ -66,6 +66,15 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
+      floatingActionButton: _selectedTabIndex != 1
+          ? null
+          : FloatingActionButton.extended(
+              onPressed: () {},
+              backgroundColor: const Color(0xFF1A2737),
+              label: const Text('Фильтр'),
+              icon: const Icon(Icons.filter_alt),
+            ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

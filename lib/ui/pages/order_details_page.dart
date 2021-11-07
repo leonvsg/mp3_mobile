@@ -9,27 +9,44 @@ class OrderDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.download),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.download),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.share),
+            )
+          ],
+          bottom: const TabBar(
+            indicatorColor: Colors.red,
+            indicatorWeight: 3.0,
+            tabs: [
+              Tab(text: 'ДЕТАЛИ'),
+              Tab(text: 'ИСТОРИЯ'),
+              Tab(text: 'ПАРАМЕТРЫ'),
+            ],
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.share),
-          )
-        ],
-        title: Text(
-          'Заказ ${orderData.orderNumber}',
-          overflow: TextOverflow.fade,
+          title: Text(
+            'Заказ ${orderData.orderNumber}',
+            overflow: TextOverflow.fade,
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: Column(
+        body: TabBarView(
+          physics: const BouncingScrollPhysics(),
           children: [
-            OrderListItemWidget(order: orderData),
+            Column(
+              children: [
+                OrderListItemWidget(order: orderData),
+              ],
+            ),
+            Container(),
+            Container(),
           ],
         ),
       ),
