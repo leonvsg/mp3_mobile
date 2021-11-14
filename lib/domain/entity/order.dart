@@ -1,9 +1,66 @@
 import 'dart:convert';
 
-import 'package:mp3_mobile/models/payment_system.dart';
+import 'package:flutter/foundation.dart';
+import 'package:mp3_mobile/domain/entity/payment_system.dart';
+
 import 'package:mp3_mobile/utils/payment_system_mapper.dart';
 
-class SimpleOrderData {
+class TransactionListResponse {
+  List<SimpleTransactionData> transactionList;
+  String status;
+
+  TransactionListResponse({
+    required this.transactionList,
+    required this.status,
+  });
+
+  TransactionListResponse copyWith({
+    List<SimpleTransactionData>? transactionList,
+    String? status,
+  }) {
+    return TransactionListResponse(
+      transactionList: transactionList ?? this.transactionList,
+      status: status ?? this.status,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'list': transactionList.map((x) => x.toMap()).toList(),
+      'status': status,
+    };
+  }
+
+  factory TransactionListResponse.fromMap(Map<String, dynamic> map) {
+    return TransactionListResponse(
+      transactionList: List<SimpleTransactionData>.from(map['list'].map((x) => SimpleTransactionData.fromMap(x))),
+      status: map['status'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory TransactionListResponse.fromJson(String source) => TransactionListResponse.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'TransactionListResponse(transactionList: $transactionList, status: $status)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+  
+    return other is TransactionListResponse &&
+      listEquals(other.transactionList, transactionList) &&
+      other.status == status;
+  }
+
+  @override
+  int get hashCode => transactionList.hashCode ^ status.hashCode;
+}
+
+class TransactionData {}
+
+class SimpleTransactionData {
   String actionCode; //"(0) Запрос успешно обработан"
   String amount; //"2.00"
   DateTime createdDate; //"2021-10-19T15:54:54+03:00"
@@ -21,7 +78,7 @@ class SimpleOrderData {
   String state; //"DEPOSITED"
   bool withLoyalty; //false
 
-  SimpleOrderData({
+  SimpleTransactionData({
     required this.actionCode,
     required this.amount,
     required this.createdDate,
@@ -29,9 +86,9 @@ class SimpleOrderData {
     required this.feeAmount,
     required this.mdOrder,
     required this.merchantLogin,
-    required this.ofdStatus,
+    this.ofdStatus,
     required this.orderNumber,
-    required this.paymentDate,
+    this.paymentDate,
     required this.paymentSystem,
     required this.paymentType,
     required this.paymentTypeExtension,
@@ -40,7 +97,7 @@ class SimpleOrderData {
     required this.withLoyalty,
   });
 
-  SimpleOrderData copyWith({
+  SimpleTransactionData copyWith({
     String? actionCode,
     String? amount,
     DateTime? createdDate,
@@ -58,7 +115,7 @@ class SimpleOrderData {
     String? state,
     bool? withLoyalty,
   }) {
-    return SimpleOrderData(
+    return SimpleTransactionData(
       actionCode: actionCode ?? this.actionCode,
       amount: amount ?? this.amount,
       createdDate: createdDate ?? this.createdDate,
@@ -99,8 +156,8 @@ class SimpleOrderData {
     };
   }
 
-  factory SimpleOrderData.fromMap(Map<String, dynamic> map) {
-    return SimpleOrderData(
+  factory SimpleTransactionData.fromMap(Map<String, dynamic> map) {
+    return SimpleTransactionData(
       actionCode: map['action_code'],
       amount: map['amount'],
       createdDate: DateTime.parse(map['created_date']),
@@ -122,8 +179,8 @@ class SimpleOrderData {
 
   String toJson() => json.encode(toMap());
 
-  factory SimpleOrderData.fromJson(String source) =>
-      SimpleOrderData.fromMap(json.decode(source));
+  factory SimpleTransactionData.fromJson(String source) =>
+      SimpleTransactionData.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -134,7 +191,7 @@ class SimpleOrderData {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is SimpleOrderData &&
+    return other is SimpleTransactionData &&
         other.actionCode == actionCode &&
         other.amount == amount &&
         other.createdDate == createdDate &&

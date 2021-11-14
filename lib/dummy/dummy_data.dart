@@ -1,4 +1,4 @@
-import 'package:mp3_mobile/models/simple_order.dart';
+import 'package:mp3_mobile/domain/entity/order.dart';
 
 abstract class DummyData {
   static final orderList = [
@@ -32,5 +32,5 @@ abstract class DummyData {
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"VISA","created_date":"2021-10-14T17:23:16+03:00","amount":"2.00","currency":"RUR","merchant_login":"sup_test","order_number":"1634221357","state":"DEPOSITED","payment_date":"2021-10-14T17:23:21+03:00","action_code":"(0) Запрос успешно обработан","md_order":"06bcf726-19be-7bdf-9f30-75fb00006aec","fee_amount":"0.00","refunded_amount":"0.00","ofd_status":"ERROR","with_loyalty":false}',
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"UNKNOWN","created_date":"2021-10-14T17:23:01+03:00","amount":"2.00","currency":"RUR","merchant_login":"sup_test","order_number":"1634221340","state":"DECLINED","action_code":"(-2007) Время сессии истекло","md_order":"06bcf6ec-2dd4-734c-8396-9d2400006aec","fee_amount":"0.00","refunded_amount":"0.00","with_loyalty":false}',
     '{"payment_type":"CARD","payment_type_extension":"CARD","payment_system":"VISA","created_date":"2021-10-13T17:07:48+03:00","amount":"1.00","currency":"RUB","merchant_login":"sup_test","order_number":"1634134067586","state":"DECLINED","action_code":"(-2007) Время сессии истекло","md_order":"06b80059-7acb-794b-bc49-1b5a00006aec","fee_amount":"0.00","refunded_amount":"0.00","with_loyalty":false}',
-  ].map((json) => SimpleOrderData.fromJson(json)).toList();
+  ].map((json) => SimpleTransactionData.fromJson(json)).toList();
 }

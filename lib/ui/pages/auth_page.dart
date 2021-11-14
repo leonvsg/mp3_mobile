@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mp3_mobile/models/auth.dart';
+import 'package:mp3_mobile/domain/entity/auth.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 import 'package:http/http.dart' as http;
 
@@ -127,11 +127,10 @@ class _AuthPageState extends State<AuthPage> {
   void _authenticate() {
     if (_formKey.currentState!.validate()) {
       setState(() => _isButtonActive = false);
-      var authResponseFuture = _sendAuthRequest(
+      _sendAuthRequest(
         _loginController.text,
         _passwordController.text,
-      );
-      authResponseFuture.then(
+      ).then(
         (authResponse) => Navigator.of(context)
             .pushReplacementNamed('/home', arguments: authResponse.sessionId),
       );

@@ -1,36 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:mp3_mobile/dummy/dummy_data.dart';
-import 'package:mp3_mobile/models/payment_system.dart';
-import 'package:mp3_mobile/models/simple_order.dart';
+import 'package:mp3_mobile/domain/entity/order.dart';
+import 'package:mp3_mobile/domain/entity/payment_system.dart';
+import 'package:mp3_mobile/provider/models/order_list_notifier.dart';
+import 'package:mp3_mobile/provider/providers/order_list_provider.dart';
+import 'package:mp3_mobile/provider/providers/session_provider.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 
-class OrdersListWidget extends StatelessWidget {
-  final orderList = DummyData.orderList;
+class OrdersListWidget extends StatefulWidget {
+  const OrdersListWidget({Key? key}) : super(key: key);
 
-  OrdersListWidget({Key? key}) : super(key: key);
+  @override
+  State<OrdersListWidget> createState() => _OrdersListWidgetState();
+}
+
+class _OrdersListWidgetState extends State<OrdersListWidget> {
+  late final OrderListNotifier orderListNotifier;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    orderListNotifier =
+        OrderListNotifier(sessionId: SessionProvider.of(context)?.sessionId);
+    orderListNotifier.loadOrders();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return OrderListProvider(
+      model: orderListNotifier,
+      child: const OrderList(),
+    );
+  }
+}
+
+class OrderList extends StatelessWidget {
+  const OrderList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, index) => InkWell(
-        child: OrderListItemWidget(order: orderList[index]),
-        onTap: () => _navigateToOrderInfo(context, orderList[index]),
-      ),
+      itemBuilder: (context, index) {
+        var order = OrderListProvider.of(context)!.model.orderList[index];
+        return InkWell(
+          child: OrderListItemWidget(order: order),
+          onTap: () => _navigateToOrderInfo(context, order),
+        );
+      },
       separatorBuilder: (context, index) => const Divider(thickness: 2),
-      itemCount: orderList.length,
+      itemCount: OrderListProvider.of(context)?.model.orderList.length ?? 0,
     );
   }
 
-  void _navigateToOrderInfo(BuildContext context, SimpleOrderData order) {
+  void _navigateToOrderInfo(BuildContext context, SimpleTransactionData order) {
     Navigator.of(context).pushNamed('/order', arguments: order);
   }
 }
 
 class OrderListItemWidget extends StatelessWidget {
-  final SimpleOrderData order;
+  final SimpleTransactionData order;
 
   const OrderListItemWidget({
     Key? key,

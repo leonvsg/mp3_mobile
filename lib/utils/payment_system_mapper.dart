@@ -1,4 +1,4 @@
-import 'package:mp3_mobile/models/payment_system.dart';
+import 'package:mp3_mobile/domain/entity/payment_system.dart';
 
 PaymentSystem mapStringToPaymentSystem(String paymentSystemString) {
   var paymentSystem = PaymentSystem.unknown;
