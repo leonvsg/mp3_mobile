@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mp3_mobile/domain/entity/order.dart';
+import 'package:mp3_mobile/domain/entity/sesion.dart';
 import 'package:mp3_mobile/ui/pages/auth_page.dart';
 import 'package:mp3_mobile/ui/pages/main_page.dart';
 import 'package:mp3_mobile/ui/pages/order_details_page.dart';
@@ -45,9 +46,9 @@ class Mp3MobileApp extends StatelessWidget {
       routes: {
         '/auth': (context) => const AuthPage(),
         '/home': (context) {
-          var sessionId = ModalRoute.of(context)?.settings.arguments;
-          if (sessionId is String) {
-            return MainPage(sessionId: sessionId);
+          var session = ModalRoute.of(context)?.settings.arguments;
+          if (session is Session) {
+            return MainPage(session: session);
           } else {
             return const AuthPage();
           }

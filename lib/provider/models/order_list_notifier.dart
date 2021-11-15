@@ -6,7 +6,7 @@ class OrderListNotifier extends ChangeNotifier {
   var _orderList = <SimpleTransactionData>[];
   final String _sessionId;
 
-  OrderListNotifier({required sessionId}) : _sessionId = sessionId;
+  OrderListNotifier({required String sessionId}) : _sessionId = sessionId;
 
   List<SimpleTransactionData> get orderList => _orderList;
 

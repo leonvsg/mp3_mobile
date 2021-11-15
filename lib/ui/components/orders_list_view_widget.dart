@@ -21,9 +21,13 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    orderListNotifier =
-        OrderListNotifier(sessionId: SessionProvider.of(context)?.sessionId);
-    orderListNotifier.loadOrders();
+    var sessionId = SessionProvider.of(context)?.session.sessionId;
+    if (sessionId != null) {
+      orderListNotifier = OrderListNotifier(sessionId: sessionId);
+      orderListNotifier.loadOrders();
+    } else {
+      Navigator.of(context).pushReplacementNamed('/auth');
+    }
   }
 
   @override

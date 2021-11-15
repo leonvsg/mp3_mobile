@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mp3_mobile/domain/entity/sesion.dart';
 import 'package:mp3_mobile/provider/providers/session_provider.dart';
-
 import 'package:mp3_mobile/ui/components/help_view_widget.dart';
 import 'package:mp3_mobile/ui/components/orders_list_view_widget.dart';
 import 'package:mp3_mobile/ui/components/statistic_view_widget.dart';
 
 class MainPage extends StatefulWidget {
-  final String sessionId;
+  final Session session;
 
   const MainPage({
     Key? key,
-    required this.sessionId,
+    required this.session,
   }) : super(key: key);
 
   @override
@@ -33,20 +33,9 @@ class _MainPageState extends State<MainPage> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) => _showSnackBar());
-  }
-
-  void _showSnackBar() {
-    final snackBar = SnackBar(content: Text(widget.sessionId));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SessionProvider(
-      sessionId: widget.sessionId,
+      session: widget.session,
       child: Scaffold(
         appBar: AppBar(
           title: Text(

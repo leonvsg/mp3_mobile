@@ -130,7 +130,7 @@ class _AuthPageState extends State<AuthPage> {
         password: _passwordController.text,
       ).then(
         (session) => Navigator.of(context)
-            .pushReplacementNamed('/home', arguments: session.sessionId),
+            .pushReplacementNamed('/home', arguments: session),
       );
     }
   }
