@@ -1,31 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/domain/entity/order.dart';
-import 'package:http/http.dart' as http;
+import 'package:mp3_mobile/domain/api/api_client.dart';
+import 'package:mp3_mobile/domain/entity/order_list_response.dart';
+import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
 
 class OrderListNotifier extends ChangeNotifier {
-  var _orderList = <SimpleTransactionData>[];
-  final String _sessionId;
+  var _orderList = <SimpleOrderData>[];
+  final ApiClient apiClient;
+  bool isLoadingSuccesed = false;
 
-  OrderListNotifier({required String sessionId}) : _sessionId = sessionId;
+  OrderListNotifier({required this.apiClient});
 
-  List<SimpleTransactionData> get orderList => _orderList;
+  List<SimpleOrderData> get orderList => _orderList;
 
   void loadOrders() async {
-    var response = await http.post(
-      Uri.parse('https://web.rbsuat.com/ab/mp3/transaction/list'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'x-auth-token': _sessionId,
-      },
-      body:
-          '{"search":{"period":{"from":"2021-06-01T00:00:00+03:00","to":"2021-10-19T23:59:59+03:00"},"next_page":{"count":15,"start_index":0},"states":[]},"next_page":{"count":15,"start_index":0}}',
-    );
-    if (response.statusCode == 200) {
-      _orderList +=
-          TransactionListResponse.fromJson(response.body).transactionList;
-      notifyListeners();
+    if (isLoadingSuccesed) return;
+    var dateFrom = DateTime.now().subtract(const Duration(days: 60));
+    var dateTo = DateTime.now();
+    OrderListResponse response;
+    if (_orderList.isEmpty) {
+      response = await apiClient.getFilteredOrdersPage(
+        from: dateFrom,
+        to: dateTo,
+      );
     } else {
-      throw Exception('Failed to send request.');
+      response = await apiClient.getNextOrdersPage();
     }
+    if (response.orderList.isEmpty) {
+      isLoadingSuccesed = true;
+      return;
+    }
+    _orderList += response.orderList;
+    notifyListeners();
   }
 }

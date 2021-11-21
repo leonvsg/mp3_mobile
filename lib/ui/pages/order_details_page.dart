@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/domain/entity/order.dart';
+import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
 import 'package:mp3_mobile/ui/components/orders_list_view_widget.dart';
 
 class OrderDetailsPage extends StatelessWidget {
-  final SimpleTransactionData orderData;
+  final SimpleOrderData orderData;
 
   const OrderDetailsPage(this.orderData, {Key? key}) : super(key: key);
 

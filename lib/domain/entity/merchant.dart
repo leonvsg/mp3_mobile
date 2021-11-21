@@ -9,27 +9,21 @@ class Merchant {
         }
   */
 
-  String merchantLogin;
-  String merchantFullName;
-  String merchantType;
-  
-  Merchant({
-    required this.merchantLogin,
-    required this.merchantFullName,
-    required this.merchantType,
-  });  
+  final String _merchantLogin;
+  final String _merchantFullName;
+  final String _merchantType;
 
-  Merchant copyWith({
-    String? merchantLogin,
-    String? merchantFullName,
-    String? merchantType,
-  }) {
-    return Merchant(
-      merchantLogin: merchantLogin ?? this.merchantLogin,
-      merchantFullName: merchantFullName ?? this.merchantFullName,
-      merchantType: merchantType ?? this.merchantType,
-    );
-  }
+  String get merchantLogin => _merchantLogin;
+  String get merchantFullName => _merchantFullName;
+  String get merchantType => _merchantType;
+
+  Merchant({
+    required String merchantLogin,
+    required String merchantFullName,
+    required String merchantType,
+  })  : _merchantLogin = merchantLogin,
+        _merchantFullName = merchantFullName,
+        _merchantType = merchantType;
 
   Map<String, dynamic> toMap() {
     return {
@@ -49,21 +43,26 @@ class Merchant {
 
   String toJson() => json.encode(toMap());
 
-  factory Merchant.fromJson(String source) => Merchant.fromMap(json.decode(source));
+  factory Merchant.fromJson(String source) =>
+      Merchant.fromMap(json.decode(source));
 
   @override
-  String toString() => 'Merchant(merchantLogin: $merchantLogin, merchantFullName: $merchantFullName, merchantType: $merchantType)';
+  String toString() =>
+      'Merchant(merchantLogin: $merchantLogin, merchantFullName: $merchantFullName, merchantType: $merchantType)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is Merchant &&
-      other.merchantLogin == merchantLogin &&
-      other.merchantFullName == merchantFullName &&
-      other.merchantType == merchantType;
+        other.merchantLogin == merchantLogin &&
+        other.merchantFullName == merchantFullName &&
+        other.merchantType == merchantType;
   }
 
   @override
-  int get hashCode => merchantLogin.hashCode ^ merchantFullName.hashCode ^ merchantType.hashCode;
+  int get hashCode =>
+      merchantLogin.hashCode ^
+      merchantFullName.hashCode ^
+      merchantType.hashCode;
 }

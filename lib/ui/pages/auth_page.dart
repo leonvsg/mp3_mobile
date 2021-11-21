@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mp3_mobile/domain/api/api_client.dart';
+import 'package:mp3_mobile/provider/providers/api_client_provider.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 
 class AuthPage extends StatefulWidget {
@@ -125,13 +125,21 @@ class _AuthPageState extends State<AuthPage> {
   void _authenticate() {
     if (_formKey.currentState!.validate()) {
       setState(() => _isButtonActive = false);
-      ApiClient.autenticate(
-        login: _loginController.text,
-        password: _passwordController.text,
-      ).then(
-        (session) => Navigator.of(context)
-            .pushReplacementNamed('/home', arguments: session),
-      );
+      ApiClientProvider.of(context)
+          ?.apiClient
+          .startSession(
+            login: _loginController.text,
+            password: _passwordController.text,
+          )
+          .then((session) => Navigator.of(context)
+              .pushReplacementNamed('/home', arguments: session));
+      // ApiClient.autenticate(
+      //   login: _loginController.text,
+      //   password: _passwordController.text,
+      // ).then(
+      //   (session) => Navigator.of(context)
+      //       .pushReplacementNamed('/home', arguments: session),
+      // );
     }
   }
 

@@ -37,13 +37,13 @@ class Session {
   }
   */
 
-  String _sessionId;
-  String _login;
-  String _merchantLogin;
-  List<String> _permissions;
-  List<Merchant> _accessibleMerchants;
-  List<String> _serverStorage;
-  String _status;
+  final String _sessionId;
+  final String _login;
+  final String _merchantLogin;
+  final List<String> _permissions;
+  final List<Merchant> _accessibleMerchants;
+  final List<String> _serverStorage;
+  final String _status;
 
   String get sessionId => _sessionId;
   String get login => _login;
@@ -69,20 +69,19 @@ class Session {
         _serverStorage = serverStorage,
         _status = status;
 
-  Map<String, dynamic> toMap() {
-    return {
-      'session_id': sessionId,
-      'login': login,
-      'merchant_login': merchantLogin,
-      'permissions': permissions,
-      'accessible_merchants':
-          accessibleMerchants.map((x) => x.toMap()).toList(),
-      'server_storage': serverStorage,
-      'status': status,
-    };
-  }
+  String toJson() => json.encode({
+        'session_id': sessionId,
+        'login': login,
+        'merchant_login': merchantLogin,
+        'permissions': permissions,
+        'accessible_merchants':
+            accessibleMerchants.map((x) => x.toMap()).toList(),
+        'server_storage': serverStorage,
+        'status': status,
+      });
 
-  factory Session.fromMap(Map<String, dynamic> map) {
+  factory Session.fromJson(String source) {
+    Map<String, dynamic> map = json.decode(source);
     return Session(
       sessionId: map['session_id'],
       login: map['login'],
@@ -94,11 +93,6 @@ class Session {
       status: map['status'],
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory Session.fromJson(String source) =>
-      Session.fromMap(json.decode(source));
 
   @override
   String toString() {
