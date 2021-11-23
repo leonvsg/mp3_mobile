@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,25 +12,21 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Hero(
+            const Hero(
               tag: 'logoHero',
-              child: SvgPicture.asset(
-                AppSvgs.logoWhiteShort,
+              child: Image(
+                image: AssetImage(AppImages.logoWhiteShort),
                 height: 70,
               ),
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: _goToAuthPage,
+              onPressed: () => Navigator.of(context).pushNamed('/auth'),
               child: const Text('Go To Auth'),
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _goToAuthPage() {
-    Navigator.of(context).pushNamed('/auth');
   }
 }

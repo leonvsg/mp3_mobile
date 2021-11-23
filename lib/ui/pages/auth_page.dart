@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mp3_mobile/provider/providers/api_client_provider.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 
@@ -43,10 +42,10 @@ class _AuthPageState extends State<AuthPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    Hero(
+                    const Hero(
                       tag: 'logoHero',
-                      child: SvgPicture.asset(
-                        AppSvgs.fullLogo,
+                      child: Image(
+                        image: AssetImage(AppImages.fullLogo),
                         height: 70,
                       ),
                     ),
