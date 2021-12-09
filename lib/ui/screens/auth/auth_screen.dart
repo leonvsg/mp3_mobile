@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/provider/providers/api_client_provider.dart';
+import 'package:mp3_mobile/domain/api/api_client.dart';
+import 'package:mp3_mobile/domain/entity/sesion.dart';
 import 'package:mp3_mobile/resources/resources.dart';
+import 'package:provider/provider.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({Key? key}) : super(key: key);
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
-  _AuthPageState createState() => _AuthPageState();
+  _AuthScreenState createState() => _AuthScreenState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _AuthScreenState extends State<AuthScreen> {
   var _isObscuredPassword = true;
   var _isButtonActive = true;
   final _loginController = TextEditingController();
@@ -124,21 +126,12 @@ class _AuthPageState extends State<AuthPage> {
   void _authenticate() {
     if (_formKey.currentState!.validate()) {
       setState(() => _isButtonActive = false);
-      ApiClientProvider.of(context)
-          ?.apiClient
+      Provider.of<ApiClient>(context, listen: false)
           .startSession(
             login: _loginController.text,
             password: _passwordController.text,
           )
-          .then((session) => Navigator.of(context)
-              .pushReplacementNamed('/home', arguments: session));
-      // ApiClient.autenticate(
-      //   login: _loginController.text,
-      //   password: _passwordController.text,
-      // ).then(
-      //   (session) => Navigator.of(context)
-      //       .pushReplacementNamed('/home', arguments: session),
-      // );
+          .then((session) => Navigator.of(context).pop<Session>(session));
     }
   }
 

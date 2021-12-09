@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
-import 'package:mp3_mobile/ui/components/orders_list_view_widget.dart';
+import 'package:mp3_mobile/ui/screens/main/components/orders_list_view_widget.dart';
 
-class OrderDetailsPage extends StatelessWidget {
+class OrderDetailsScreen extends StatelessWidget {
   final SimpleOrderData orderData;
 
-  const OrderDetailsPage(this.orderData, {Key? key}) : super(key: key);
+  const OrderDetailsScreen(this.orderData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -3,12 +3,12 @@ import 'package:mp3_mobile/domain/api/api_client.dart';
 import 'package:mp3_mobile/domain/entity/order_list_response.dart';
 import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
 
-class OrderListNotifier extends ChangeNotifier {
+class OrderListModel extends ChangeNotifier {
   var _orderList = <SimpleOrderData>[];
   final ApiClient apiClient;
   bool isLoadingSuccesed = false;
 
-  OrderListNotifier({required this.apiClient});
+  OrderListModel({required this.apiClient});
 
   List<SimpleOrderData> get orderList => _orderList;
 

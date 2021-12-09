@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:mp3_mobile/domain/api/api_client.dart';
 import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
 import 'package:mp3_mobile/domain/entity/payment_system.dart';
-import 'package:mp3_mobile/provider/models/order_list_notifier.dart';
-import 'package:mp3_mobile/provider/providers/api_client_provider.dart';
-import 'package:mp3_mobile/provider/providers/order_list_provider.dart';
-import 'package:mp3_mobile/provider/providers/session_provider.dart';
+import 'package:mp3_mobile/provider/order_list_model.dart';
+import 'package:mp3_mobile/provider/sesion_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
+import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
+import 'package:provider/provider.dart';
 
-class OrdersListWidget extends StatefulWidget {
-  const OrdersListWidget({Key? key}) : super(key: key);
+class OrdersListView extends StatefulWidget {
+  const OrdersListView({Key? key}) : super(key: key);
 
   @override
-  State<OrdersListWidget> createState() => _OrdersListWidgetState();
+  State<OrdersListView> createState() => _OrdersListViewState();
 }
 
-class _OrdersListWidgetState extends State<OrdersListWidget> {
-  late final OrderListNotifier orderListNotifier;
+class _OrdersListViewState extends State<OrdersListView> {
+  late final OrderListModel orderListModel;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var sessionId = SessionProvider.of(context)?.session.sessionId;
+    var sessionId = Provider.of<SessionModel>(context, listen: false).session?.sessionId;
     if (sessionId != null) {
-      orderListNotifier = OrderListNotifier(
-          apiClient: ApiClientProvider.of(context)!.apiClient);
-      orderListNotifier.loadOrders();
+      orderListModel = OrderListModel(
+          apiClient: Provider.of<ApiClient>(context, listen: false));
+      orderListModel.loadOrders();
     } else {
-      Navigator.of(context).pushReplacementNamed('/auth');
+      Navigator.of(context)
+          .pushReplacementNamed(NavigationRoutes.authPageRoute);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return OrderListProvider(
-      model: orderListNotifier,
+    return ChangeNotifierProvider(
+      create: (context) => orderListModel,
       child: const OrderList(),
     );
   }
@@ -63,25 +65,26 @@ class _OrderListState extends State<OrderList> {
       controller: _scrollController,
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, index) {
-        var order = OrderListProvider.of(context)!.model.orderList[index];
+        var order = Provider.of<OrderListModel>(context).orderList[index];
         return InkWell(
           child: OrderListItemWidget(order: order),
           onTap: () => _navigateToOrderInfo(context, order),
         );
       },
       separatorBuilder: (context, index) => const Divider(thickness: 2),
-      itemCount: OrderListProvider.of(context)?.model.orderList.length ?? 0,
+      itemCount: Provider.of<OrderListModel>(context).orderList.length,
     );
   }
 
-  void _scrollListner(){
+  void _scrollListner() {
     if (_scrollController.position.extentAfter < 5) {
-      OrderListProvider.of(context)!.model.loadOrders();
+      Provider.of<OrderListModel>(context).loadOrders();
     }
   }
 
   void _navigateToOrderInfo(BuildContext context, SimpleOrderData order) {
-    Navigator.of(context).pushNamed('/order', arguments: order);
+    Navigator.of(context)
+        .pushNamed(NavigationRoutes.orderPageRoute, arguments: order);
   }
 }
 
