@@ -1,31 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/domain/api/api_client.dart';
-import 'package:mp3_mobile/domain/entity/sesion.dart';
+import 'package:mp3_mobile/provider/auth_screen_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
+import 'package:provider/provider.dart';
 
-class AuthScreen extends StatefulWidget {
+class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
-  _AuthScreenState createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
-  var _isObscuredPassword = true;
-  var _isButtonActive = true;
-  final _loginController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    _loginController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    var model = Provider.of<AuthScreenModel>(context);
     return Scaffold(
       backgroundColor: const Color(0xFF1A2737),
       body: Container(
@@ -40,7 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
             child: Padding(
               padding: const EdgeInsets.all(50.0),
               child: Form(
-                key: _formKey,
+                key: model.formKey,
                 child: Column(
                   children: [
                     const Hero(
@@ -52,8 +35,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
-                      controller: _loginController,
-                      validator: _validateTextField,
+                      controller: model.loginController,
+                      validator: model.validateTextField,
                       style: const TextStyle(),
                       decoration: const InputDecoration(
                         label: Text('Логин'),
@@ -71,9 +54,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
-                      controller: _passwordController,
-                      validator: _validateTextField,
-                      obscureText: _isObscuredPassword,
+                      controller: model.passwordController,
+                      validator: model.validateTextField,
+                      obscureText: model.isObscuredPassword,
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         label: const Text('Пароль'),
@@ -83,12 +66,12 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _isObscuredPassword
+                            model.isObscuredPassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             color: Colors.white,
                           ),
-                          onPressed: _setObscure,
+                          onPressed: model.setObscure,
                         ),
                       ),
                       cursorColor: Colors.white,
@@ -99,8 +82,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: _isButtonActive ? _authenticate : null,
-                      child: _isButtonActive
+                      onPressed: () => model.authenticate(context),
+                      child: model.isButtonActive
                           ? const Text('ВОЙТИ')
                           : const CircularProgressIndicator(color: Colors.red),
                       style: ButtonStyle(
@@ -121,21 +104,4 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-
-  void _authenticate() {
-    if (_formKey.currentState!.validate()) {
-      setState(() => _isButtonActive = false);
-      ApiClient.autenticate(
-        login: _loginController.text,
-        password: _passwordController.text,
-      ).then((session) => Navigator.of(context).pop<Session>(session));
-    }
-  }
-
-  void _setObscure() {
-    setState(() => _isObscuredPassword = !_isObscuredPassword);
-  }
-
-  String? _validateTextField(value) =>
-      value.isNotEmpty ? null : 'Пожалуйста введите значение';
 }

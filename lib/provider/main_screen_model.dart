@@ -4,9 +4,8 @@ import 'package:mp3_mobile/ui/screens/main/components/help_view_widget.dart';
 import 'package:mp3_mobile/ui/screens/main/components/orders_list_view_widget.dart';
 import 'package:mp3_mobile/ui/screens/main/components/statistic_view_widget.dart';
 
-class MainPageModel extends ChangeNotifier {
+class MainScreenModel extends ChangeNotifier {
   var selectedTabIndex = 0;
-
   final _statisticWidget = const StatisticView();
   final _orderListWidget = const OrdersListView();
   final _helpWidget = const HelpView();
@@ -18,7 +17,7 @@ class MainPageModel extends ChangeNotifier {
     'Помощь',
   ];
 
-  MainPageModel() {
+  MainScreenModel() {
     widgetOptions = [_statisticWidget, _orderListWidget, _helpWidget];
   }
 

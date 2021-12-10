@@ -20,6 +20,12 @@ class OrderListModel extends ChangeNotifier {
   List<SimpleOrderData> get orderList => _orderList;
   ScrollController get orderListScrollController => _scrollController;
 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   void scrollListner() {
     if (_scrollController.position.extentAfter < 5) {
       loadOrders();

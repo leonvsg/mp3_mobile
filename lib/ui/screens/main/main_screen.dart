@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/provider/main_page_model.dart';
+import 'package:mp3_mobile/provider/main_screen_model.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -7,19 +7,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<MainPageModel>(
-      create: (context) => MainPageModel(),
-      child: const _MainPageBody(),
-    );
-  }
-}
-
-class _MainPageBody extends StatelessWidget {
-  const _MainPageBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final model = Provider.of<MainPageModel>(context);
+    final model = Provider.of<MainScreenModel>(context);
     final selectedTabIndex = model.selectedTabIndex;
     final _lable = model.appBarLables[selectedTabIndex];
     return Scaffold(
