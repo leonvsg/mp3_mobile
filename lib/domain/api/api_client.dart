@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:http/http.dart' as http;
 import 'package:mp3_mobile/domain/entity/auth.dart';
 import 'package:mp3_mobile/domain/entity/order_list_response.dart';
@@ -15,7 +17,7 @@ class ApiClient {
 
   Session get session => _session;
 
-  ApiClient.fromSession({required Session session}): _session = session {
+  ApiClient.fromSession({required Session session}) : _session = session {
     _searchOrdersRequest = SearchOrdersRequest(
       search: Search(
         period: _searchPeriodParams,
@@ -76,6 +78,7 @@ class ApiClient {
     );
     if (response.statusCode == 200) {
       _searchPageParams.startIndex += _searchPageParams.count;
+      log(response.body);
       return OrderListResponse.fromJson(response.body);
     } else {
       throw Exception('Failed to send request.');

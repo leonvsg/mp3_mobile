@@ -10,6 +10,7 @@ class OrderListModel extends ChangeNotifier {
   var _orderList = <SimpleOrderData>[];
   late final ApiClient _apiClient;
   bool isLoadingSuccesed = false;
+  bool _batchLoadInProgress = false;
 
   OrderListModel({required Session session}) {
     _apiClient = ApiClient.fromSession(session: session);
@@ -33,7 +34,8 @@ class OrderListModel extends ChangeNotifier {
   }
 
   Future<void> loadOrders() async {
-    if (isLoadingSuccesed) return;
+    if (isLoadingSuccesed || _batchLoadInProgress) return;
+    _batchLoadInProgress = true;
     var dateFrom = DateTime.now().subtract(const Duration(days: 60));
     var dateTo = DateTime.now();
     OrderListResponse response;
@@ -51,6 +53,7 @@ class OrderListModel extends ChangeNotifier {
     }
     _orderList += response.orderList;
     notifyListeners();
+    _batchLoadInProgress = false;
   }
 
   void navigateToOrderInfo(BuildContext context, SimpleOrderData order) {
