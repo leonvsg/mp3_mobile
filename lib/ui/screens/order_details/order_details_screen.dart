@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
-import 'package:mp3_mobile/ui/screens/main/components/orders_list_view_widget.dart';
+import 'package:mp3_mobile/ui/screens/main/components/order_list_item_widget.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   final SimpleOrderData orderData;

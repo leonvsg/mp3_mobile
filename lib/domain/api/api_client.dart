@@ -15,7 +15,7 @@ class ApiClient {
 
   Session get session => _session;
 
-  ApiClient() {
+  ApiClient.fromSession({required Session session}): _session = session {
     _searchOrdersRequest = SearchOrdersRequest(
       search: Search(
         period: _searchPeriodParams,
@@ -26,11 +26,7 @@ class ApiClient {
     );
   }
 
-  ApiClient.fromSession({required Session session}) : _session = session {
-    ApiClient();
-  }
-
-  Future<Session> startSession({
+  Future<Session> renewSession({
     required String login,
     required String password,
   }) async {

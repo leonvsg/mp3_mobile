@@ -1,194 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
-import 'package:mp3_mobile/domain/api/api_client.dart';
-import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
-import 'package:mp3_mobile/domain/entity/payment_system.dart';
-import 'package:mp3_mobile/provider/order_list_model.dart';
+import 'package:mp3_mobile/provider/orders_list_view_model.dart';
 import 'package:mp3_mobile/provider/sesion_model.dart';
-import 'package:mp3_mobile/resources/resources.dart';
 import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
+import 'package:mp3_mobile/ui/screens/main/components/order_list_item_widget.dart';
 import 'package:provider/provider.dart';
 
-class OrdersListView extends StatefulWidget {
+class OrdersListView extends StatelessWidget {
   const OrdersListView({Key? key}) : super(key: key);
-
-  @override
-  State<OrdersListView> createState() => _OrdersListViewState();
-}
-
-class _OrdersListViewState extends State<OrdersListView> {
-  late final OrderListModel orderListModel;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    var sessionId = Provider.of<SessionModel>(context, listen: false).session?.sessionId;
-    if (sessionId != null) {
-      orderListModel = OrderListModel(
-          apiClient: Provider.of<ApiClient>(context, listen: false));
-      orderListModel.loadOrders();
-    } else {
-      Navigator.of(context)
-          .pushReplacementNamed(NavigationRoutes.authPageRoute);
-    }
-  }
-
+  
   @override
   Widget build(BuildContext context) {
+    var session = Provider.of<SessionModel>(context).session;
+    if (session == null) {
+      Navigator.pushReplacementNamed(
+          context, NavigationRoutes.splashScreenRoute);
+    }
     return ChangeNotifierProvider(
-      create: (context) => orderListModel,
+      create: (context) => OrderListModel(session: session!),
       child: const OrderList(),
     );
   }
 }
 
-class OrderList extends StatefulWidget {
+class OrderList extends StatelessWidget {
   const OrderList({Key? key}) : super(key: key);
 
   @override
-  State<OrderList> createState() => _OrderListState();
-}
-
-class _OrderListState extends State<OrderList> {
-  final _scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_scrollListner);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    var model = Provider.of<OrderListModel>(context);
     return ListView.separated(
-      controller: _scrollController,
+      controller: model.orderListScrollController,
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, index) {
-        var order = Provider.of<OrderListModel>(context).orderList[index];
+        var order = model.orderList[index];
         return InkWell(
           child: OrderListItemWidget(order: order),
-          onTap: () => _navigateToOrderInfo(context, order),
+          onTap: () => model.navigateToOrderInfo(context, order),
         );
       },
       separatorBuilder: (context, index) => const Divider(thickness: 2),
-      itemCount: Provider.of<OrderListModel>(context).orderList.length,
+      itemCount: model.orderList.length,
     );
-  }
-
-  void _scrollListner() {
-    if (_scrollController.position.extentAfter < 5) {
-      Provider.of<OrderListModel>(context).loadOrders();
-    }
-  }
-
-  void _navigateToOrderInfo(BuildContext context, SimpleOrderData order) {
-    Navigator.of(context)
-        .pushNamed(NavigationRoutes.orderPageRoute, arguments: order);
-  }
-}
-
-class OrderListItemWidget extends StatelessWidget {
-  final SimpleOrderData order;
-
-  const OrderListItemWidget({
-    Key? key,
-    required this.order,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        RichText(
-          text: TextSpan(
-            style: const TextStyle(color: Colors.black),
-            children: [
-              const TextSpan(
-                text: 'Заказ: ',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              TextSpan(text: order.orderNumber),
-              const TextSpan(text: '   '),
-              const TextSpan(
-                text: 'Дата: ',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              TextSpan(
-                text: DateFormat('dd.MM.yyyy HH:mm:ss').format(
-                  order.createdDate.toLocal(),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: RichText(
-                text: TextSpan(
-                  style: const TextStyle(color: Colors.black),
-                  children: [
-                    const TextSpan(
-                      text: 'Сумма: ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(text: '${order.amount} ${order.currency}'),
-                  ],
-                ),
-              ),
-            ),
-            SvgPicture.asset(_getPaymentSystemAssetPath()),
-            const SizedBox(width: 10.0),
-            Chip(
-              backgroundColor: _getStatusColor(),
-              padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.zero,
-              label: SizedBox(
-                child: Center(
-                  child: Text(
-                    order.state,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                width: 100,
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  String _getPaymentSystemAssetPath() {
-    var path = AppSvgs.card;
-    switch (order.paymentSystem) {
-      case PaymentSystem.visa:
-        path = AppSvgs.visa;
-        break;
-      case PaymentSystem.unknown:
-        path = AppSvgs.card;
-        break;
-    }
-    return path;
-  }
-
-  Color _getStatusColor() {
-    var color = const Color.fromRGBO(26, 39, 55, 1.0);
-    switch (order.state) {
-      case 'DEPOSITED':
-        color = const Color.fromRGBO(134, 202, 109, 1.0);
-        break;
-      case 'DECLINED':
-        color = const Color.fromRGBO(165, 195, 250, 1.0);
-        break;
-    }
-    return color;
   }
 }

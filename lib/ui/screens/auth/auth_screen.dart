@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/api/api_client.dart';
 import 'package:mp3_mobile/domain/entity/sesion.dart';
 import 'package:mp3_mobile/resources/resources.dart';
-import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -126,12 +125,10 @@ class _AuthScreenState extends State<AuthScreen> {
   void _authenticate() {
     if (_formKey.currentState!.validate()) {
       setState(() => _isButtonActive = false);
-      Provider.of<ApiClient>(context, listen: false)
-          .startSession(
-            login: _loginController.text,
-            password: _passwordController.text,
-          )
-          .then((session) => Navigator.of(context).pop<Session>(session));
+      ApiClient.autenticate(
+        login: _loginController.text,
+        password: _passwordController.text,
+      ).then((session) => Navigator.of(context).pop<Session>(session));
     }
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mp3_mobile/domain/api/api_client.dart';
 import 'package:mp3_mobile/provider/sesion_model.dart';
 import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
 import 'package:mp3_mobile/ui/screens/splashscreen_page.dart';
@@ -14,11 +13,8 @@ class Mp3MobileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var mainNavigation = MainNavigation();
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MultiProvider(
-      providers: [
-        Provider(create: (context) => ApiClient()),
-        Provider(create: (context) => SessionModel())
-      ],
+    return Provider(
+      create: (context) => SessionModel(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: MainTheme.theme,
@@ -28,6 +24,4 @@ class Mp3MobileApp extends StatelessWidget {
       ),
     );
   }
-
-  
 }
