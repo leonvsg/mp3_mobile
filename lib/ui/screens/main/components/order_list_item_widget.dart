@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:mp3_mobile/domain/entity/payment_system.dart';
-import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
-import 'package:mp3_mobile/resources/resources.dart';
+import 'package:mp3_mobile/provider/order_list_item_model.dart';
+import 'package:provider/provider.dart';
 
 class OrderListItemWidget extends StatelessWidget {
-  final SimpleOrderData order;
-
-  const OrderListItemWidget({
-    Key? key,
-    required this.order,
-  }) : super(key: key);
+  const OrderListItemWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var model = Provider.of<OrderListItemModel>(context, listen: false);
+    var order = model.orderData;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,10 +54,10 @@ class OrderListItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SvgPicture.asset(_getPaymentSystemAssetPath()),
+            SvgPicture.asset(model.getPaymentSystemAssetPath()),
             const SizedBox(width: 10.0),
             Chip(
-              backgroundColor: _getStatusColor(),
+              backgroundColor: model.getStatusColor(),
               padding: EdgeInsets.zero,
               labelPadding: EdgeInsets.zero,
               label: SizedBox(
@@ -81,31 +77,5 @@ class OrderListItemWidget extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String _getPaymentSystemAssetPath() {
-    var path = AppSvgs.card;
-    switch (order.paymentSystem) {
-      case PaymentSystem.visa:
-        path = AppSvgs.visa;
-        break;
-      case PaymentSystem.unknown:
-        path = AppSvgs.card;
-        break;
-    }
-    return path;
-  }
-
-  Color _getStatusColor() {
-    var color = const Color.fromRGBO(26, 39, 55, 1.0);
-    switch (order.state) {
-      case 'DEPOSITED':
-        color = const Color.fromRGBO(134, 202, 109, 1.0);
-        break;
-      case 'DECLINED':
-        color = const Color.fromRGBO(165, 195, 250, 1.0);
-        break;
-    }
-    return color;
   }
 }

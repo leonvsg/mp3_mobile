@@ -82,7 +82,9 @@ class AuthScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () => model.authenticate(context),
+                      onPressed: model.isButtonActive
+                          ? () => model.authenticate(context)
+                          : null,
                       child: model.isButtonActive
                           ? const Text('ВОЙТИ')
                           : const CircularProgressIndicator(color: Colors.red),

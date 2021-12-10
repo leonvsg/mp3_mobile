@@ -19,6 +19,7 @@ class AuthScreenModel extends ChangeNotifier {
   void authenticate(BuildContext context) {
     if (formKey.currentState!.validate()) {
       isButtonActive = false;
+      notifyListeners();
       ApiClient.autenticate(
         login: loginController.text,
         password: passwordController.text,
