@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
-import 'package:mp3_mobile/ui/components/orders_list_view_widget.dart';
+import 'package:mp3_mobile/provider/order_list_item_model.dart';
+import 'package:mp3_mobile/ui/screens/main/components/order_list_item_widget.dart';
+import 'package:provider/provider.dart';
 
-class OrderDetailsPage extends StatelessWidget {
+class OrderDetailsScreen extends StatelessWidget {
   final SimpleOrderData orderData;
 
-  const OrderDetailsPage(this.orderData, {Key? key}) : super(key: key);
+  const OrderDetailsScreen(this.orderData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,10 @@ class OrderDetailsPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                OrderListItemWidget(order: orderData),
+                Provider(
+                  create: (context) => OrderListItemModel(orderData: orderData),
+                  child: const OrderListItemWidget(),
+                ),
               ],
             ),
             Container(),

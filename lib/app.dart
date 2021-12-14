@@ -1,72 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mp3_mobile/domain/api/api_client.dart';
-import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
-import 'package:mp3_mobile/domain/entity/sesion.dart';
-import 'package:mp3_mobile/provider/providers/api_client_provider.dart';
-import 'package:mp3_mobile/ui/pages/auth_page.dart';
-import 'package:mp3_mobile/ui/pages/main_page.dart';
-import 'package:mp3_mobile/ui/pages/order_details_page.dart';
-import 'package:mp3_mobile/ui/pages/settings_page.dart';
-import 'package:mp3_mobile/ui/pages/splashscreen_page.dart';
+import 'package:mp3_mobile/provider/sesion_model.dart';
+import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
+import 'package:mp3_mobile/ui/screens/splashscreen_page.dart';
+import 'package:mp3_mobile/ui/theme/main_theme.dart';
+import 'package:provider/provider.dart';
 
 class Mp3MobileApp extends StatelessWidget {
   const Mp3MobileApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var mainNavigation = MainNavigation();
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return ApiClientProvider(
-      apiClient: ApiClient(),
+    return Provider(
+      create: (context) => SessionModel(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          iconTheme: const IconThemeData(color: Colors.white),
-          textTheme: const TextTheme(
-            subtitle1: TextStyle(color: Colors.white),
-          ),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF1A2737),
-          ),
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: Colors.white,
-            selectedItemColor: Colors.red,
-          ),
-          inputDecorationTheme: const InputDecorationTheme(
-            border: OutlineInputBorder(),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
-            ),
-            labelStyle: TextStyle(color: Colors.white),
-          ),
-        ),
+        theme: MainTheme.theme,
         home: const SplashScreen(),
-        routes: {
-          '/auth': (context) => const AuthPage(),
-          '/home': (context) {
-            var session = ModalRoute.of(context)?.settings.arguments;
-            if (session is Session) {
-              return MainPage(session: session);
-            } else {
-              return const AuthPage();
-            }
-          },
-          '/settings': (context) => const SettingsPage(),
-          '/order': (context) {
-            var orderData = ModalRoute.of(context)?.settings.arguments;
-            if (orderData is SimpleOrderData) {
-              return OrderDetailsPage(orderData);
-            } else {
-              return const AuthPage();
-            }
-          }
-        },
+        routes: mainNavigation.routes,
+        onGenerateRoute: mainNavigation.onGenerateRoute,
       ),
     );
   }

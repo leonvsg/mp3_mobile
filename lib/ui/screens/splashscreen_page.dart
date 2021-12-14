@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mp3_mobile/provider/sesion_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
+import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
+import 'package:provider/provider.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,16 +15,16 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Hero(
+            const Hero(
               tag: 'logoHero',
-              child: SvgPicture.asset(
-                AppSvgs.logoWhiteShort,
+              child: Image(
+                image: AssetImage(AppImages.logoWhiteShort),
                 height: 70,
               ),
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: _goToAuthPage,
+              onPressed: () => initSession(context),
               child: const Text('Go To Auth'),
             ),
           ],
@@ -36,7 +33,9 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  void _goToAuthPage() {
-    Navigator.of(context).pushNamed('/auth');
+  void initSession(BuildContext context) async {
+    var sessionModel = Provider.of<SessionModel>(context, listen: false);
+    await sessionModel.initSession(context);
+    Navigator.of(context).pushReplacementNamed(NavigationRoutes.homePageRoute);
   }
 }

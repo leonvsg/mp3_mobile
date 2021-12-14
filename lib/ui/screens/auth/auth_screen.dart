@@ -1,31 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mp3_mobile/provider/providers/api_client_provider.dart';
+import 'package:mp3_mobile/provider/auth_screen_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
+import 'package:provider/provider.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({Key? key}) : super(key: key);
-
-  @override
-  _AuthPageState createState() => _AuthPageState();
-}
-
-class _AuthPageState extends State<AuthPage> {
-  var _isObscuredPassword = true;
-  var _isButtonActive = true;
-  final _loginController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    _loginController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var model = Provider.of<AuthScreenModel>(context);
     return Scaffold(
       backgroundColor: const Color(0xFF1A2737),
       body: Container(
@@ -40,20 +23,20 @@ class _AuthPageState extends State<AuthPage> {
             child: Padding(
               padding: const EdgeInsets.all(50.0),
               child: Form(
-                key: _formKey,
+                key: model.formKey,
                 child: Column(
                   children: [
-                    Hero(
+                    const Hero(
                       tag: 'logoHero',
-                      child: SvgPicture.asset(
-                        AppSvgs.fullLogo,
+                      child: Image(
+                        image: AssetImage(AppImages.fullLogo),
                         height: 70,
                       ),
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
-                      controller: _loginController,
-                      validator: _validateTextField,
+                      controller: model.loginController,
+                      validator: model.validateTextField,
                       style: const TextStyle(),
                       decoration: const InputDecoration(
                         label: Text('Логин'),
@@ -71,9 +54,9 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
-                      controller: _passwordController,
-                      validator: _validateTextField,
-                      obscureText: _isObscuredPassword,
+                      controller: model.passwordController,
+                      validator: model.validateTextField,
+                      obscureText: model.isObscuredPassword,
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         label: const Text('Пароль'),
@@ -83,12 +66,12 @@ class _AuthPageState extends State<AuthPage> {
                         ),
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _isObscuredPassword
+                            model.isObscuredPassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             color: Colors.white,
                           ),
-                          onPressed: _setObscure,
+                          onPressed: model.setObscure,
                         ),
                       ),
                       cursorColor: Colors.white,
@@ -99,8 +82,10 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: _isButtonActive ? _authenticate : null,
-                      child: _isButtonActive
+                      onPressed: model.isButtonActive
+                          ? () => model.authenticate(context)
+                          : null,
+                      child: model.isButtonActive
                           ? const Text('ВОЙТИ')
                           : const CircularProgressIndicator(color: Colors.red),
                       style: ButtonStyle(
@@ -121,32 +106,4 @@ class _AuthPageState extends State<AuthPage> {
       ),
     );
   }
-
-  void _authenticate() {
-    if (_formKey.currentState!.validate()) {
-      setState(() => _isButtonActive = false);
-      ApiClientProvider.of(context)
-          ?.apiClient
-          .startSession(
-            login: _loginController.text,
-            password: _passwordController.text,
-          )
-          .then((session) => Navigator.of(context)
-              .pushReplacementNamed('/home', arguments: session));
-      // ApiClient.autenticate(
-      //   login: _loginController.text,
-      //   password: _passwordController.text,
-      // ).then(
-      //   (session) => Navigator.of(context)
-      //       .pushReplacementNamed('/home', arguments: session),
-      // );
-    }
-  }
-
-  void _setObscure() {
-    setState(() => _isObscuredPassword = !_isObscuredPassword);
-  }
-
-  String? _validateTextField(value) =>
-      value.isNotEmpty ? null : 'Пожалуйста введите значение';
 }
