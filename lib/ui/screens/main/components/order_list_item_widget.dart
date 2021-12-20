@@ -17,7 +17,7 @@ class OrderListItemWidget extends StatelessWidget {
       children: [
         RichText(
           text: TextSpan(
-            style: const TextStyle(color: Colors.black),
+            style: Theme.of(context).textTheme.subtitle2,
             children: [
               const TextSpan(
                 text: 'Заказ: ',
@@ -43,7 +43,7 @@ class OrderListItemWidget extends StatelessWidget {
             Expanded(
               child: RichText(
                 text: TextSpan(
-                  style: const TextStyle(color: Colors.black),
+                  style: Theme.of(context).textTheme.subtitle2,
                   children: [
                     const TextSpan(
                       text: 'Сумма: ',
@@ -65,7 +65,6 @@ class OrderListItemWidget extends StatelessWidget {
                   child: Text(
                     order.state,
                     style: const TextStyle(
-                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

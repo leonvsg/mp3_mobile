@@ -9,10 +9,11 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = Provider.of<MainScreenModel>(context);
     final selectedTabIndex = model.selectedTabIndex;
-    final _lable = model.appBarLables[selectedTabIndex];
+    final widgetOptions = model.widgetOptions;
+    final label = widgetOptions[selectedTabIndex].label;
     return Scaffold(
       appBar: AppBar(
-        title: Text(_lable),
+        title: Text(label),
         centerTitle: true,
         actions: [
           IconButton(
@@ -25,31 +26,26 @@ class MainScreen extends StatelessWidget {
       ),
       body: IndexedStack(
         index: selectedTabIndex,
-        children: model.widgetOptions,
+        children: List.generate(
+          widgetOptions.length,
+          (index) => widgetOptions[index].widget,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedTabIndex,
         onTap: model.onSelectTab,
         showSelectedLabels: false,
         selectedIconTheme: const IconThemeData(size: 40),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.stacked_line_chart_sharp),
-            label: 'Статистика',
+        items: List.generate(
+          widgetOptions.length,
+          (index) => BottomNavigationBarItem(
+            icon: widgetOptions[index].icon,
+            label: widgetOptions[index].label,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment),
-            label: 'Заказы',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help_center),
-            label: 'Помощь',
-          ),
-        ],
+        ),
       ),
       floatingActionButton: model.showFab(FloatingActionButton.extended(
         onPressed: () {},
-        backgroundColor: const Color(0xFF1A2737),
         label: const Text('Фильтр'),
         icon: const Icon(Icons.filter_alt),
       )),

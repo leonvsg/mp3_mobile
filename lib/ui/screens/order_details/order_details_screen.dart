@@ -26,8 +26,6 @@ class OrderDetailsScreen extends StatelessWidget {
             )
           ],
           bottom: const TabBar(
-            indicatorColor: Colors.red,
-            indicatorWeight: 3.0,
             tabs: [
               Tab(text: 'ДЕТАЛИ'),
               Tab(text: 'ИСТОРИЯ'),
