@@ -9,6 +9,10 @@ class AuthScreenModel extends ChangeNotifier {
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  IconData get passwordSuffixIconData => isObscuredPassword
+      ? Icons.visibility
+      : Icons.visibility_off;
+
   @override
   void dispose() {
     loginController.dispose();
