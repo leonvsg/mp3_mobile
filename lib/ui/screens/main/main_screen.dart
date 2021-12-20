@@ -46,7 +46,6 @@ class MainScreen extends StatelessWidget {
       ),
       floatingActionButton: model.showFab(FloatingActionButton.extended(
         onPressed: () {},
-        backgroundColor: const Color(0xFF1A2737),
         label: const Text('Фильтр'),
         icon: const Icon(Icons.filter_alt),
       )),

@@ -13,10 +13,6 @@ class _StatisticViewState extends State<StatisticView> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        borderRadius: BorderRadius.circular(20),
-      ),
       child: Center(
         child: GroupedFillColorBarChart.withSampleData(),
       ),
@@ -27,7 +23,7 @@ class _StatisticViewState extends State<StatisticView> {
 /// Example of a grouped bar chart with three series, each rendered with
 /// different fill colors.
 class GroupedFillColorBarChart extends StatelessWidget {
-  final List<charts.Series<dynamic,String>> seriesList;
+  final List<charts.Series<dynamic, String>> seriesList;
   final bool animate;
 
   const GroupedFillColorBarChart(this.seriesList, this.animate, {Key? key})
