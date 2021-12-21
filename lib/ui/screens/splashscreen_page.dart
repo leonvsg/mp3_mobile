@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/provider/sesion_model.dart';
+import 'package:mp3_mobile/domain/secure_storage/secure_storage.dart';
+import 'package:mp3_mobile/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,7 @@ class SplashScreen extends StatelessWidget {
   }
 
   void initSession(BuildContext context) async {
+    var token = SecureStorageProvider.readToken();
     var sessionModel = Provider.of<SessionModel>(context, listen: false);
     await sessionModel.initSession(context);
     Navigator.of(context).pushReplacementNamed(NavigationRoutes.homePageRoute);

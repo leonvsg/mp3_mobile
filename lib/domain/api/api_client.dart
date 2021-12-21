@@ -1,10 +1,13 @@
 import 'dart:developer';
-
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:mp3_mobile/domain/entity/auth.dart';
+import 'package:mp3_mobile/domain/entity/merchant_information_request.dart';
+import 'package:mp3_mobile/domain/entity/merchant_information_response.dart';
 import 'package:mp3_mobile/domain/entity/order_list_response.dart';
 import 'package:mp3_mobile/domain/entity/orders_search_request.dart';
-import 'package:mp3_mobile/domain/entity/sesion.dart';
+import 'package:mp3_mobile/domain/entity/session.dart';
 
 class ApiClient {
   late Session _session;
@@ -28,27 +31,26 @@ class ApiClient {
     );
   }
 
+  ApiClient.fromToken({required String token}) {
+    _searchOrdersRequest = SearchOrdersRequest(
+      search: Search(
+        period: _searchPeriodParams,
+        nextPage: _searchPageParams,
+        states: [],
+      ),
+      nextPage: _searchPageParams,
+    );
+  }
+
   Future<Session> renewSession({
     required String login,
     required String password,
   }) async {
-    var response = await http.post(
-      Uri.parse('https://web.rbsuat.com/ab/mp3/auth/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Referer': 'https://web.rbsuat.com',
-      },
-      body: AuthRequest(password: password, login: login).toJson(),
-    );
-    if (response.statusCode == 200) {
-      _session = Session.fromJson(response.body);
-      return _session;
-    } else {
-      throw Exception('Failed to send request.');
-    }
+    _session = await authenticate(login: login, password: password);
+    return _session;
   }
 
-  static Future<Session> autenticate({
+  static Future<Session> authenticate({
     required String login,
     required String password,
   }) async {
@@ -68,6 +70,7 @@ class ApiClient {
   }
 
   Future<OrderListResponse> getNextOrdersPage() async {
+    log('Search orders request: $_searchOrdersRequest');
     var response = await http.post(
       Uri.parse('https://web.rbsuat.com/ab/mp3/transaction/list'),
       headers: <String, String>{
@@ -78,11 +81,15 @@ class ApiClient {
     );
     if (response.statusCode == 200) {
       _searchPageParams.startIndex += _searchPageParams.count;
-      log(response.body);
-      return OrderListResponse.fromJson(response.body);
+      log('Search order response ${response.body}');
+      return compute(_parseOrderListResponse, response.body);
     } else {
       throw Exception('Failed to send request.');
     }
+  }
+
+  OrderListResponse _parseOrderListResponse(String jsonString){
+    return OrderListResponse.fromJson(jsonString);
   }
 
   Future<OrderListResponse> getFilteredOrdersPage({
@@ -94,5 +101,24 @@ class ApiClient {
     _searchPeriodParams.from = from;
     _searchPeriodParams.to = to;
     return getNextOrdersPage();
+  }
+
+  Future<MerchantInformationResponse> getMerchantInformation(String merchantLogin) async {
+    var requestBody = json.encode(MerchantInformationRequest(merchantLogin: merchantLogin).toJson());
+    log('Get merchant information: $requestBody');
+    var response = await http.post(
+      Uri.parse('https://web.rbsuat.com/ab/mp3/merchant/information'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'x-auth-token': _session.sessionId,
+      },
+      body: requestBody,
+    );
+    if (response.statusCode == 200) {
+      log('Merchant information response: ${response.body}');
+      return MerchantInformationResponse.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to send request.');
+    }
   }
 }

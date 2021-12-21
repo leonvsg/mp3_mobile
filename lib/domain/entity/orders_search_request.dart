@@ -3,26 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
-/*
-{
-    "search": {
-        "period": {
-            "from": "2021-06-01T00:00:00+03:00",
-            "to": "2021-10-19T23:59:59+03:00"
-        },
-        "next_page": {
-            "count": 15,
-            "start_index": 0
-        },
-        "states": []
-    },
-    "next_page": {
-        "count": 15,
-        "start_index": 0
-    }
-}
-*/
-
 class SearchOrdersRequest {
   Search search;
   Page nextPage;

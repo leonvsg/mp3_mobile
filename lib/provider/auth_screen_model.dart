@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/api/api_client.dart';
-import 'package:mp3_mobile/domain/entity/sesion.dart';
+import 'package:mp3_mobile/domain/entity/session.dart';
 
 class AuthScreenModel extends ChangeNotifier {
   var isObscuredPassword = true;
@@ -24,7 +24,7 @@ class AuthScreenModel extends ChangeNotifier {
     if (formKey.currentState!.validate()) {
       isButtonActive = false;
       notifyListeners();
-      ApiClient.autenticate(
+      ApiClient.authenticate(
         login: loginController.text,
         password: passwordController.text,
       ).then((session) => Navigator.of(context).pop<Session>(session));

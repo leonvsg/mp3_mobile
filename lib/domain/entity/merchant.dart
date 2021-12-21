@@ -1,13 +1,6 @@
 import 'dart:convert';
 
 class Merchant {
-  /*
-        {
-            "merchant_login": "sup_test_autoreg11",
-            "merchant_full_name": "SupportTestAutoreg",
-            "merchant_type": "VIEWABLE"
-        }
-  */
 
   final String _merchantLogin;
   final String _merchantFullName;

@@ -3,39 +3,6 @@ import 'dart:convert';
 import 'merchant.dart';
 
 class Session {
-  /*
-  {
-    "session_id": "8614147e-0f6c-4432-94d4-7d4737db6016",
-    "login": "sup_test",
-    "merchant_login": "sup_test",
-    "permissions": [
-        "REFUND",
-        "USE_MPI_CERTIFICATES",
-        "EDIT_MERCHANT_SETTINGS_MP3",
-        "DEPOSIT",
-        "OFD_REFUND",
-        "OFD_CONFIGURATION",
-        "BUNDLE_CATALOG_EDIT",
-        "REVERSE_HOLD",
-        "SEND_PAYMENT_FORM",
-        "CHANGE_PAYS_CERTIFICATES_SETTINGS"
-    ],
-    "accessible_merchants": [
-        {
-            "merchant_login": "sup_test_autoreg11",
-            "merchant_full_name": "SupportTestAutoreg",
-            "merchant_type": "VIEWABLE"
-        },
-        {
-            "merchant_login": "sup_test_autoreg5",
-            "merchant_full_name": "SupportTestAutoreg",
-            "merchant_type": "VIEWABLE"
-        }
-    ],
-    "server_storage": [],
-    "status": "SUCCESS"
-  }
-  */
 
   final String _sessionId;
   final String _login;
