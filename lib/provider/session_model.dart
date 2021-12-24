@@ -6,8 +6,12 @@ class SessionModel {
   late final Session? _session;
   Session? get session => _session;
 
-  Future<void> initSession(BuildContext context) async {
-    _session = (await Navigator.of(context)
-        .pushNamed(NavigationRoutes.authPageRoute)) as Session;
+  Future<void> initSession(BuildContext context, [Session? session]) async {
+    if (session != null) {
+      _session = session;
+    } else {
+      _session = (await Navigator.of(context)
+          .pushNamed(NavigationRoutes.authPageRoute)) as Session;
+    }
   }
 }

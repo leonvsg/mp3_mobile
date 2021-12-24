@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/api/api_client.dart';
 import 'package:mp3_mobile/domain/entity/session.dart';
+import 'package:mp3_mobile/domain/secure_storage/secure_storage.dart';
 
 class AuthScreenModel extends ChangeNotifier {
   var isObscuredPassword = true;
@@ -9,9 +10,8 @@ class AuthScreenModel extends ChangeNotifier {
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  IconData get passwordSuffixIconData => isObscuredPassword
-      ? Icons.visibility
-      : Icons.visibility_off;
+  IconData get passwordSuffixIconData =>
+      isObscuredPassword ? Icons.visibility : Icons.visibility_off;
 
   @override
   void dispose() {
@@ -27,7 +27,10 @@ class AuthScreenModel extends ChangeNotifier {
       ApiClient.authenticate(
         login: loginController.text,
         password: passwordController.text,
-      ).then((session) => Navigator.of(context).pop<Session>(session));
+      ).then((session) {
+        SecureStorageProvider.saveToken(session.sessionId);
+        Navigator.of(context).pop<Session>(session);
+      });
     }
   }
 

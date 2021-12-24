@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mp3_mobile/data/rbs/api/api_client.dart';
+import 'package:mp3_mobile/data/rbs/entity/merchant_information_response.dart';
+import 'package:mp3_mobile/domain/entity/merchant.dart';
+import 'package:mp3_mobile/domain/entity/session.dart';
 import 'package:mp3_mobile/domain/secure_storage/secure_storage.dart';
 import 'package:mp3_mobile/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
@@ -33,10 +37,26 @@ class SplashScreen extends StatelessWidget {
     );
   }
 
+//TODO: code
   void initSession(BuildContext context) async {
-    var token = SecureStorageProvider.readToken();
     var sessionModel = Provider.of<SessionModel>(context, listen: false);
-    await sessionModel.initSession(context);
+    var token = await SecureStorageProvider.readToken();
+    Session? session;
+    if (token != null && token.isNotEmpty) {
+      var merchant = await ApiClient()
+          .getMerchantInformation(merchantLogin: 'sup_test', sessionId: token);
+      if (merchant is MerchantInformationResponseSuccess) {
+        session = Session(
+            sessionId: token,
+            login: merchant.fullName,
+            merchantLogin: merchant.fullName,
+            permissions: merchant.options,
+            accessibleMerchants: <Merchant>[],
+            serverStorage: <String>[],
+            status: 'status');
+      }
+    }
+    await sessionModel.initSession(context, session);
     Navigator.of(context).pushReplacementNamed(NavigationRoutes.homePageRoute);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mp3_mobile/domain/entity/currency.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mp3_mobile/domain/entity/error_response.dart';
+import 'currency.dart';
+import 'error_response.dart';
 
 part 'merchant_information_response.freezed.dart';
 part 'merchant_information_response.g.dart';
@@ -45,8 +45,10 @@ class MerchantInformationResponse with _$MerchantInformationResponse {
   }) = MerchantInformationResponseSuccess;
 
   @FreezedUnionValue('FAIL')
-  const factory MerchantInformationResponse.error({required String status, required ErrorResponse error}) =
-      MerchantInformationResponseFail;
+  const factory MerchantInformationResponse.error({
+    required String status,
+    required ErrorResponse error,
+  }) = MerchantInformationResponseFail;
 
   factory MerchantInformationResponse.fromJson(Map<String, dynamic> map) =>
       _$MerchantInformationResponseFromJson(map);

@@ -9,72 +9,78 @@ class OrderListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var model = Provider.of<OrderListItemModel>(context, listen: false);
+    var model = context.read<
+        OrderListItemModel>();
     var order = model.orderData;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        RichText(
-          text: TextSpan(
-            style: Theme.of(context).textTheme.subtitle2,
-            children: [
-              const TextSpan(
-                text: 'Заказ: ',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              TextSpan(text: order.orderNumber),
-              const TextSpan(text: '   '),
-              const TextSpan(
-                text: 'Дата: ',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              TextSpan(
-                text: DateFormat('dd.MM.yyyy HH:mm:ss').format(
-                  order.createdDate.toLocal(),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: RichText(
-                text: TextSpan(
-                  style: Theme.of(context).textTheme.subtitle2,
-                  children: [
-                    const TextSpan(
-                      text: 'Сумма: ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+            RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.subtitle2,
+                children: [
+                  const TextSpan(
+                    text: 'Заказ: ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(text: order.orderNumber),
+                  const TextSpan(text: '   '),
+                  const TextSpan(
+                    text: 'Дата: ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text: DateFormat('dd.MM.yyyy HH:mm:ss').format(
+                      order.createdDate.toLocal(),
                     ),
-                    TextSpan(text: '${order.amount} ${order.currency}'),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            SvgPicture.asset(model.getPaymentSystemAssetPath()),
-            const SizedBox(width: 10.0),
-            Chip(
-              backgroundColor: model.getStatusColor(),
-              padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.zero,
-              label: SizedBox(
-                child: Center(
-                  child: Text(
-                    order.state,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: RichText(
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.subtitle2,
+                      children: [
+                        const TextSpan(
+                          text: 'Сумма: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: '${order.amount} ${order.currency}'),
+                      ],
                     ),
                   ),
                 ),
-                width: 100,
-              ),
+                SvgPicture.asset(model.getPaymentSystemAssetPath(), color: Theme.of(context).colorScheme.primary,),
+                const SizedBox(width: 10.0),
+                Chip(
+                  backgroundColor: model.getStatusColor(),
+                  padding: EdgeInsets.zero,
+                  labelPadding: EdgeInsets.zero,
+                  label: SizedBox(
+                    child: Center(
+                      child: Text(
+                        order.state,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    width: 100,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }

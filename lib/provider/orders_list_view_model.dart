@@ -49,6 +49,7 @@ class OrderListModel extends ChangeNotifier {
     }
     if (response.orderList.isEmpty) {
       isLoadingDone = true;
+      notifyListeners();
       return;
     }
     _orderList += response.orderList;
