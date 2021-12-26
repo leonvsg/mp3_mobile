@@ -92,7 +92,7 @@ class ApiClient {
   Future<OrderListResponse> getFilteredOrdersPage({
     required DateTime from,
     required DateTime to,
-    int count = 25,
+    required int count,
   }) async {
     _searchPageParams.count = count;
     _searchPeriodParams.from = from;

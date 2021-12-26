@@ -29,12 +29,14 @@ class OrdersListView extends StatelessWidget {
 class OrderList extends StatelessWidget {
   const OrderList({Key? key}) : super(key: key);
 
+  static const _shimmerList = [ShimmerItem(), ShimmerItem(), ShimmerItem()];
+
   @override
   Widget build(BuildContext context) {
     var model = context.watch<OrderListModel>();
     var orderList = model.orderList;
-    return (orderList.isEmpty)
-        ? const Center(child: CircularProgressIndicator.adaptive())
+    return orderList.isEmpty
+        ? Column(children: const [..._shimmerList, ..._shimmerList])
         : ListView.builder(
             controller: model.orderListScrollController,
             padding: const EdgeInsets.all(16.0),
@@ -51,11 +53,7 @@ class OrderList extends StatelessWidget {
                       model.isLoadingDone)
                   ? widget
                   : Column(
-                      children: [
-                        widget,
-                        const ShimmerItem(),
-                        const ShimmerItem(),
-                      ],
+                      children: [widget, ..._shimmerList],
                     );
             },
             itemCount: model.orderList.length,

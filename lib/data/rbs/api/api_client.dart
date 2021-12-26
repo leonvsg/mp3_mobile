@@ -7,6 +7,7 @@ import 'package:mp3_mobile/domain/entity/auth.dart';
 import 'package:mp3_mobile/domain/entity/session.dart';
 
 class ApiClient {
+  static final _acceptedResponseCodes = [200,400];
   ApiClient();
 
   static Future<String> getSessionId({
@@ -43,8 +44,11 @@ class ApiClient {
       },
       body: requestBody,
     );
-    if (response.statusCode == 200) {
-      log('Merchant information response: ${response.body}');
+    log('''Merchant information response:
+    ${response.statusCode}
+    ${response.headers}
+    ${response.body}''');
+    if (_acceptedResponseCodes.contains(response.statusCode)) {
       return MerchantInformationResponse.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to send request.');

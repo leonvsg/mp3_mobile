@@ -11,6 +11,7 @@ class OrderListModel extends ChangeNotifier {
   late final ApiClient _apiClient;
   bool isLoadingDone = false;
   bool _batchLoadInProgress = false;
+  static const _ordersInBatchCount = 25;
 
   OrderListModel({required Session session}) {
     _apiClient = ApiClient.fromSession(session: session);
@@ -43,11 +44,12 @@ class OrderListModel extends ChangeNotifier {
       response = await _apiClient.getFilteredOrdersPage(
         from: dateFrom,
         to: dateTo,
+        count: _ordersInBatchCount,
       );
     } else {
       response = await _apiClient.getNextOrdersPage();
     }
-    if (response.orderList.isEmpty) {
+    if (response.orderList.length < _ordersInBatchCount || response.orderList.isEmpty) {
       isLoadingDone = true;
       notifyListeners();
       return;
