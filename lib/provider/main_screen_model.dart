@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
-import 'package:mp3_mobile/ui/screens/main/components/help_view_widget.dart';
-import 'package:mp3_mobile/ui/screens/main/components/orders_list_view_widget.dart';
-import 'package:mp3_mobile/ui/screens/main/components/statistic_view_widget.dart';
+import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
+import 'package:mp3_mobile/presentation/screens/main/components/help_view_widget.dart';
+import 'package:mp3_mobile/presentation/screens/main/components/orders_list_view_widget.dart';
+import 'package:mp3_mobile/presentation/screens/main/components/statistic_view_widget.dart';
 
 class _BottomNavigationBarOption {
   final String label;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mp3_mobile/provider/session_model.dart';
-import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
-import 'package:mp3_mobile/ui/screens/splashscreen_page.dart';
+import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
+import 'package:mp3_mobile/presentation/screens/splashscreen_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 

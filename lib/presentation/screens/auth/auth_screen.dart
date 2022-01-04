@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/provider/auth_screen_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
-import 'package:mp3_mobile/ui/theme/main_theme.dart';
+import 'package:mp3_mobile/presentation/theme/main_theme.dart';
 import 'package:provider/provider.dart';
 
 class AuthScreen extends StatelessWidget {

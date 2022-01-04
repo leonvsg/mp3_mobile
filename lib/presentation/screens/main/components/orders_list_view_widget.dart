@@ -4,8 +4,8 @@ import 'package:mp3_mobile/provider/order_list_item_model.dart';
 import 'package:mp3_mobile/provider/orders_list_view_model.dart';
 import 'package:mp3_mobile/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
-import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
-import 'package:mp3_mobile/ui/screens/main/components/order_list_item_widget.dart';
+import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
+import 'package:mp3_mobile/presentation/screens/main/components/order_list_item_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 

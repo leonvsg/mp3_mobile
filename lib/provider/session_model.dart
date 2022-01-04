@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mp3_mobile/domain/entity/session.dart';
-import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
+import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
 
 class SessionModel {
   late final Session? _session;

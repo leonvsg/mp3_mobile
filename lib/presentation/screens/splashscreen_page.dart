@@ -6,7 +6,7 @@ import 'package:mp3_mobile/domain/entity/session.dart';
 import 'package:mp3_mobile/domain/secure_storage/secure_storage.dart';
 import 'package:mp3_mobile/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
-import 'package:mp3_mobile/ui/navigation/main_navigation.dart';
+import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
