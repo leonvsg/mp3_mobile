@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/data/entities/rbs/merchant_information_request_dto.dart';
-import 'package:mp3_mobile/data/entities/rbs/merchant_information_response_dto.dart';
+import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_request.dart';
+import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_response.dart';
 import 'package:mp3_mobile/data/services/rbs/rbs_api_service.dart';
 import 'package:mp3_mobile/domain/entity/merchant.dart';
 import 'package:mp3_mobile/domain/entity/session.dart';
@@ -45,10 +45,10 @@ class SplashScreen extends StatelessWidget {
     Session? session;
     if (token != null && token.isNotEmpty) {
       var merchant = await RbsApiService().fetchMerchantInformation(
-        const MerchantInformationRequestDto(merchantLogin: 'sup_test'),
+        const MerchantInformationRequest(merchantLogin: 'sup_test'),
         token,
       );
-      if (merchant is MerchantInformationResponseDtoSuccess) {
+      if (merchant is MerchantInformationResponseSuccess) {
         session = Session(
             sessionId: token,
             login: merchant.fullName,

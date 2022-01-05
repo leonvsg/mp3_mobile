@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:mp3_mobile/data/entities/rbs/auth_request_dto.dart';
-import 'package:mp3_mobile/data/entities/rbs/auth_response_dto.dart';
 import 'package:http/http.dart';
-import 'package:mp3_mobile/data/entities/rbs/merchant_information_request_dto.dart';
-import 'package:mp3_mobile/data/entities/rbs/merchant_information_response_dto.dart';
-import 'package:mp3_mobile/data/entities/rbs/transaction_list_request_dto.dart';
-import 'package:mp3_mobile/data/entities/rbs/transaction_list_response_dto.dart';
-import 'package:mp3_mobile/data/entities/rbs/ui_settings_response_dto.dart';
+import 'package:mp3_mobile/data/entities/rbs/auth/auth_request.dart';
+import 'package:mp3_mobile/data/entities/rbs/auth/auth_response.dart';
+import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_request.dart';
+import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_response.dart';
+import 'package:mp3_mobile/data/entities/rbs/transaction_list/transaction_list_request.dart';
+import 'package:mp3_mobile/data/entities/rbs/transaction_list/transaction_list_response.dart';
+import 'package:mp3_mobile/data/entities/rbs/ui_settings/ui_settings_response.dart';
 
 enum HttpMethod { get, post }
 
@@ -47,7 +47,7 @@ class RbsApiService {
     }
   }
 
-  Future<AuthResponseDto> auth(AuthRequestDto requestBody) async {
+  Future<AuthResponse> auth(AuthRequest requestBody) async {
     log('Try to authenticate by login ${requestBody.login}');
     var response = await _getData(
       HttpMethod.post,
@@ -55,11 +55,11 @@ class RbsApiService {
       requestBody: jsonEncode(requestBody.toJson()),
     );
     log('Authentication result: $response');
-    return AuthResponseDto.fromJson(jsonDecode(response));
+    return AuthResponse.fromJson(jsonDecode(response));
   }
 
-  Future<MerchantInformationResponseDto> fetchMerchantInformation(
-    MerchantInformationRequestDto requestBody,
+  Future<MerchantInformationResponse> fetchMerchantInformation(
+    MerchantInformationRequest requestBody,
     String sessionId,
   ) async {
     log('Get merchant information: $requestBody');
@@ -73,10 +73,10 @@ class RbsApiService {
       additionalHeaders: headers,
     );
     log('Merchant information response: $response');
-    return MerchantInformationResponseDto.fromJson(json.decode(response));
+    return MerchantInformationResponse.fromJson(json.decode(response));
   }
 
-  Future<UiSettingsResponseDto> fetchUiSettings(String sessionId) async {
+  Future<UiSettingsResponse> fetchUiSettings(String sessionId) async {
     log('Get UI settings');
     var headers = <String, String>{
       'x-auth-token': sessionId,
@@ -87,11 +87,11 @@ class RbsApiService {
       additionalHeaders: headers,
     );
     log('UI settings: $response');
-    return UiSettingsResponseDto.fromJson(json.decode(response));
+    return UiSettingsResponse.fromJson(json.decode(response));
   }
 
-  Future<TransactionListResponseDto> fetchTransactionList(
-    TransactionListRequestDto requestBody,
+  Future<TransactionListResponse> fetchTransactionList(
+    TransactionListRequest requestBody,
     String sessionId,
   ) async {
     log('Get transaction list: $requestBody');
@@ -105,6 +105,6 @@ class RbsApiService {
       additionalHeaders: headers,
     );
     log('Transaction list response: $response');
-    return TransactionListResponseDto.fromJson(json.decode(response));
+    return TransactionListResponse.fromJson(json.decode(response));
   }
 }
