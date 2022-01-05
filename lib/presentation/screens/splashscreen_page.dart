@@ -44,7 +44,7 @@ class SplashScreen extends StatelessWidget {
     var token = await SecureStorageProvider.readToken();
     Session? session;
     if (token != null && token.isNotEmpty) {
-      var merchant = await RbsApiService().getMerchantInformation(
+      var merchant = await RbsApiService().fetchMerchantInformation(
         const MerchantInformationRequestDto(merchantLogin: 'sup_test'),
         token,
       );

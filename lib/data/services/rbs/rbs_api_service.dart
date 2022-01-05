@@ -5,6 +5,9 @@ import 'package:mp3_mobile/data/entities/rbs/auth_response_dto.dart';
 import 'package:http/http.dart';
 import 'package:mp3_mobile/data/entities/rbs/merchant_information_request_dto.dart';
 import 'package:mp3_mobile/data/entities/rbs/merchant_information_response_dto.dart';
+import 'package:mp3_mobile/data/entities/rbs/transaction_list_request_dto.dart';
+import 'package:mp3_mobile/data/entities/rbs/transaction_list_response_dto.dart';
+import 'package:mp3_mobile/data/entities/rbs/ui_settings_response_dto.dart';
 
 enum HttpMethod { get, post }
 
@@ -55,7 +58,7 @@ class RbsApiService {
     return AuthResponseDto.fromJson(jsonDecode(response));
   }
 
-  Future<MerchantInformationResponseDto> getMerchantInformation(
+  Future<MerchantInformationResponseDto> fetchMerchantInformation(
     MerchantInformationRequestDto requestBody,
     String sessionId,
   ) async {
@@ -65,7 +68,7 @@ class RbsApiService {
     };
     var response = await _getData(
       HttpMethod.post,
-      'merchant/information',
+      '/merchant/information',
       requestBody: jsonEncode(requestBody.toJson()),
       additionalHeaders: headers,
     );
@@ -73,5 +76,35 @@ class RbsApiService {
     return MerchantInformationResponseDto.fromJson(json.decode(response));
   }
 
+  Future<UiSettingsResponseDto> fetchUiSettings(String sessionId) async {
+    log('Get UI settings');
+    var headers = <String, String>{
+      'x-auth-token': sessionId,
+    };
+    var response = await _getData(
+      HttpMethod.post,
+      '/ui/settings',
+      additionalHeaders: headers,
+    );
+    log('UI settings: $response');
+    return UiSettingsResponseDto.fromJson(json.decode(response));
+  }
 
+  Future<TransactionListResponseDto> fetchTransactionList(
+    TransactionListRequestDto requestBody,
+    String sessionId,
+  ) async {
+    log('Get transaction list: $requestBody');
+    var headers = <String, String>{
+      'x-auth-token': sessionId,
+    };
+    var response = await _getData(
+      HttpMethod.post,
+      '/transaction/list',
+      requestBody: jsonEncode(requestBody.toJson()),
+      additionalHeaders: headers,
+    );
+    log('Transaction list response: $response');
+    return TransactionListResponseDto.fromJson(json.decode(response));
+  }
 }
