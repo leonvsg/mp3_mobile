@@ -45,7 +45,8 @@ mixin _$AccessibleMerchant {
   @JsonKey(name: 'merchant_login')
   String get merchantLogin => throw _privateConstructorUsedError;
   @JsonKey(name: 'merchant_full_name')
-  String get merchantFullName => throw _privateConstructorUsedError;
+  String get merchantFullName =>
+      throw _privateConstructorUsedError; //PARENT, CHILD, VIEWABLE
   @JsonKey(name: 'merchant_type')
   String get merchantType => throw _privateConstructorUsedError;
 
@@ -164,7 +165,7 @@ class _$_AccessibleMerchant
   @override
   @JsonKey(name: 'merchant_full_name')
   final String merchantFullName;
-  @override
+  @override //PARENT, CHILD, VIEWABLE
   @JsonKey(name: 'merchant_type')
   final String merchantType;
 
@@ -230,7 +231,7 @@ abstract class _AccessibleMerchant implements AccessibleMerchant {
   @override
   @JsonKey(name: 'merchant_full_name')
   String get merchantFullName;
-  @override
+  @override //PARENT, CHILD, VIEWABLE
   @JsonKey(name: 'merchant_type')
   String get merchantType;
   @override

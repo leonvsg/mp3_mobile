@@ -37,7 +37,7 @@ class _$MerchantInformationResponseTearOff {
   MerchantInformationResponseSuccess success(
       {required String status,
       @JsonKey(name: 'open_id_token')
-          required String openIdToken,
+          String? openIdToken,
       required List<Currency> currencies,
       required List<String> options,
       @JsonKey(name: 'session_timeout_minutes')
@@ -48,7 +48,10 @@ class _$MerchantInformationResponseTearOff {
       @JsonKey(name: 'main_url')
           required String mainUrl,
       @JsonKey(name: 'full_name')
-          required String fullName}) {
+          required String fullName,
+      @JsonKey(name: 'merchant_terms')
+          List<int>? merchantTerms,
+      String? knp}) {
     return MerchantInformationResponseSuccess(
       status: status,
       openIdToken: openIdToken,
@@ -59,6 +62,8 @@ class _$MerchantInformationResponseTearOff {
       email: email,
       mainUrl: mainUrl,
       fullName: fullName,
+      merchantTerms: merchantTerms,
+      knp: knp,
     );
   }
 
@@ -86,14 +91,16 @@ mixin _$MerchantInformationResponse {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) =>
@@ -102,14 +109,16 @@ mixin _$MerchantInformationResponse {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)?
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
   }) =>
@@ -118,14 +127,16 @@ mixin _$MerchantInformationResponse {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)?
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),
@@ -197,14 +208,16 @@ abstract class $MerchantInformationResponseSuccessCopyWith<$Res>
   @override
   $Res call(
       {String status,
-      @JsonKey(name: 'open_id_token') String openIdToken,
+      @JsonKey(name: 'open_id_token') String? openIdToken,
       List<Currency> currencies,
       List<String> options,
       @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
       List<String> locales,
       @JsonKey(name: 'emails') String email,
       @JsonKey(name: 'main_url') String mainUrl,
-      @JsonKey(name: 'full_name') String fullName});
+      @JsonKey(name: 'full_name') String fullName,
+      @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+      String? knp});
 }
 
 /// @nodoc
@@ -231,6 +244,8 @@ class _$MerchantInformationResponseSuccessCopyWithImpl<$Res>
     Object? email = freezed,
     Object? mainUrl = freezed,
     Object? fullName = freezed,
+    Object? merchantTerms = freezed,
+    Object? knp = freezed,
   }) {
     return _then(MerchantInformationResponseSuccess(
       status: status == freezed
@@ -240,7 +255,7 @@ class _$MerchantInformationResponseSuccessCopyWithImpl<$Res>
       openIdToken: openIdToken == freezed
           ? _value.openIdToken
           : openIdToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       currencies: currencies == freezed
           ? _value.currencies
           : currencies // ignore: cast_nullable_to_non_nullable
@@ -269,6 +284,14 @@ class _$MerchantInformationResponseSuccessCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      merchantTerms: merchantTerms == freezed
+          ? _value.merchantTerms
+          : merchantTerms // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      knp: knp == freezed
+          ? _value.knp
+          : knp // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -281,7 +304,7 @@ class _$MerchantInformationResponseSuccess
   const _$MerchantInformationResponseSuccess(
       {required this.status,
       @JsonKey(name: 'open_id_token')
-          required this.openIdToken,
+          this.openIdToken,
       required this.currencies,
       required this.options,
       @JsonKey(name: 'session_timeout_minutes')
@@ -292,7 +315,10 @@ class _$MerchantInformationResponseSuccess
       @JsonKey(name: 'main_url')
           required this.mainUrl,
       @JsonKey(name: 'full_name')
-          required this.fullName})
+          required this.fullName,
+      @JsonKey(name: 'merchant_terms')
+          this.merchantTerms,
+      this.knp})
       : super._();
 
   factory _$MerchantInformationResponseSuccess.fromJson(
@@ -303,7 +329,7 @@ class _$MerchantInformationResponseSuccess
   final String status;
   @override
   @JsonKey(name: 'open_id_token')
-  final String openIdToken;
+  final String? openIdToken;
   @override
   final List<Currency> currencies;
   @override
@@ -322,10 +348,15 @@ class _$MerchantInformationResponseSuccess
   @override
   @JsonKey(name: 'full_name')
   final String fullName;
+  @override
+  @JsonKey(name: 'merchant_terms')
+  final List<int>? merchantTerms;
+  @override
+  final String? knp;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MerchantInformationResponse.success(status: $status, openIdToken: $openIdToken, currencies: $currencies, options: $options, sessionTimeoutMinutes: $sessionTimeoutMinutes, locales: $locales, email: $email, mainUrl: $mainUrl, fullName: $fullName)';
+    return 'MerchantInformationResponse.success(status: $status, openIdToken: $openIdToken, currencies: $currencies, options: $options, sessionTimeoutMinutes: $sessionTimeoutMinutes, locales: $locales, email: $email, mainUrl: $mainUrl, fullName: $fullName, merchantTerms: $merchantTerms, knp: $knp)';
   }
 
   @override
@@ -341,7 +372,9 @@ class _$MerchantInformationResponseSuccess
       ..add(DiagnosticsProperty('locales', locales))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('mainUrl', mainUrl))
-      ..add(DiagnosticsProperty('fullName', fullName));
+      ..add(DiagnosticsProperty('fullName', fullName))
+      ..add(DiagnosticsProperty('merchantTerms', merchantTerms))
+      ..add(DiagnosticsProperty('knp', knp));
   }
 
   @override
@@ -360,7 +393,10 @@ class _$MerchantInformationResponseSuccess
             const DeepCollectionEquality().equals(other.locales, locales) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.mainUrl, mainUrl) &&
-            const DeepCollectionEquality().equals(other.fullName, fullName));
+            const DeepCollectionEquality().equals(other.fullName, fullName) &&
+            const DeepCollectionEquality()
+                .equals(other.merchantTerms, merchantTerms) &&
+            const DeepCollectionEquality().equals(other.knp, knp));
   }
 
   @override
@@ -374,7 +410,9 @@ class _$MerchantInformationResponseSuccess
       const DeepCollectionEquality().hash(locales),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(mainUrl),
-      const DeepCollectionEquality().hash(fullName));
+      const DeepCollectionEquality().hash(fullName),
+      const DeepCollectionEquality().hash(merchantTerms),
+      const DeepCollectionEquality().hash(knp));
 
   @JsonKey(ignore: true)
   @override
@@ -388,19 +426,31 @@ class _$MerchantInformationResponseSuccess
   TResult when<TResult extends Object?>({
     required TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) {
-    return success(status, openIdToken, currencies, options,
-        sessionTimeoutMinutes, locales, email, mainUrl, fullName);
+    return success(
+        status,
+        openIdToken,
+        currencies,
+        options,
+        sessionTimeoutMinutes,
+        locales,
+        email,
+        mainUrl,
+        fullName,
+        merchantTerms,
+        knp);
   }
 
   @override
@@ -408,19 +458,31 @@ class _$MerchantInformationResponseSuccess
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)?
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
   }) {
-    return success?.call(status, openIdToken, currencies, options,
-        sessionTimeoutMinutes, locales, email, mainUrl, fullName);
+    return success?.call(
+        status,
+        openIdToken,
+        currencies,
+        options,
+        sessionTimeoutMinutes,
+        locales,
+        email,
+        mainUrl,
+        fullName,
+        merchantTerms,
+        knp);
   }
 
   @override
@@ -428,21 +490,33 @@ class _$MerchantInformationResponseSuccess
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)?
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(status, openIdToken, currencies, options,
-          sessionTimeoutMinutes, locales, email, mainUrl, fullName);
+      return success(
+          status,
+          openIdToken,
+          currencies,
+          options,
+          sessionTimeoutMinutes,
+          locales,
+          email,
+          mainUrl,
+          fullName,
+          merchantTerms,
+          knp);
     }
     return orElse();
   }
@@ -489,7 +563,7 @@ abstract class MerchantInformationResponseSuccess
   const factory MerchantInformationResponseSuccess(
       {required String status,
       @JsonKey(name: 'open_id_token')
-          required String openIdToken,
+          String? openIdToken,
       required List<Currency> currencies,
       required List<String> options,
       @JsonKey(name: 'session_timeout_minutes')
@@ -500,7 +574,10 @@ abstract class MerchantInformationResponseSuccess
       @JsonKey(name: 'main_url')
           required String mainUrl,
       @JsonKey(name: 'full_name')
-          required String fullName}) = _$MerchantInformationResponseSuccess;
+          required String fullName,
+      @JsonKey(name: 'merchant_terms')
+          List<int>? merchantTerms,
+      String? knp}) = _$MerchantInformationResponseSuccess;
   const MerchantInformationResponseSuccess._() : super._();
 
   factory MerchantInformationResponseSuccess.fromJson(
@@ -510,7 +587,7 @@ abstract class MerchantInformationResponseSuccess
   @override
   String get status;
   @JsonKey(name: 'open_id_token')
-  String get openIdToken;
+  String? get openIdToken;
   List<Currency> get currencies;
   List<String> get options;
   @JsonKey(name: 'session_timeout_minutes')
@@ -522,6 +599,9 @@ abstract class MerchantInformationResponseSuccess
   String get mainUrl;
   @JsonKey(name: 'full_name')
   String get fullName;
+  @JsonKey(name: 'merchant_terms')
+  List<int>? get merchantTerms;
+  String? get knp;
   @override
   @JsonKey(ignore: true)
   $MerchantInformationResponseSuccessCopyWith<
@@ -638,14 +718,16 @@ class _$MerchantInformationResponseFail extends MerchantInformationResponseFail
   TResult when<TResult extends Object?>({
     required TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) {
@@ -657,14 +739,16 @@ class _$MerchantInformationResponseFail extends MerchantInformationResponseFail
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)?
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
   }) {
@@ -676,14 +760,16 @@ class _$MerchantInformationResponseFail extends MerchantInformationResponseFail
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String status,
-            @JsonKey(name: 'open_id_token') String openIdToken,
+            @JsonKey(name: 'open_id_token') String? openIdToken,
             List<Currency> currencies,
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
             @JsonKey(name: 'emails') String email,
             @JsonKey(name: 'main_url') String mainUrl,
-            @JsonKey(name: 'full_name') String fullName)?
+            @JsonKey(name: 'full_name') String fullName,
+            @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+            String? knp)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),

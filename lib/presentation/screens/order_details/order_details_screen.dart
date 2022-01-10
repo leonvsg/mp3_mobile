@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
+import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
 import 'package:mp3_mobile/provider/order_list_item_model.dart';
 import 'package:mp3_mobile/presentation/screens/main/components/order_list_item_widget.dart';
 import 'package:provider/provider.dart';

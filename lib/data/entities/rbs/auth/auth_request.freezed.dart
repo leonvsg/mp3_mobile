@@ -21,10 +21,16 @@ AuthRequest _$AuthRequestFromJson(Map<String, dynamic> json) {
 class _$AuthRequestTearOff {
   const _$AuthRequestTearOff();
 
-  _AuthRequest call({required String password, required String login}) {
+  _AuthRequest call(
+      {required String password,
+      required String login,
+      String language = 'ru',
+      String? code}) {
     return _AuthRequest(
       password: password,
       login: login,
+      language: language,
+      code: code,
     );
   }
 
@@ -40,6 +46,8 @@ const $AuthRequest = _$AuthRequestTearOff();
 mixin _$AuthRequest {
   String get password => throw _privateConstructorUsedError;
   String get login => throw _privateConstructorUsedError;
+  String get language => throw _privateConstructorUsedError;
+  String? get code => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +60,7 @@ abstract class $AuthRequestCopyWith<$Res> {
   factory $AuthRequestCopyWith(
           AuthRequest value, $Res Function(AuthRequest) then) =
       _$AuthRequestCopyWithImpl<$Res>;
-  $Res call({String password, String login});
+  $Res call({String password, String login, String language, String? code});
 }
 
 /// @nodoc
@@ -67,6 +75,8 @@ class _$AuthRequestCopyWithImpl<$Res> implements $AuthRequestCopyWith<$Res> {
   $Res call({
     Object? password = freezed,
     Object? login = freezed,
+    Object? language = freezed,
+    Object? code = freezed,
   }) {
     return _then(_value.copyWith(
       password: password == freezed
@@ -77,6 +87,14 @@ class _$AuthRequestCopyWithImpl<$Res> implements $AuthRequestCopyWith<$Res> {
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String,
+      language: language == freezed
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -88,7 +106,7 @@ abstract class _$AuthRequestCopyWith<$Res>
           _AuthRequest value, $Res Function(_AuthRequest) then) =
       __$AuthRequestCopyWithImpl<$Res>;
   @override
-  $Res call({String password, String login});
+  $Res call({String password, String login, String language, String? code});
 }
 
 /// @nodoc
@@ -105,6 +123,8 @@ class __$AuthRequestCopyWithImpl<$Res> extends _$AuthRequestCopyWithImpl<$Res>
   $Res call({
     Object? password = freezed,
     Object? login = freezed,
+    Object? language = freezed,
+    Object? code = freezed,
   }) {
     return _then(_AuthRequest(
       password: password == freezed
@@ -115,6 +135,14 @@ class __$AuthRequestCopyWithImpl<$Res> extends _$AuthRequestCopyWithImpl<$Res>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String,
+      language: language == freezed
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -122,7 +150,11 @@ class __$AuthRequestCopyWithImpl<$Res> extends _$AuthRequestCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
-  const _$_AuthRequest({required this.password, required this.login});
+  const _$_AuthRequest(
+      {required this.password,
+      required this.login,
+      this.language = 'ru',
+      this.code});
 
   factory _$_AuthRequest.fromJson(Map<String, dynamic> json) =>
       _$$_AuthRequestFromJson(json);
@@ -131,10 +163,15 @@ class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
   final String password;
   @override
   final String login;
+  @JsonKey()
+  @override
+  final String language;
+  @override
+  final String? code;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthRequest(password: $password, login: $login)';
+    return 'AuthRequest(password: $password, login: $login, language: $language, code: $code)';
   }
 
   @override
@@ -143,7 +180,9 @@ class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
     properties
       ..add(DiagnosticsProperty('type', 'AuthRequest'))
       ..add(DiagnosticsProperty('password', password))
-      ..add(DiagnosticsProperty('login', login));
+      ..add(DiagnosticsProperty('login', login))
+      ..add(DiagnosticsProperty('language', language))
+      ..add(DiagnosticsProperty('code', code));
   }
 
   @override
@@ -152,14 +191,18 @@ class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
         (other.runtimeType == runtimeType &&
             other is _AuthRequest &&
             const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality().equals(other.login, login));
+            const DeepCollectionEquality().equals(other.login, login) &&
+            const DeepCollectionEquality().equals(other.language, language) &&
+            const DeepCollectionEquality().equals(other.code, code));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(login));
+      const DeepCollectionEquality().hash(login),
+      const DeepCollectionEquality().hash(language),
+      const DeepCollectionEquality().hash(code));
 
   @JsonKey(ignore: true)
   @override
@@ -174,7 +217,10 @@ class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
 
 abstract class _AuthRequest implements AuthRequest {
   const factory _AuthRequest(
-      {required String password, required String login}) = _$_AuthRequest;
+      {required String password,
+      required String login,
+      String language,
+      String? code}) = _$_AuthRequest;
 
   factory _AuthRequest.fromJson(Map<String, dynamic> json) =
       _$_AuthRequest.fromJson;
@@ -183,6 +229,10 @@ abstract class _AuthRequest implements AuthRequest {
   String get password;
   @override
   String get login;
+  @override
+  String get language;
+  @override
+  String? get code;
   @override
   @JsonKey(ignore: true)
   _$AuthRequestCopyWith<_AuthRequest> get copyWith =>

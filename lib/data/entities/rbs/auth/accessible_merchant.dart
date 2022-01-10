@@ -9,6 +9,7 @@ class AccessibleMerchant with _$AccessibleMerchant {
   const factory AccessibleMerchant({
     @JsonKey(name: 'merchant_login') required String merchantLogin,
     @JsonKey(name: 'merchant_full_name') required String merchantFullName,
+    //PARENT, CHILD, VIEWABLE
     @JsonKey(name: 'merchant_type') required String merchantType,
 }) = _AccessibleMerchant;
 

@@ -6,32 +6,32 @@ part of 'transaction_list_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TransactionListResponseSuccess _$$_TransactionListResponseSuccessFromJson(
+_$TransactionListResponseSuccess _$$TransactionListResponseSuccessFromJson(
         Map<String, dynamic> json) =>
-    _$_TransactionListResponseSuccess(
+    _$TransactionListResponseSuccess(
       status: json['status'] as String,
       list: (json['list'] as List<dynamic>)
           .map((e) => TransactionListItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TransactionListResponseSuccessToJson(
-        _$_TransactionListResponseSuccess instance) =>
+Map<String, dynamic> _$$TransactionListResponseSuccessToJson(
+        _$TransactionListResponseSuccess instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'list': instance.list,
+      'list': instance.list.map((e) => e.toJson()).toList(),
     };
 
-_$_TransactionListResponseFail _$$_TransactionListResponseFailFromJson(
+_$TransactionListResponseFail _$$TransactionListResponseFailFromJson(
         Map<String, dynamic> json) =>
-    _$_TransactionListResponseFail(
+    _$TransactionListResponseFail(
       status: json['status'] as String,
       error: ErrorResponse.fromJson(json['error'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_TransactionListResponseFailToJson(
-        _$_TransactionListResponseFail instance) =>
+Map<String, dynamic> _$$TransactionListResponseFailToJson(
+        _$TransactionListResponseFail instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'error': instance.error,
+      'error': instance.error.toJson(),
     };

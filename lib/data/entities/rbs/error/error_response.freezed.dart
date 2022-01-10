@@ -24,11 +24,13 @@ class _$ErrorResponseTearOff {
   _ErrorResponse call(
       {required String code,
       required String description,
-      required String message}) {
+      required String message,
+      @JsonKey(name: 'invalid_field_name') String? invalidFieldName}) {
     return _ErrorResponse(
       code: code,
       description: description,
       message: message,
+      invalidFieldName: invalidFieldName,
     );
   }
 
@@ -45,6 +47,8 @@ mixin _$ErrorResponse {
   String get code => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  @JsonKey(name: 'invalid_field_name')
+  String? get invalidFieldName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +61,11 @@ abstract class $ErrorResponseCopyWith<$Res> {
   factory $ErrorResponseCopyWith(
           ErrorResponse value, $Res Function(ErrorResponse) then) =
       _$ErrorResponseCopyWithImpl<$Res>;
-  $Res call({String code, String description, String message});
+  $Res call(
+      {String code,
+      String description,
+      String message,
+      @JsonKey(name: 'invalid_field_name') String? invalidFieldName});
 }
 
 /// @nodoc
@@ -74,6 +82,7 @@ class _$ErrorResponseCopyWithImpl<$Res>
     Object? code = freezed,
     Object? description = freezed,
     Object? message = freezed,
+    Object? invalidFieldName = freezed,
   }) {
     return _then(_value.copyWith(
       code: code == freezed
@@ -88,6 +97,10 @@ class _$ErrorResponseCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      invalidFieldName: invalidFieldName == freezed
+          ? _value.invalidFieldName
+          : invalidFieldName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -99,7 +112,11 @@ abstract class _$ErrorResponseCopyWith<$Res>
           _ErrorResponse value, $Res Function(_ErrorResponse) then) =
       __$ErrorResponseCopyWithImpl<$Res>;
   @override
-  $Res call({String code, String description, String message});
+  $Res call(
+      {String code,
+      String description,
+      String message,
+      @JsonKey(name: 'invalid_field_name') String? invalidFieldName});
 }
 
 /// @nodoc
@@ -118,6 +135,7 @@ class __$ErrorResponseCopyWithImpl<$Res>
     Object? code = freezed,
     Object? description = freezed,
     Object? message = freezed,
+    Object? invalidFieldName = freezed,
   }) {
     return _then(_ErrorResponse(
       code: code == freezed
@@ -132,6 +150,10 @@ class __$ErrorResponseCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      invalidFieldName: invalidFieldName == freezed
+          ? _value.invalidFieldName
+          : invalidFieldName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -140,7 +162,10 @@ class __$ErrorResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
   const _$_ErrorResponse(
-      {required this.code, required this.description, required this.message});
+      {required this.code,
+      required this.description,
+      required this.message,
+      @JsonKey(name: 'invalid_field_name') this.invalidFieldName});
 
   factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
       _$$_ErrorResponseFromJson(json);
@@ -151,10 +176,13 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
   final String description;
   @override
   final String message;
+  @override
+  @JsonKey(name: 'invalid_field_name')
+  final String? invalidFieldName;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ErrorResponse(code: $code, description: $description, message: $message)';
+    return 'ErrorResponse(code: $code, description: $description, message: $message, invalidFieldName: $invalidFieldName)';
   }
 
   @override
@@ -164,7 +192,8 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
       ..add(DiagnosticsProperty('type', 'ErrorResponse'))
       ..add(DiagnosticsProperty('code', code))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('invalidFieldName', invalidFieldName));
   }
 
   @override
@@ -175,7 +204,9 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.invalidFieldName, invalidFieldName));
   }
 
   @override
@@ -183,7 +214,8 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
       runtimeType,
       const DeepCollectionEquality().hash(code),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(message));
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(invalidFieldName));
 
   @JsonKey(ignore: true)
   @override
@@ -198,9 +230,11 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
 
 abstract class _ErrorResponse implements ErrorResponse {
   const factory _ErrorResponse(
-      {required String code,
-      required String description,
-      required String message}) = _$_ErrorResponse;
+          {required String code,
+          required String description,
+          required String message,
+          @JsonKey(name: 'invalid_field_name') String? invalidFieldName}) =
+      _$_ErrorResponse;
 
   factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
       _$_ErrorResponse.fromJson;
@@ -211,6 +245,9 @@ abstract class _ErrorResponse implements ErrorResponse {
   String get description;
   @override
   String get message;
+  @override
+  @JsonKey(name: 'invalid_field_name')
+  String? get invalidFieldName;
   @override
   @JsonKey(ignore: true)
   _$ErrorResponseCopyWith<_ErrorResponse> get copyWith =>

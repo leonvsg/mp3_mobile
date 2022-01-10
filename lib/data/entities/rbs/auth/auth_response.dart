@@ -16,10 +16,11 @@ class AuthResponse with _$AuthResponse {
     @JsonKey(name: 'session_id') required String sessionId,
     required String login,
     @JsonKey(name: 'merchant_login') required String merchantLogin,
+    String? email,
     required List<String> permissions,
     @JsonKey(name: 'accessible_merchants')
         required List<AccessibleMerchant> accessibleMerchants,
-    @JsonKey(name: 'server_storage') required List<String> serverStorage,
+    @JsonKey(name: 'server_storage') List<Map<String,String>>? serverStorage,
     required String status,
   }) = AuthResponseSuccess;
 

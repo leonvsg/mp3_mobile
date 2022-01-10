@@ -12,29 +12,41 @@ _$AuthResponseSuccess _$$AuthResponseSuccessFromJson(
       sessionId: json['session_id'] as String,
       login: json['login'] as String,
       merchantLogin: json['merchant_login'] as String,
+      email: json['email'] as String?,
       permissions: (json['permissions'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       accessibleMerchants: (json['accessible_merchants'] as List<dynamic>)
           .map((e) => AccessibleMerchant.fromJson(e as Map<String, dynamic>))
           .toList(),
-      serverStorage: (json['server_storage'] as List<dynamic>)
-          .map((e) => e as String)
+      serverStorage: (json['server_storage'] as List<dynamic>?)
+          ?.map((e) => Map<String, String>.from(e as Map))
           .toList(),
       status: json['status'] as String,
     );
 
 Map<String, dynamic> _$$AuthResponseSuccessToJson(
-        _$AuthResponseSuccess instance) =>
-    <String, dynamic>{
-      'session_id': instance.sessionId,
-      'login': instance.login,
-      'merchant_login': instance.merchantLogin,
-      'permissions': instance.permissions,
-      'accessible_merchants': instance.accessibleMerchants,
-      'server_storage': instance.serverStorage,
-      'status': instance.status,
-    };
+    _$AuthResponseSuccess instance) {
+  final val = <String, dynamic>{
+    'session_id': instance.sessionId,
+    'login': instance.login,
+    'merchant_login': instance.merchantLogin,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('email', instance.email);
+  val['permissions'] = instance.permissions;
+  val['accessible_merchants'] =
+      instance.accessibleMerchants.map((e) => e.toJson()).toList();
+  writeNotNull('server_storage', instance.serverStorage);
+  val['status'] = instance.status;
+  return val;
+}
 
 _$AuthResponseError _$$AuthResponseErrorFromJson(Map<String, dynamic> json) =>
     _$AuthResponseError(
@@ -45,5 +57,5 @@ _$AuthResponseError _$$AuthResponseErrorFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$AuthResponseErrorToJson(_$AuthResponseError instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'error': instance.error,
+      'error': instance.error.toJson(),
     };

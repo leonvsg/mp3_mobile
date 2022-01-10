@@ -7,7 +7,7 @@ part 'transaction_list_item.g.dart';
 @freezed
 class TransactionListItem with _$TransactionListItem {
   const factory TransactionListItem({
-    @JsonKey(name: 'action_code') required String actionCode,
+    @JsonKey(name: 'action_code') String? actionCode,
     required String amount,
     @JsonKey(name: 'created_date') required String createdDate,
     required String currency,
@@ -22,7 +22,8 @@ class TransactionListItem with _$TransactionListItem {
     @JsonKey(name: 'payment_type_extension') required String paymentTypeExtension,
     @JsonKey(name: 'refunded_amount') required String refundedAmount,
     required String state,
-    @JsonKey(name: 'with_loyalty') required bool withLoyalty,
+    @JsonKey(name: 'short_description') String? shortDescription,
+    @JsonKey(name: 'with_loyalty') bool? withLoyalty,
 }) = _TransactionListItem;
 
   factory TransactionListItem.fromJson(Map<String, dynamic> json) =>

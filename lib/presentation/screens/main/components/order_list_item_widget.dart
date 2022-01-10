@@ -67,7 +67,7 @@ class OrderListItemWidget extends StatelessWidget {
                   label: SizedBox(
                     child: Center(
                       child: Text(
-                        order.state,
+                        order.state.name,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

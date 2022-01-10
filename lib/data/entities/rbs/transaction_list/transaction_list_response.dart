@@ -15,13 +15,13 @@ class TransactionListResponse with _$TransactionListResponse {
   const factory TransactionListResponse.success({
     required String status,
     required List<TransactionListItem> list,
-}) = _TransactionListResponseSuccess;
+}) = TransactionListResponseSuccess;
 
   @FreezedUnionValue('FAIL')
   const factory TransactionListResponse.error({
     required String status,
     required ErrorResponse error,
-}) = _TransactionListResponseFail;
+}) = TransactionListResponseFail;
 
   factory TransactionListResponse.fromJson(Map<String, dynamic> json) =>
       _$TransactionListResponseFromJson(json);

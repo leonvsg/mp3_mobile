@@ -14,7 +14,7 @@ class MerchantInformationResponse with _$MerchantInformationResponse {
   @FreezedUnionValue('SUCCESS')
   const factory MerchantInformationResponse.success({
     required String status,
-    @JsonKey(name: 'open_id_token') required String openIdToken,
+    @JsonKey(name: 'open_id_token') String? openIdToken,
     required List<Currency> currencies,
     required List<String> options,
     @JsonKey(name: 'session_timeout_minutes')
@@ -23,6 +23,8 @@ class MerchantInformationResponse with _$MerchantInformationResponse {
     @JsonKey(name: 'emails') required String email,
     @JsonKey(name: 'main_url') required String mainUrl,
     @JsonKey(name: 'full_name') required String fullName,
+    @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
+    String? knp,
   }) = MerchantInformationResponseSuccess;
 
   @FreezedUnionValue('FAIL')

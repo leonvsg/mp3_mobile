@@ -6,19 +6,19 @@ part of 'ui_settings_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UiSettingsResponseSuccess _$$_UiSettingsResponseSuccessFromJson(
+_$UiSettingsResponseSuccess _$$UiSettingsResponseSuccessFromJson(
         Map<String, dynamic> json) =>
-    _$_UiSettingsResponseSuccess(
+    _$UiSettingsResponseSuccess(
       uiSettings: (json['ui_settings'] as List<dynamic>)
           .map((e) => UiSettingsItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as String,
     );
 
-Map<String, dynamic> _$$_UiSettingsResponseSuccessToJson(
-        _$_UiSettingsResponseSuccess instance) =>
+Map<String, dynamic> _$$UiSettingsResponseSuccessToJson(
+        _$UiSettingsResponseSuccess instance) =>
     <String, dynamic>{
-      'ui_settings': instance.uiSettings,
+      'ui_settings': instance.uiSettings.map((e) => e.toJson()).toList(),
       'status': instance.status,
     };
 
@@ -33,5 +33,5 @@ Map<String, dynamic> _$$UiSettingsResponseErrorToJson(
         _$UiSettingsResponseError instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'error': instance.error,
+      'error': instance.error.toJson(),
     };

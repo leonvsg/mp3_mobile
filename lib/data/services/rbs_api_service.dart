@@ -22,6 +22,7 @@ class RbsApiService {
     String? requestBody,
     Map<String, String>? additionalHeaders,
   }) async {
+    log('Send request: $requestBody');
     var uri = Uri.parse('$_applicationContextUrl$apiMethodUri');
     var headers = <String, String>{
       'Content-Type': 'application/json',

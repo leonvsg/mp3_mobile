@@ -36,16 +36,18 @@ class _$AuthResponseTearOff {
       required String login,
       @JsonKey(name: 'merchant_login')
           required String merchantLogin,
+      String? email,
       required List<String> permissions,
       @JsonKey(name: 'accessible_merchants')
           required List<AccessibleMerchant> accessibleMerchants,
       @JsonKey(name: 'server_storage')
-          required List<String> serverStorage,
+          List<Map<String, String>>? serverStorage,
       required String status}) {
     return AuthResponseSuccess(
       sessionId: sessionId,
       login: login,
       merchantLogin: merchantLogin,
+      email: email,
       permissions: permissions,
       accessibleMerchants: accessibleMerchants,
       serverStorage: serverStorage,
@@ -81,11 +83,12 @@ mixin _$AuthResponse {
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
@@ -99,11 +102,12 @@ mixin _$AuthResponse {
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -117,11 +121,12 @@ mixin _$AuthResponse {
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -195,11 +200,12 @@ abstract class $AuthResponseSuccessCopyWith<$Res>
       String login,
       @JsonKey(name: 'merchant_login')
           String merchantLogin,
+      String? email,
       List<String> permissions,
       @JsonKey(name: 'accessible_merchants')
           List<AccessibleMerchant> accessibleMerchants,
       @JsonKey(name: 'server_storage')
-          List<String> serverStorage,
+          List<Map<String, String>>? serverStorage,
       String status});
 }
 
@@ -219,6 +225,7 @@ class _$AuthResponseSuccessCopyWithImpl<$Res>
     Object? sessionId = freezed,
     Object? login = freezed,
     Object? merchantLogin = freezed,
+    Object? email = freezed,
     Object? permissions = freezed,
     Object? accessibleMerchants = freezed,
     Object? serverStorage = freezed,
@@ -237,6 +244,10 @@ class _$AuthResponseSuccessCopyWithImpl<$Res>
           ? _value.merchantLogin
           : merchantLogin // ignore: cast_nullable_to_non_nullable
               as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       permissions: permissions == freezed
           ? _value.permissions
           : permissions // ignore: cast_nullable_to_non_nullable
@@ -248,7 +259,7 @@ class _$AuthResponseSuccessCopyWithImpl<$Res>
       serverStorage: serverStorage == freezed
           ? _value.serverStorage
           : serverStorage // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<Map<String, String>>?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -266,9 +277,10 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
       {@JsonKey(name: 'session_id') required this.sessionId,
       required this.login,
       @JsonKey(name: 'merchant_login') required this.merchantLogin,
+      this.email,
       required this.permissions,
       @JsonKey(name: 'accessible_merchants') required this.accessibleMerchants,
-      @JsonKey(name: 'server_storage') required this.serverStorage,
+      @JsonKey(name: 'server_storage') this.serverStorage,
       required this.status})
       : super._();
 
@@ -284,19 +296,21 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
   @JsonKey(name: 'merchant_login')
   final String merchantLogin;
   @override
+  final String? email;
+  @override
   final List<String> permissions;
   @override
   @JsonKey(name: 'accessible_merchants')
   final List<AccessibleMerchant> accessibleMerchants;
   @override
   @JsonKey(name: 'server_storage')
-  final List<String> serverStorage;
+  final List<Map<String, String>>? serverStorage;
   @override
   final String status;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthResponse.success(sessionId: $sessionId, login: $login, merchantLogin: $merchantLogin, permissions: $permissions, accessibleMerchants: $accessibleMerchants, serverStorage: $serverStorage, status: $status)';
+    return 'AuthResponse.success(sessionId: $sessionId, login: $login, merchantLogin: $merchantLogin, email: $email, permissions: $permissions, accessibleMerchants: $accessibleMerchants, serverStorage: $serverStorage, status: $status)';
   }
 
   @override
@@ -307,6 +321,7 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
       ..add(DiagnosticsProperty('sessionId', sessionId))
       ..add(DiagnosticsProperty('login', login))
       ..add(DiagnosticsProperty('merchantLogin', merchantLogin))
+      ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('permissions', permissions))
       ..add(DiagnosticsProperty('accessibleMerchants', accessibleMerchants))
       ..add(DiagnosticsProperty('serverStorage', serverStorage))
@@ -322,6 +337,7 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
             const DeepCollectionEquality().equals(other.login, login) &&
             const DeepCollectionEquality()
                 .equals(other.merchantLogin, merchantLogin) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.permissions, permissions) &&
             const DeepCollectionEquality()
@@ -337,6 +353,7 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
       const DeepCollectionEquality().hash(sessionId),
       const DeepCollectionEquality().hash(login),
       const DeepCollectionEquality().hash(merchantLogin),
+      const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(permissions),
       const DeepCollectionEquality().hash(accessibleMerchants),
       const DeepCollectionEquality().hash(serverStorage),
@@ -356,16 +373,17 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) {
-    return success(sessionId, login, merchantLogin, permissions,
+    return success(sessionId, login, merchantLogin, email, permissions,
         accessibleMerchants, serverStorage, status);
   }
 
@@ -378,16 +396,17 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
   }) {
-    return success?.call(sessionId, login, merchantLogin, permissions,
+    return success?.call(sessionId, login, merchantLogin, email, permissions,
         accessibleMerchants, serverStorage, status);
   }
 
@@ -400,18 +419,19 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(sessionId, login, merchantLogin, permissions,
+      return success(sessionId, login, merchantLogin, email, permissions,
           accessibleMerchants, serverStorage, status);
     }
     return orElse();
@@ -461,11 +481,12 @@ abstract class AuthResponseSuccess extends AuthResponse {
       required String login,
       @JsonKey(name: 'merchant_login')
           required String merchantLogin,
+      String? email,
       required List<String> permissions,
       @JsonKey(name: 'accessible_merchants')
           required List<AccessibleMerchant> accessibleMerchants,
       @JsonKey(name: 'server_storage')
-          required List<String> serverStorage,
+          List<Map<String, String>>? serverStorage,
       required String status}) = _$AuthResponseSuccess;
   const AuthResponseSuccess._() : super._();
 
@@ -477,11 +498,12 @@ abstract class AuthResponseSuccess extends AuthResponse {
   String get login;
   @JsonKey(name: 'merchant_login')
   String get merchantLogin;
+  String? get email;
   List<String> get permissions;
   @JsonKey(name: 'accessible_merchants')
   List<AccessibleMerchant> get accessibleMerchants;
   @JsonKey(name: 'server_storage')
-  List<String> get serverStorage;
+  List<Map<String, String>>? get serverStorage;
   @override
   String get status;
   @override
@@ -597,11 +619,12 @@ class _$AuthResponseError extends AuthResponseError
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
@@ -618,11 +641,12 @@ class _$AuthResponseError extends AuthResponseError
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -639,11 +663,12 @@ class _$AuthResponseError extends AuthResponseError
             String login,
             @JsonKey(name: 'merchant_login')
                 String merchantLogin,
+            String? email,
             List<String> permissions,
             @JsonKey(name: 'accessible_merchants')
                 List<AccessibleMerchant> accessibleMerchants,
             @JsonKey(name: 'server_storage')
-                List<String> serverStorage,
+                List<Map<String, String>>? serverStorage,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,

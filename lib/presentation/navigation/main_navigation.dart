@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
+import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
 import 'package:mp3_mobile/provider/auth_screen_model.dart';
 import 'package:mp3_mobile/provider/main_screen_model.dart';
 import 'package:mp3_mobile/presentation/screens/auth/auth_screen.dart';

@@ -10,7 +10,7 @@ _$MerchantInformationResponseSuccess
     _$$MerchantInformationResponseSuccessFromJson(Map<String, dynamic> json) =>
         _$MerchantInformationResponseSuccess(
           status: json['status'] as String,
-          openIdToken: json['open_id_token'] as String,
+          openIdToken: json['open_id_token'] as String?,
           currencies: (json['currencies'] as List<dynamic>)
               .map((e) => Currency.fromJson(e as Map<String, dynamic>))
               .toList(),
@@ -24,21 +24,36 @@ _$MerchantInformationResponseSuccess
           email: json['emails'] as String,
           mainUrl: json['main_url'] as String,
           fullName: json['full_name'] as String,
+          merchantTerms: (json['merchant_terms'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList(),
+          knp: json['knp'] as String?,
         );
 
 Map<String, dynamic> _$$MerchantInformationResponseSuccessToJson(
-        _$MerchantInformationResponseSuccess instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'open_id_token': instance.openIdToken,
-      'currencies': instance.currencies,
-      'options': instance.options,
-      'session_timeout_minutes': instance.sessionTimeoutMinutes,
-      'locales': instance.locales,
-      'emails': instance.email,
-      'main_url': instance.mainUrl,
-      'full_name': instance.fullName,
-    };
+    _$MerchantInformationResponseSuccess instance) {
+  final val = <String, dynamic>{
+    'status': instance.status,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('open_id_token', instance.openIdToken);
+  val['currencies'] = instance.currencies.map((e) => e.toJson()).toList();
+  val['options'] = instance.options;
+  val['session_timeout_minutes'] = instance.sessionTimeoutMinutes;
+  val['locales'] = instance.locales;
+  val['emails'] = instance.email;
+  val['main_url'] = instance.mainUrl;
+  val['full_name'] = instance.fullName;
+  writeNotNull('merchant_terms', instance.merchantTerms);
+  writeNotNull('knp', instance.knp);
+  return val;
+}
 
 _$MerchantInformationResponseFail _$$MerchantInformationResponseFailFromJson(
         Map<String, dynamic> json) =>
@@ -51,5 +66,5 @@ Map<String, dynamic> _$$MerchantInformationResponseFailToJson(
         _$MerchantInformationResponseFail instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'error': instance.error,
+      'error': instance.error.toJson(),
     };

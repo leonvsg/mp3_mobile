@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_request.dart';
 import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_response.dart';
-import 'package:mp3_mobile/data/services/rbs/rbs_api_service.dart';
+import 'package:mp3_mobile/data/services/rbs_api_service.dart';
 import 'package:mp3_mobile/domain/entity/merchant.dart';
 import 'package:mp3_mobile/domain/entity/session.dart';
 import 'package:mp3_mobile/domain/secure_storage/secure_storage.dart';

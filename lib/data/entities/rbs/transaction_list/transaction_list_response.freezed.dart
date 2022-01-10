@@ -17,9 +17,9 @@ TransactionListResponse _$TransactionListResponseFromJson(
     Map<String, dynamic> json) {
   switch (json['status']) {
     case 'SUCCESS':
-      return _TransactionListResponseSuccess.fromJson(json);
+      return TransactionListResponseSuccess.fromJson(json);
     case 'FAIL':
-      return _TransactionListResponseFail.fromJson(json);
+      return TransactionListResponseFail.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'status', 'TransactionListResponse',
@@ -31,17 +31,17 @@ TransactionListResponse _$TransactionListResponseFromJson(
 class _$TransactionListResponseTearOff {
   const _$TransactionListResponseTearOff();
 
-  _TransactionListResponseSuccess success(
+  TransactionListResponseSuccess success(
       {required String status, required List<TransactionListItem> list}) {
-    return _TransactionListResponseSuccess(
+    return TransactionListResponseSuccess(
       status: status,
       list: list,
     );
   }
 
-  _TransactionListResponseFail error(
+  TransactionListResponseFail error(
       {required String status, required ErrorResponse error}) {
-    return _TransactionListResponseFail(
+    return TransactionListResponseFail(
       status: status,
       error: error,
     );
@@ -81,20 +81,20 @@ mixin _$TransactionListResponse {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TransactionListResponseSuccess value) success,
-    required TResult Function(_TransactionListResponseFail value) error,
+    required TResult Function(TransactionListResponseSuccess value) success,
+    required TResult Function(TransactionListResponseFail value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_TransactionListResponseSuccess value)? success,
-    TResult Function(_TransactionListResponseFail value)? error,
+    TResult Function(TransactionListResponseSuccess value)? success,
+    TResult Function(TransactionListResponseFail value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TransactionListResponseSuccess value)? success,
-    TResult Function(_TransactionListResponseFail value)? error,
+    TResult Function(TransactionListResponseSuccess value)? success,
+    TResult Function(TransactionListResponseFail value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,35 +135,35 @@ class _$TransactionListResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TransactionListResponseSuccessCopyWith<$Res>
+abstract class $TransactionListResponseSuccessCopyWith<$Res>
     implements $TransactionListResponseCopyWith<$Res> {
-  factory _$TransactionListResponseSuccessCopyWith(
-          _TransactionListResponseSuccess value,
-          $Res Function(_TransactionListResponseSuccess) then) =
-      __$TransactionListResponseSuccessCopyWithImpl<$Res>;
+  factory $TransactionListResponseSuccessCopyWith(
+          TransactionListResponseSuccess value,
+          $Res Function(TransactionListResponseSuccess) then) =
+      _$TransactionListResponseSuccessCopyWithImpl<$Res>;
   @override
   $Res call({String status, List<TransactionListItem> list});
 }
 
 /// @nodoc
-class __$TransactionListResponseSuccessCopyWithImpl<$Res>
+class _$TransactionListResponseSuccessCopyWithImpl<$Res>
     extends _$TransactionListResponseCopyWithImpl<$Res>
-    implements _$TransactionListResponseSuccessCopyWith<$Res> {
-  __$TransactionListResponseSuccessCopyWithImpl(
-      _TransactionListResponseSuccess _value,
-      $Res Function(_TransactionListResponseSuccess) _then)
-      : super(_value, (v) => _then(v as _TransactionListResponseSuccess));
+    implements $TransactionListResponseSuccessCopyWith<$Res> {
+  _$TransactionListResponseSuccessCopyWithImpl(
+      TransactionListResponseSuccess _value,
+      $Res Function(TransactionListResponseSuccess) _then)
+      : super(_value, (v) => _then(v as TransactionListResponseSuccess));
 
   @override
-  _TransactionListResponseSuccess get _value =>
-      super._value as _TransactionListResponseSuccess;
+  TransactionListResponseSuccess get _value =>
+      super._value as TransactionListResponseSuccess;
 
   @override
   $Res call({
     Object? status = freezed,
     Object? list = freezed,
   }) {
-    return _then(_TransactionListResponseSuccess(
+    return _then(TransactionListResponseSuccess(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -179,15 +179,15 @@ class __$TransactionListResponseSuccessCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('SUCCESS')
-class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
+class _$TransactionListResponseSuccess extends TransactionListResponseSuccess
     with DiagnosticableTreeMixin {
-  const _$_TransactionListResponseSuccess(
+  const _$TransactionListResponseSuccess(
       {required this.status, required this.list})
       : super._();
 
-  factory _$_TransactionListResponseSuccess.fromJson(
+  factory _$TransactionListResponseSuccess.fromJson(
           Map<String, dynamic> json) =>
-      _$$_TransactionListResponseSuccessFromJson(json);
+      _$$TransactionListResponseSuccessFromJson(json);
 
   @override
   final String status;
@@ -212,7 +212,7 @@ class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TransactionListResponseSuccess &&
+            other is TransactionListResponseSuccess &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.list, list));
   }
@@ -225,9 +225,9 @@ class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
 
   @JsonKey(ignore: true)
   @override
-  _$TransactionListResponseSuccessCopyWith<_TransactionListResponseSuccess>
-      get copyWith => __$TransactionListResponseSuccessCopyWithImpl<
-          _TransactionListResponseSuccess>(this, _$identity);
+  $TransactionListResponseSuccessCopyWith<TransactionListResponseSuccess>
+      get copyWith => _$TransactionListResponseSuccessCopyWithImpl<
+          TransactionListResponseSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -264,8 +264,8 @@ class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TransactionListResponseSuccess value) success,
-    required TResult Function(_TransactionListResponseFail value) error,
+    required TResult Function(TransactionListResponseSuccess value) success,
+    required TResult Function(TransactionListResponseFail value) error,
   }) {
     return success(this);
   }
@@ -273,8 +273,8 @@ class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_TransactionListResponseSuccess value)? success,
-    TResult Function(_TransactionListResponseFail value)? error,
+    TResult Function(TransactionListResponseSuccess value)? success,
+    TResult Function(TransactionListResponseFail value)? error,
   }) {
     return success?.call(this);
   }
@@ -282,8 +282,8 @@ class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TransactionListResponseSuccess value)? success,
-    TResult Function(_TransactionListResponseFail value)? error,
+    TResult Function(TransactionListResponseSuccess value)? success,
+    TResult Function(TransactionListResponseFail value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -294,35 +294,35 @@ class _$_TransactionListResponseSuccess extends _TransactionListResponseSuccess
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TransactionListResponseSuccessToJson(this);
+    return _$$TransactionListResponseSuccessToJson(this);
   }
 }
 
-abstract class _TransactionListResponseSuccess extends TransactionListResponse {
-  const factory _TransactionListResponseSuccess(
+abstract class TransactionListResponseSuccess extends TransactionListResponse {
+  const factory TransactionListResponseSuccess(
           {required String status, required List<TransactionListItem> list}) =
-      _$_TransactionListResponseSuccess;
-  const _TransactionListResponseSuccess._() : super._();
+      _$TransactionListResponseSuccess;
+  const TransactionListResponseSuccess._() : super._();
 
-  factory _TransactionListResponseSuccess.fromJson(Map<String, dynamic> json) =
-      _$_TransactionListResponseSuccess.fromJson;
+  factory TransactionListResponseSuccess.fromJson(Map<String, dynamic> json) =
+      _$TransactionListResponseSuccess.fromJson;
 
   @override
   String get status;
   List<TransactionListItem> get list;
   @override
   @JsonKey(ignore: true)
-  _$TransactionListResponseSuccessCopyWith<_TransactionListResponseSuccess>
+  $TransactionListResponseSuccessCopyWith<TransactionListResponseSuccess>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$TransactionListResponseFailCopyWith<$Res>
+abstract class $TransactionListResponseFailCopyWith<$Res>
     implements $TransactionListResponseCopyWith<$Res> {
-  factory _$TransactionListResponseFailCopyWith(
-          _TransactionListResponseFail value,
-          $Res Function(_TransactionListResponseFail) then) =
-      __$TransactionListResponseFailCopyWithImpl<$Res>;
+  factory $TransactionListResponseFailCopyWith(
+          TransactionListResponseFail value,
+          $Res Function(TransactionListResponseFail) then) =
+      _$TransactionListResponseFailCopyWithImpl<$Res>;
   @override
   $Res call({String status, ErrorResponse error});
 
@@ -330,24 +330,23 @@ abstract class _$TransactionListResponseFailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$TransactionListResponseFailCopyWithImpl<$Res>
+class _$TransactionListResponseFailCopyWithImpl<$Res>
     extends _$TransactionListResponseCopyWithImpl<$Res>
-    implements _$TransactionListResponseFailCopyWith<$Res> {
-  __$TransactionListResponseFailCopyWithImpl(
-      _TransactionListResponseFail _value,
-      $Res Function(_TransactionListResponseFail) _then)
-      : super(_value, (v) => _then(v as _TransactionListResponseFail));
+    implements $TransactionListResponseFailCopyWith<$Res> {
+  _$TransactionListResponseFailCopyWithImpl(TransactionListResponseFail _value,
+      $Res Function(TransactionListResponseFail) _then)
+      : super(_value, (v) => _then(v as TransactionListResponseFail));
 
   @override
-  _TransactionListResponseFail get _value =>
-      super._value as _TransactionListResponseFail;
+  TransactionListResponseFail get _value =>
+      super._value as TransactionListResponseFail;
 
   @override
   $Res call({
     Object? status = freezed,
     Object? error = freezed,
   }) {
-    return _then(_TransactionListResponseFail(
+    return _then(TransactionListResponseFail(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -370,14 +369,14 @@ class __$TransactionListResponseFailCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('FAIL')
-class _$_TransactionListResponseFail extends _TransactionListResponseFail
+class _$TransactionListResponseFail extends TransactionListResponseFail
     with DiagnosticableTreeMixin {
-  const _$_TransactionListResponseFail(
+  const _$TransactionListResponseFail(
       {required this.status, required this.error})
       : super._();
 
-  factory _$_TransactionListResponseFail.fromJson(Map<String, dynamic> json) =>
-      _$$_TransactionListResponseFailFromJson(json);
+  factory _$TransactionListResponseFail.fromJson(Map<String, dynamic> json) =>
+      _$$TransactionListResponseFailFromJson(json);
 
   @override
   final String status;
@@ -402,7 +401,7 @@ class _$_TransactionListResponseFail extends _TransactionListResponseFail
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TransactionListResponseFail &&
+            other is TransactionListResponseFail &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
@@ -415,9 +414,9 @@ class _$_TransactionListResponseFail extends _TransactionListResponseFail
 
   @JsonKey(ignore: true)
   @override
-  _$TransactionListResponseFailCopyWith<_TransactionListResponseFail>
-      get copyWith => __$TransactionListResponseFailCopyWithImpl<
-          _TransactionListResponseFail>(this, _$identity);
+  $TransactionListResponseFailCopyWith<TransactionListResponseFail>
+      get copyWith => _$TransactionListResponseFailCopyWithImpl<
+          TransactionListResponseFail>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -454,8 +453,8 @@ class _$_TransactionListResponseFail extends _TransactionListResponseFail
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TransactionListResponseSuccess value) success,
-    required TResult Function(_TransactionListResponseFail value) error,
+    required TResult Function(TransactionListResponseSuccess value) success,
+    required TResult Function(TransactionListResponseFail value) error,
   }) {
     return error(this);
   }
@@ -463,8 +462,8 @@ class _$_TransactionListResponseFail extends _TransactionListResponseFail
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_TransactionListResponseSuccess value)? success,
-    TResult Function(_TransactionListResponseFail value)? error,
+    TResult Function(TransactionListResponseSuccess value)? success,
+    TResult Function(TransactionListResponseFail value)? error,
   }) {
     return error?.call(this);
   }
@@ -472,8 +471,8 @@ class _$_TransactionListResponseFail extends _TransactionListResponseFail
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TransactionListResponseSuccess value)? success,
-    TResult Function(_TransactionListResponseFail value)? error,
+    TResult Function(TransactionListResponseSuccess value)? success,
+    TResult Function(TransactionListResponseFail value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -484,24 +483,24 @@ class _$_TransactionListResponseFail extends _TransactionListResponseFail
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TransactionListResponseFailToJson(this);
+    return _$$TransactionListResponseFailToJson(this);
   }
 }
 
-abstract class _TransactionListResponseFail extends TransactionListResponse {
-  const factory _TransactionListResponseFail(
+abstract class TransactionListResponseFail extends TransactionListResponse {
+  const factory TransactionListResponseFail(
       {required String status,
-      required ErrorResponse error}) = _$_TransactionListResponseFail;
-  const _TransactionListResponseFail._() : super._();
+      required ErrorResponse error}) = _$TransactionListResponseFail;
+  const TransactionListResponseFail._() : super._();
 
-  factory _TransactionListResponseFail.fromJson(Map<String, dynamic> json) =
-      _$_TransactionListResponseFail.fromJson;
+  factory TransactionListResponseFail.fromJson(Map<String, dynamic> json) =
+      _$TransactionListResponseFail.fromJson;
 
   @override
   String get status;
   ErrorResponse get error;
   @override
   @JsonKey(ignore: true)
-  _$TransactionListResponseFailCopyWith<_TransactionListResponseFail>
+  $TransactionListResponseFailCopyWith<TransactionListResponseFail>
       get copyWith => throw _privateConstructorUsedError;
 }

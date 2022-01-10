@@ -7,7 +7,8 @@ part 'ui_settings_item.g.dart';
 @freezed
 class UiSettingsItem with _$UiSettingsItem {
   const factory UiSettingsItem({
-    required String name,required String value,
+    required String name,
+    required String value,
   }) = _UiSettingsItem;
 
   factory UiSettingsItem.fromJson(Map<String, dynamic> json) =>

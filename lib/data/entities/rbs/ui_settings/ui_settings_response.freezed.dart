@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 UiSettingsResponse _$UiSettingsResponseFromJson(Map<String, dynamic> json) {
   switch (json['status']) {
     case 'SUCCESS':
-      return _UiSettingsResponseSuccess.fromJson(json);
+      return UiSettingsResponseSuccess.fromJson(json);
     case 'FAIL':
       return UiSettingsResponseError.fromJson(json);
 
@@ -30,10 +30,10 @@ UiSettingsResponse _$UiSettingsResponseFromJson(Map<String, dynamic> json) {
 class _$UiSettingsResponseTearOff {
   const _$UiSettingsResponseTearOff();
 
-  _UiSettingsResponseSuccess success(
+  UiSettingsResponseSuccess success(
       {@JsonKey(name: 'ui_settings') required List<UiSettingsItem> uiSettings,
       required String status}) {
-    return _UiSettingsResponseSuccess(
+    return UiSettingsResponseSuccess(
       uiSettings: uiSettings,
       status: status,
     );
@@ -89,19 +89,19 @@ mixin _$UiSettingsResponse {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UiSettingsResponseSuccess value) success,
+    required TResult Function(UiSettingsResponseSuccess value) success,
     required TResult Function(UiSettingsResponseError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UiSettingsResponseSuccess value)? success,
+    TResult Function(UiSettingsResponseSuccess value)? success,
     TResult Function(UiSettingsResponseError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UiSettingsResponseSuccess value)? success,
+    TResult Function(UiSettingsResponseSuccess value)? success,
     TResult Function(UiSettingsResponseError value)? error,
     required TResult orElse(),
   }) =>
@@ -143,11 +143,11 @@ class _$UiSettingsResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UiSettingsResponseSuccessCopyWith<$Res>
+abstract class $UiSettingsResponseSuccessCopyWith<$Res>
     implements $UiSettingsResponseCopyWith<$Res> {
-  factory _$UiSettingsResponseSuccessCopyWith(_UiSettingsResponseSuccess value,
-          $Res Function(_UiSettingsResponseSuccess) then) =
-      __$UiSettingsResponseSuccessCopyWithImpl<$Res>;
+  factory $UiSettingsResponseSuccessCopyWith(UiSettingsResponseSuccess value,
+          $Res Function(UiSettingsResponseSuccess) then) =
+      _$UiSettingsResponseSuccessCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'ui_settings') List<UiSettingsItem> uiSettings,
@@ -155,23 +155,23 @@ abstract class _$UiSettingsResponseSuccessCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UiSettingsResponseSuccessCopyWithImpl<$Res>
+class _$UiSettingsResponseSuccessCopyWithImpl<$Res>
     extends _$UiSettingsResponseCopyWithImpl<$Res>
-    implements _$UiSettingsResponseSuccessCopyWith<$Res> {
-  __$UiSettingsResponseSuccessCopyWithImpl(_UiSettingsResponseSuccess _value,
-      $Res Function(_UiSettingsResponseSuccess) _then)
-      : super(_value, (v) => _then(v as _UiSettingsResponseSuccess));
+    implements $UiSettingsResponseSuccessCopyWith<$Res> {
+  _$UiSettingsResponseSuccessCopyWithImpl(UiSettingsResponseSuccess _value,
+      $Res Function(UiSettingsResponseSuccess) _then)
+      : super(_value, (v) => _then(v as UiSettingsResponseSuccess));
 
   @override
-  _UiSettingsResponseSuccess get _value =>
-      super._value as _UiSettingsResponseSuccess;
+  UiSettingsResponseSuccess get _value =>
+      super._value as UiSettingsResponseSuccess;
 
   @override
   $Res call({
     Object? uiSettings = freezed,
     Object? status = freezed,
   }) {
-    return _then(_UiSettingsResponseSuccess(
+    return _then(UiSettingsResponseSuccess(
       uiSettings: uiSettings == freezed
           ? _value.uiSettings
           : uiSettings // ignore: cast_nullable_to_non_nullable
@@ -187,15 +187,15 @@ class __$UiSettingsResponseSuccessCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('SUCCESS')
-class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
+class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess
     with DiagnosticableTreeMixin {
-  const _$_UiSettingsResponseSuccess(
+  const _$UiSettingsResponseSuccess(
       {@JsonKey(name: 'ui_settings') required this.uiSettings,
       required this.status})
       : super._();
 
-  factory _$_UiSettingsResponseSuccess.fromJson(Map<String, dynamic> json) =>
-      _$$_UiSettingsResponseSuccessFromJson(json);
+  factory _$UiSettingsResponseSuccess.fromJson(Map<String, dynamic> json) =>
+      _$$UiSettingsResponseSuccessFromJson(json);
 
   @override
   @JsonKey(name: 'ui_settings')
@@ -221,7 +221,7 @@ class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UiSettingsResponseSuccess &&
+            other is UiSettingsResponseSuccess &&
             const DeepCollectionEquality()
                 .equals(other.uiSettings, uiSettings) &&
             const DeepCollectionEquality().equals(other.status, status));
@@ -235,10 +235,9 @@ class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
 
   @JsonKey(ignore: true)
   @override
-  _$UiSettingsResponseSuccessCopyWith<_UiSettingsResponseSuccess>
-      get copyWith =>
-          __$UiSettingsResponseSuccessCopyWithImpl<_UiSettingsResponseSuccess>(
-              this, _$identity);
+  $UiSettingsResponseSuccessCopyWith<UiSettingsResponseSuccess> get copyWith =>
+      _$UiSettingsResponseSuccessCopyWithImpl<UiSettingsResponseSuccess>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -283,7 +282,7 @@ class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UiSettingsResponseSuccess value) success,
+    required TResult Function(UiSettingsResponseSuccess value) success,
     required TResult Function(UiSettingsResponseError value) error,
   }) {
     return success(this);
@@ -292,7 +291,7 @@ class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UiSettingsResponseSuccess value)? success,
+    TResult Function(UiSettingsResponseSuccess value)? success,
     TResult Function(UiSettingsResponseError value)? error,
   }) {
     return success?.call(this);
@@ -301,7 +300,7 @@ class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UiSettingsResponseSuccess value)? success,
+    TResult Function(UiSettingsResponseSuccess value)? success,
     TResult Function(UiSettingsResponseError value)? error,
     required TResult orElse(),
   }) {
@@ -313,18 +312,18 @@ class _$_UiSettingsResponseSuccess extends _UiSettingsResponseSuccess
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UiSettingsResponseSuccessToJson(this);
+    return _$$UiSettingsResponseSuccessToJson(this);
   }
 }
 
-abstract class _UiSettingsResponseSuccess extends UiSettingsResponse {
-  const factory _UiSettingsResponseSuccess(
+abstract class UiSettingsResponseSuccess extends UiSettingsResponse {
+  const factory UiSettingsResponseSuccess(
       {@JsonKey(name: 'ui_settings') required List<UiSettingsItem> uiSettings,
-      required String status}) = _$_UiSettingsResponseSuccess;
-  const _UiSettingsResponseSuccess._() : super._();
+      required String status}) = _$UiSettingsResponseSuccess;
+  const UiSettingsResponseSuccess._() : super._();
 
-  factory _UiSettingsResponseSuccess.fromJson(Map<String, dynamic> json) =
-      _$_UiSettingsResponseSuccess.fromJson;
+  factory UiSettingsResponseSuccess.fromJson(Map<String, dynamic> json) =
+      _$UiSettingsResponseSuccess.fromJson;
 
   @JsonKey(name: 'ui_settings')
   List<UiSettingsItem> get uiSettings;
@@ -332,8 +331,8 @@ abstract class _UiSettingsResponseSuccess extends UiSettingsResponse {
   String get status;
   @override
   @JsonKey(ignore: true)
-  _$UiSettingsResponseSuccessCopyWith<_UiSettingsResponseSuccess>
-      get copyWith => throw _privateConstructorUsedError;
+  $UiSettingsResponseSuccessCopyWith<UiSettingsResponseSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -478,7 +477,7 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UiSettingsResponseSuccess value) success,
+    required TResult Function(UiSettingsResponseSuccess value) success,
     required TResult Function(UiSettingsResponseError value) error,
   }) {
     return error(this);
@@ -487,7 +486,7 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UiSettingsResponseSuccess value)? success,
+    TResult Function(UiSettingsResponseSuccess value)? success,
     TResult Function(UiSettingsResponseError value)? error,
   }) {
     return error?.call(this);
@@ -496,7 +495,7 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UiSettingsResponseSuccess value)? success,
+    TResult Function(UiSettingsResponseSuccess value)? success,
     TResult Function(UiSettingsResponseError value)? error,
     required TResult orElse(),
   }) {

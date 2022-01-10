@@ -23,7 +23,7 @@ class _$TransactionListItemTearOff {
 
   _TransactionListItem call(
       {@JsonKey(name: 'action_code')
-          required String actionCode,
+          String? actionCode,
       required String amount,
       @JsonKey(name: 'created_date')
           required String createdDate,
@@ -49,8 +49,10 @@ class _$TransactionListItemTearOff {
       @JsonKey(name: 'refunded_amount')
           required String refundedAmount,
       required String state,
+      @JsonKey(name: 'short_description')
+          String? shortDescription,
       @JsonKey(name: 'with_loyalty')
-          required bool withLoyalty}) {
+          bool? withLoyalty}) {
     return _TransactionListItem(
       actionCode: actionCode,
       amount: amount,
@@ -67,6 +69,7 @@ class _$TransactionListItemTearOff {
       paymentTypeExtension: paymentTypeExtension,
       refundedAmount: refundedAmount,
       state: state,
+      shortDescription: shortDescription,
       withLoyalty: withLoyalty,
     );
   }
@@ -82,7 +85,7 @@ const $TransactionListItem = _$TransactionListItemTearOff();
 /// @nodoc
 mixin _$TransactionListItem {
   @JsonKey(name: 'action_code')
-  String get actionCode => throw _privateConstructorUsedError;
+  String? get actionCode => throw _privateConstructorUsedError;
   String get amount => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_date')
   String get createdDate => throw _privateConstructorUsedError;
@@ -108,8 +111,10 @@ mixin _$TransactionListItem {
   @JsonKey(name: 'refunded_amount')
   String get refundedAmount => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
+  @JsonKey(name: 'short_description')
+  String? get shortDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'with_loyalty')
-  bool get withLoyalty => throw _privateConstructorUsedError;
+  bool? get withLoyalty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -123,7 +128,7 @@ abstract class $TransactionListItemCopyWith<$Res> {
           TransactionListItem value, $Res Function(TransactionListItem) then) =
       _$TransactionListItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'action_code') String actionCode,
+      {@JsonKey(name: 'action_code') String? actionCode,
       String amount,
       @JsonKey(name: 'created_date') String createdDate,
       String currency,
@@ -138,7 +143,8 @@ abstract class $TransactionListItemCopyWith<$Res> {
       @JsonKey(name: 'payment_type_extension') String paymentTypeExtension,
       @JsonKey(name: 'refunded_amount') String refundedAmount,
       String state,
-      @JsonKey(name: 'with_loyalty') bool withLoyalty});
+      @JsonKey(name: 'short_description') String? shortDescription,
+      @JsonKey(name: 'with_loyalty') bool? withLoyalty});
 }
 
 /// @nodoc
@@ -167,13 +173,14 @@ class _$TransactionListItemCopyWithImpl<$Res>
     Object? paymentTypeExtension = freezed,
     Object? refundedAmount = freezed,
     Object? state = freezed,
+    Object? shortDescription = freezed,
     Object? withLoyalty = freezed,
   }) {
     return _then(_value.copyWith(
       actionCode: actionCode == freezed
           ? _value.actionCode
           : actionCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -230,10 +237,14 @@ class _$TransactionListItemCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
+      shortDescription: shortDescription == freezed
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
       withLoyalty: withLoyalty == freezed
           ? _value.withLoyalty
           : withLoyalty // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -246,7 +257,7 @@ abstract class _$TransactionListItemCopyWith<$Res>
       __$TransactionListItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'action_code') String actionCode,
+      {@JsonKey(name: 'action_code') String? actionCode,
       String amount,
       @JsonKey(name: 'created_date') String createdDate,
       String currency,
@@ -261,7 +272,8 @@ abstract class _$TransactionListItemCopyWith<$Res>
       @JsonKey(name: 'payment_type_extension') String paymentTypeExtension,
       @JsonKey(name: 'refunded_amount') String refundedAmount,
       String state,
-      @JsonKey(name: 'with_loyalty') bool withLoyalty});
+      @JsonKey(name: 'short_description') String? shortDescription,
+      @JsonKey(name: 'with_loyalty') bool? withLoyalty});
 }
 
 /// @nodoc
@@ -292,13 +304,14 @@ class __$TransactionListItemCopyWithImpl<$Res>
     Object? paymentTypeExtension = freezed,
     Object? refundedAmount = freezed,
     Object? state = freezed,
+    Object? shortDescription = freezed,
     Object? withLoyalty = freezed,
   }) {
     return _then(_TransactionListItem(
       actionCode: actionCode == freezed
           ? _value.actionCode
           : actionCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       amount: amount == freezed
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -355,10 +368,14 @@ class __$TransactionListItemCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
+      shortDescription: shortDescription == freezed
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
       withLoyalty: withLoyalty == freezed
           ? _value.withLoyalty
           : withLoyalty // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -370,7 +387,7 @@ class _$_TransactionListItem
     implements _TransactionListItem {
   const _$_TransactionListItem(
       {@JsonKey(name: 'action_code')
-          required this.actionCode,
+          this.actionCode,
       required this.amount,
       @JsonKey(name: 'created_date')
           required this.createdDate,
@@ -396,15 +413,17 @@ class _$_TransactionListItem
       @JsonKey(name: 'refunded_amount')
           required this.refundedAmount,
       required this.state,
+      @JsonKey(name: 'short_description')
+          this.shortDescription,
       @JsonKey(name: 'with_loyalty')
-          required this.withLoyalty});
+          this.withLoyalty});
 
   factory _$_TransactionListItem.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionListItemFromJson(json);
 
   @override
   @JsonKey(name: 'action_code')
-  final String actionCode;
+  final String? actionCode;
   @override
   final String amount;
   @override
@@ -445,12 +464,15 @@ class _$_TransactionListItem
   @override
   final String state;
   @override
+  @JsonKey(name: 'short_description')
+  final String? shortDescription;
+  @override
   @JsonKey(name: 'with_loyalty')
-  final bool withLoyalty;
+  final bool? withLoyalty;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TransactionListItem(actionCode: $actionCode, amount: $amount, createdDate: $createdDate, currency: $currency, feeAmount: $feeAmount, mdOrder: $mdOrder, merchantLogin: $merchantLogin, ofdStatus: $ofdStatus, orderNumber: $orderNumber, paymentDate: $paymentDate, paymentSystem: $paymentSystem, paymentType: $paymentType, paymentTypeExtension: $paymentTypeExtension, refundedAmount: $refundedAmount, state: $state, withLoyalty: $withLoyalty)';
+    return 'TransactionListItem(actionCode: $actionCode, amount: $amount, createdDate: $createdDate, currency: $currency, feeAmount: $feeAmount, mdOrder: $mdOrder, merchantLogin: $merchantLogin, ofdStatus: $ofdStatus, orderNumber: $orderNumber, paymentDate: $paymentDate, paymentSystem: $paymentSystem, paymentType: $paymentType, paymentTypeExtension: $paymentTypeExtension, refundedAmount: $refundedAmount, state: $state, shortDescription: $shortDescription, withLoyalty: $withLoyalty)';
   }
 
   @override
@@ -473,6 +495,7 @@ class _$_TransactionListItem
       ..add(DiagnosticsProperty('paymentTypeExtension', paymentTypeExtension))
       ..add(DiagnosticsProperty('refundedAmount', refundedAmount))
       ..add(DiagnosticsProperty('state', state))
+      ..add(DiagnosticsProperty('shortDescription', shortDescription))
       ..add(DiagnosticsProperty('withLoyalty', withLoyalty));
   }
 
@@ -506,6 +529,8 @@ class _$_TransactionListItem
                 .equals(other.refundedAmount, refundedAmount) &&
             const DeepCollectionEquality().equals(other.state, state) &&
             const DeepCollectionEquality()
+                .equals(other.shortDescription, shortDescription) &&
+            const DeepCollectionEquality()
                 .equals(other.withLoyalty, withLoyalty));
   }
 
@@ -527,6 +552,7 @@ class _$_TransactionListItem
       const DeepCollectionEquality().hash(paymentTypeExtension),
       const DeepCollectionEquality().hash(refundedAmount),
       const DeepCollectionEquality().hash(state),
+      const DeepCollectionEquality().hash(shortDescription),
       const DeepCollectionEquality().hash(withLoyalty));
 
   @JsonKey(ignore: true)
@@ -544,7 +570,7 @@ class _$_TransactionListItem
 abstract class _TransactionListItem implements TransactionListItem {
   const factory _TransactionListItem(
       {@JsonKey(name: 'action_code')
-          required String actionCode,
+          String? actionCode,
       required String amount,
       @JsonKey(name: 'created_date')
           required String createdDate,
@@ -570,15 +596,17 @@ abstract class _TransactionListItem implements TransactionListItem {
       @JsonKey(name: 'refunded_amount')
           required String refundedAmount,
       required String state,
+      @JsonKey(name: 'short_description')
+          String? shortDescription,
       @JsonKey(name: 'with_loyalty')
-          required bool withLoyalty}) = _$_TransactionListItem;
+          bool? withLoyalty}) = _$_TransactionListItem;
 
   factory _TransactionListItem.fromJson(Map<String, dynamic> json) =
       _$_TransactionListItem.fromJson;
 
   @override
   @JsonKey(name: 'action_code')
-  String get actionCode;
+  String? get actionCode;
   @override
   String get amount;
   @override
@@ -619,8 +647,11 @@ abstract class _TransactionListItem implements TransactionListItem {
   @override
   String get state;
   @override
+  @JsonKey(name: 'short_description')
+  String? get shortDescription;
+  @override
   @JsonKey(name: 'with_loyalty')
-  bool get withLoyalty;
+  bool? get withLoyalty;
   @override
   @JsonKey(ignore: true)
   _$TransactionListItemCopyWith<_TransactionListItem> get copyWith =>

@@ -11,6 +11,7 @@ class ErrorResponse with _$ErrorResponse {
     required String code,
     required String description,
     required String message,
+    @JsonKey(name: 'invalid_field_name') String? invalidFieldName,
   }) = _ErrorResponse;
 
   factory ErrorResponse.fromJson(Map<String, dynamic> map) =>

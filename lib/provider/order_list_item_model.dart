@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/domain/entity/payment_system.dart';
-import 'package:mp3_mobile/domain/entity/simple_order_data.dart';
+import 'package:mp3_mobile/domain/entities/order_params.dart';
+import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 
 class OrderListItemModel {
@@ -17,22 +17,20 @@ class OrderListItemModel {
       case PaymentSystem.visa:
         path = AppSvgs.visa;
         break;
-      case PaymentSystem.unknown:
+      default :
         path = AppSvgs.card;
-        break;
     }
     return path;
   }
 
   Color getStatusColor() {
     var color = const Color.fromRGBO(26, 39, 55, 1.0);
-    switch (_orderData.state) {
-      case 'DEPOSITED':
+    switch (orderData.state) {
+      case OrderState.deposited:
         color = const Color.fromRGBO(134, 202, 109, 1.0);
         break;
-      case 'DECLINED':
+      default:
         color = const Color.fromRGBO(165, 195, 250, 1.0);
-        break;
     }
     return color;
   }
