@@ -1,10 +1,12 @@
-import 'package:mp3_mobile/data/entities/rbs/error/error_response.dart';
-import 'package:mp3_mobile/data/entities/rbs/mapper.dart';
-import 'package:mp3_mobile/data/entities/rbs/transaction_list/page.dart';
-import 'package:mp3_mobile/data/entities/rbs/transaction_list/transaction_list_request.dart';
-import 'package:mp3_mobile/data/entities/rbs/transaction_list/transaction_list_response.dart';
-import 'package:mp3_mobile/data/services/rbs_api_service.dart';
-import 'package:mp3_mobile/data/services/secure_storage_data_provider.dart';
+import 'package:mp3_mobile/data/dto/rbs/error/error_response.dart';
+import 'package:mp3_mobile/data/dto/rbs/mapper.dart';
+import 'package:mp3_mobile/data/dto/rbs/transaction_details/transaction_details_request.dart';
+import 'package:mp3_mobile/data/dto/rbs/transaction_details/transaction_details_response.dart';
+import 'package:mp3_mobile/data/dto/rbs/transaction_list/page.dart';
+import 'package:mp3_mobile/data/dto/rbs/transaction_list/transaction_list_request.dart';
+import 'package:mp3_mobile/data/dto/rbs/transaction_list/transaction_list_response.dart';
+import 'package:mp3_mobile/data/data_sources/rbs_api_service.dart';
+import 'package:mp3_mobile/data/data_sources/secure_storage_data_provider.dart';
 import 'package:mp3_mobile/domain/entities/order.dart';
 import 'package:mp3_mobile/domain/entities/orders_search_filter.dart';
 import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
@@ -18,9 +20,22 @@ class RbsApiOrderRepository implements OrderRepository {
   RbsApiOrderRepository(this.service);
 
   @override
-  Future<Order> getOrder(String mdOrder) async {
-    // TODO: implement getOrder
-    throw UnimplementedError();
+  Future<Order?> getOrder(String mdOrder) async {
+    var sessionId = await _getSessionId();
+    var response = await service.fetchTransactionDetails(
+      TransactionDetailsRequest(mdOrder: mdOrder),
+      sessionId,
+    );
+    Order? order;
+    if (response is TransactionDetailsResponseSuccess) {
+      order = transactionToOrder(response.transaction);
+    } else if (response is TransactionDetailsResponseFail) {
+      _handleError(response.error);
+    } else {
+      throw Exception(
+          'Unexpected TransactionListResponse: ${response.toString()}');
+    }
+    return order;
   }
 
   @override

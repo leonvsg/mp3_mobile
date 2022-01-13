@@ -8,5 +8,5 @@ abstract class OrderRepository {
     int pageSize,
     int startIndex,
   });
-  Future<Order> getOrder(String mdOrder);
+  Future<Order?> getOrder(String mdOrder);
 }

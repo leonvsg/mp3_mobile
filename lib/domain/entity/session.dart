@@ -5,29 +5,29 @@ import 'merchant.dart';
 class Session {
 
   final String _sessionId;
-  final String _login;
-  final String _merchantLogin;
-  final List<String> _permissions;
-  final List<Merchant> _accessibleMerchants;
-  final List<String> _serverStorage;
-  final String _status;
+  final String? _login;
+  final String? _merchantLogin;
+  final List<String>? _permissions;
+  final List<Merchant>? _accessibleMerchants;
+  final List<String>? _serverStorage;
+  final String? _status;
 
   String get sessionId => _sessionId;
-  String get login => _login;
-  String get merchantLogin => _merchantLogin;
-  List<String> get permissions => _permissions;
-  List<Merchant> get accessibleMerchants => _accessibleMerchants;
-  List<String> get serverStorage => _serverStorage;
-  String get status => _status;
+  String? get login => _login;
+  String? get merchantLogin => _merchantLogin;
+  List<String>? get permissions => _permissions;
+  List<Merchant>? get accessibleMerchants => _accessibleMerchants;
+  List<String>? get serverStorage => _serverStorage;
+  String? get status => _status;
 
   Session({
     required sessionId,
-    required login,
-    required merchantLogin,
-    required permissions,
-    required accessibleMerchants,
-    required serverStorage,
-    required status,
+    login,
+    merchantLogin,
+    permissions,
+    accessibleMerchants,
+    serverStorage,
+    status,
   })  : _sessionId = sessionId,
         _login = login,
         _merchantLogin = merchantLogin,
@@ -42,7 +42,7 @@ class Session {
         'merchant_login': merchantLogin,
         'permissions': permissions,
         'accessible_merchants':
-            accessibleMerchants.map((x) => x.toMap()).toList(),
+            accessibleMerchants?.map((x) => x.toMap()).toList(),
         'server_storage': serverStorage,
         'status': status,
       });

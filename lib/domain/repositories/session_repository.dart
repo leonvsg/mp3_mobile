@@ -1,3 +1,3 @@
 abstract class SessionRepository {
-  String get sessionId;
+  Future<String?> get sessionId;
 }

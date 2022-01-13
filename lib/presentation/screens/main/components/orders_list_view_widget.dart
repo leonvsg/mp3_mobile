@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mp3_mobile/provider/order_list_item_model.dart';
-import 'package:mp3_mobile/provider/orders_list_view_model.dart';
-import 'package:mp3_mobile/provider/session_model.dart';
+import 'package:mp3_mobile/presentation/provider/orders_list_view_model.dart';
+import 'package:mp3_mobile/presentation/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
 import 'package:mp3_mobile/presentation/screens/main/components/order_list_item_widget.dart';

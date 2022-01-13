@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_request.dart';
-import 'package:mp3_mobile/data/entities/rbs/merchant_information/merchant_information_response.dart';
-import 'package:mp3_mobile/data/services/rbs_api_service.dart';
+import 'package:mp3_mobile/data/data_sources/secure_storage_data_provider.dart';
+import 'package:mp3_mobile/data/dto/rbs/merchant_information/merchant_information_request.dart';
+import 'package:mp3_mobile/data/dto/rbs/merchant_information/merchant_information_response.dart';
+import 'package:mp3_mobile/data/data_sources/rbs_api_service.dart';
 import 'package:mp3_mobile/domain/entity/merchant.dart';
 import 'package:mp3_mobile/domain/entity/session.dart';
-import 'package:mp3_mobile/domain/secure_storage/secure_storage.dart';
-import 'package:mp3_mobile/provider/session_model.dart';
+import 'package:mp3_mobile/presentation/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +41,7 @@ class SplashScreen extends StatelessWidget {
 //TODO: code
   void initSession(BuildContext context) async {
     var sessionModel = Provider.of<SessionModel>(context, listen: false);
-    var token = await SecureStorageProvider.readToken();
+    var token = await SecureStorageDataProvider.getSessionId();
     Session? session;
     if (token != null && token.isNotEmpty) {
       var merchant = await RbsApiService().fetchMerchantInformation(
