@@ -45,7 +45,7 @@ class _$MerchantInformationResponseTearOff {
           required int sessionTimeoutMinutes,
       required List<String> locales,
       @JsonKey(name: 'emails')
-          required String email,
+          String? email,
       @JsonKey(name: 'main_url')
           required String mainUrl,
       @JsonKey(name: 'full_name')
@@ -97,7 +97,7 @@ mixin _$MerchantInformationResponse {
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -115,7 +115,7 @@ mixin _$MerchantInformationResponse {
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -133,7 +133,7 @@ mixin _$MerchantInformationResponse {
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -214,7 +214,7 @@ abstract class $MerchantInformationResponseSuccessCopyWith<$Res>
       List<String> options,
       @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
       List<String> locales,
-      @JsonKey(name: 'emails') String email,
+      @JsonKey(name: 'emails') String? email,
       @JsonKey(name: 'main_url') String mainUrl,
       @JsonKey(name: 'full_name') String fullName,
       @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -276,7 +276,7 @@ class _$MerchantInformationResponseSuccessCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mainUrl: mainUrl == freezed
           ? _value.mainUrl
           : mainUrl // ignore: cast_nullable_to_non_nullable
@@ -312,7 +312,7 @@ class _$MerchantInformationResponseSuccess
           required this.sessionTimeoutMinutes,
       required this.locales,
       @JsonKey(name: 'emails')
-          required this.email,
+          this.email,
       @JsonKey(name: 'main_url')
           required this.mainUrl,
       @JsonKey(name: 'full_name')
@@ -342,7 +342,7 @@ class _$MerchantInformationResponseSuccess
   final List<String> locales;
   @override
   @JsonKey(name: 'emails')
-  final String email;
+  final String? email;
   @override
   @JsonKey(name: 'main_url')
   final String mainUrl;
@@ -432,7 +432,7 @@ class _$MerchantInformationResponseSuccess
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -464,7 +464,7 @@ class _$MerchantInformationResponseSuccess
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -496,7 +496,7 @@ class _$MerchantInformationResponseSuccess
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -571,7 +571,7 @@ abstract class MerchantInformationResponseSuccess
           required int sessionTimeoutMinutes,
       required List<String> locales,
       @JsonKey(name: 'emails')
-          required String email,
+          String? email,
       @JsonKey(name: 'main_url')
           required String mainUrl,
       @JsonKey(name: 'full_name')
@@ -595,7 +595,7 @@ abstract class MerchantInformationResponseSuccess
   int get sessionTimeoutMinutes;
   List<String> get locales;
   @JsonKey(name: 'emails')
-  String get email;
+  String? get email;
   @JsonKey(name: 'main_url')
   String get mainUrl;
   @JsonKey(name: 'full_name')
@@ -724,7 +724,7 @@ class _$MerchantInformationResponseFail extends MerchantInformationResponseFail
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -745,7 +745,7 @@ class _$MerchantInformationResponseFail extends MerchantInformationResponseFail
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,
@@ -766,7 +766,7 @@ class _$MerchantInformationResponseFail extends MerchantInformationResponseFail
             List<String> options,
             @JsonKey(name: 'session_timeout_minutes') int sessionTimeoutMinutes,
             List<String> locales,
-            @JsonKey(name: 'emails') String email,
+            @JsonKey(name: 'emails') String? email,
             @JsonKey(name: 'main_url') String mainUrl,
             @JsonKey(name: 'full_name') String fullName,
             @JsonKey(name: 'merchant_terms') List<int>? merchantTerms,

@@ -3,15 +3,24 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class SecureStorageDataProvider {
   static const _sessionIdKey = 'sessionId';
+  static const _merchantLoginKey = 'merchantLogin';
 
   static const _storage = FlutterSecureStorage();
 
+  static Future<void> saveMerchantLogin(String merchantLogin) async {
+    await saveParam(key: _merchantLoginKey, value: merchantLogin);
+  }
+
+  static Future<String?> getMerchantLogin() async {
+    return await getParam(_merchantLoginKey);
+  }
+
   static Future<void> saveSessionId(String sessionId) async {
-    await _storage.write(key: _sessionIdKey, value: sessionId);
+    await saveParam(key: _sessionIdKey, value: sessionId);
   }
 
   static Future<String?> getSessionId() async {
-    return await _storage.read(key: _sessionIdKey);
+    return await getParam(_sessionIdKey);
   }
 
   static Future<String?> getParam(String key) async {
@@ -24,9 +33,9 @@ abstract class SecureStorageDataProvider {
     }
   }
 
-  static Future<void> saveParam(String param, String key) async {
+  static Future<void> saveParam({required String key, required String value}) async {
     try{
-      await _storage.write(key: key, value: param);
+      await _storage.write(key: key, value: value);
     } on PlatformException catch (e,s){
       rethrow;
     } catch(e,s) {

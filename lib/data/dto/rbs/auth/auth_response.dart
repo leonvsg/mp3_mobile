@@ -13,13 +13,12 @@ class AuthResponse with _$AuthResponse {
 
   @FreezedUnionValue('SUCCESS')
   const factory AuthResponse.success({
-    @JsonKey(name: 'session_id') required String sessionId,
+    required String sessionId,
     @JsonKey(name: 'login') required String userLogin,
-    @JsonKey(name: 'merchant_login') required String merchantLogin,
+    required String merchantLogin,
     String? email,
     required List<String> permissions,
-    @JsonKey(name: 'accessible_merchants')
-        required List<AccessibleMerchant> accessibleMerchants,
+    required List<AccessibleMerchant> accessibleMerchants,
     required String status,
   }) = AuthResponseSuccess;
 

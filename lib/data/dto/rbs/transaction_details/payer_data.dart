@@ -12,7 +12,7 @@ class PayerData with _$PayerData {
     String? address,
     String? city,
     String? country,
-    @JsonKey(name: 'postal_code') String? postalCode,
+    String? postalCode,
     String? state,
     String? email,
   }) = _PayerData;

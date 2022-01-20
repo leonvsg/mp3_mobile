@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/provider/main_screen_model.dart';
+import 'package:mp3_mobile/presentation/provider/main_screen_model.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {

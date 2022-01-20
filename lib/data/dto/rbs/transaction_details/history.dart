@@ -9,8 +9,8 @@ class History with _$History {
   const factory History({
     required String type,
     required String date,
-    @JsonKey(name: 'short_description') required String shortDescription,
-    @JsonKey(name: 'full_description') required String fullDescription,
+    required String shortDescription,
+    required String fullDescription,
     required bool successful,
   }) = _History;
 

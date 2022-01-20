@@ -7,7 +7,7 @@ part 'transaction_details_request.g.dart';
 @freezed
 class TransactionDetailsRequest with _$TransactionDetailsRequest {
   const factory TransactionDetailsRequest({
-    @JsonKey(name: 'md_order') required String mdOrder,
+    required String mdOrder,
 }) = _TransactionDetailsRequest;
 
   factory TransactionDetailsRequest.fromJson(Map<String, dynamic> json) =>

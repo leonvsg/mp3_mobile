@@ -25,7 +25,7 @@ class OrderListItemModel {
 
   Color getStatusColor() {
     var color = const Color.fromRGBO(26, 39, 55, 1.0);
-    switch (orderData.state) {
+    switch (orderData.orderState) {
       case OrderState.deposited:
         color = const Color.fromRGBO(134, 202, 109, 1.0);
         break;

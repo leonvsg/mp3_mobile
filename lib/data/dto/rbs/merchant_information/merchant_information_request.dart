@@ -7,7 +7,7 @@ part 'merchant_information_request.freezed.dart';
 @freezed
 class MerchantInformationRequest with _$MerchantInformationRequest {
   const factory MerchantInformationRequest({
-    @JsonKey(name: 'merchant_login') required String merchantLogin,
+    required String merchantLogin,
   }) = _MerchantInformationRequest;
 
   factory MerchantInformationRequest.fromJson(Map<String, dynamic> json) =>

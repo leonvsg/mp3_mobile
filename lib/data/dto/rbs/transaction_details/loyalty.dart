@@ -8,9 +8,9 @@ part 'loyalty.g.dart';
 class Loyalty with _$Loyalty {
   const factory Loyalty({
     //SBRF_SPASIBO, SBRF_SBERMILES
-    @JsonKey(name: 'loyalty_service_name') String? loyaltyServiceName,
-    @JsonKey(name: 'loyalty_award') int? loyaltyAward,
-    @JsonKey(name: 'loyalty_payment') int? loyaltyPayment,
+    String? loyaltyServiceName,
+    int? loyaltyAward,
+    int? loyaltyPayment,
   }) = _Loyalty;
 
   factory Loyalty.fromJson(Map<String, dynamic> json) =>

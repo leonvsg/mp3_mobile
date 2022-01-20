@@ -7,8 +7,8 @@ part 'currency_detail.g.dart';
 @freezed
 class CurrencyDetail with _$CurrencyDetail {
   const factory CurrencyDetail({
-    @JsonKey(name: 'alphabetic_code') required String alphabeticCode,
-    @JsonKey(name: 'minor_unit') required int minorUnit,
+    required String alphabeticCode,
+    required int minorUnit,
   }) = _CurrencyDetail;
 
   factory CurrencyDetail.fromJson(Map<String, dynamic> map) =>

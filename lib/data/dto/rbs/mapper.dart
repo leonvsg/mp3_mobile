@@ -1,9 +1,16 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
+import 'package:mp3_mobile/data/dto/rbs/auth/auth_response.dart';
+import 'package:mp3_mobile/data/dto/rbs/merchant_information/merchant_information_response.dart';
 import 'package:mp3_mobile/data/dto/rbs/transaction_details/transaction.dart';
+import 'package:mp3_mobile/domain/entities/accessible_merchant.dart';
+import 'package:mp3_mobile/domain/entities/currency.dart';
+import 'package:mp3_mobile/domain/entities/merchant.dart';
 import 'package:mp3_mobile/domain/entities/order.dart';
+import 'package:mp3_mobile/domain/entities/session.dart';
 import 'transaction_list/range.dart';
 import 'transaction_list/transaction_list_item.dart';
 import 'transaction_list/transaction_search_parameters.dart';
@@ -55,6 +62,17 @@ const paymentTypeExtensionMap = {
   'UNKNOWN': PaymentTypeExtension.unknown,
 };
 
+const permissionMap = {
+  'EDIT_MERCHANT_SETTINGS': Permission.editMerchantSettings,
+  'REFUND': Permission.refund,
+  'DEPOSIT': Permission.deposit,
+  'SEND_PAYMENT_FORM': Permission.sendPaymentForm,
+  'OFD_REFUND': Permission.ofdRefund,
+  'BUNDLE_CATALOG_EDIT': Permission.bundleCatalogEdit,
+  'REVERSE_HOLD': Permission.reverseHold,
+  'REVERSE_DEPOSIT': Permission.reverseDeposit,
+};
+
 TransactionSearchParameters filterToSearchRequest(OrdersSearchFilter filter) {
   final period = Range(
     from: _formatDateWithOffset(filter.period.from.toLocal()),
@@ -97,22 +115,36 @@ SimpleOrderData transactionListItemToSimpleOrder(TransactionListItem item) {
   var itemPaymentSystem = item.paymentSystem.toLowerCase();
   try {
     paymentSystem = PaymentSystem.values.byName(itemPaymentSystem);
-  } catch (e,s) {
-    log("Payment system with name $itemPaymentSystem doesn't exist.", error: e, name: 'mp3_mobile_app', level: Level.WARNING.value, stackTrace: s);
+  } catch (e, s) {
+    log("Payment system with name $itemPaymentSystem doesn't exist.",
+        error: e,
+        name: 'mp3_mobile_app',
+        level: Level.WARNING.value,
+        stackTrace: s);
   }
   var state = OrderState.created;
   var itemState = item.state.toLowerCase();
   try {
     state = OrderState.values.byName(itemState);
-  } catch (e,s) {
-    log("Order state with name $itemState doesn't exist.", error: e, name: 'mp3_mobile_app', level: Level.WARNING.value, stackTrace: s);
+  } catch (e, s) {
+    log("Order state with name $itemState doesn't exist.",
+        error: e,
+        name: 'mp3_mobile_app',
+        level: Level.WARNING.value,
+        stackTrace: s);
   }
   OfdStatus? ofdStatus;
   var itemOfdStatus = item.ofdStatus?.toLowerCase();
   try {
-    if (itemOfdStatus != null) ofdStatus = OfdStatus.values.byName(itemOfdStatus);
-  } catch (e,s) {
-    log("OFD status with name $itemOfdStatus doesn't exist.", error: e, name: 'mp3_mobile_app', level: Level.WARNING.value, stackTrace: s);
+    if (itemOfdStatus != null) {
+      ofdStatus = OfdStatus.values.byName(itemOfdStatus);
+    }
+  } catch (e, s) {
+    log("OFD status with name $itemOfdStatus doesn't exist.",
+        error: e,
+        name: 'mp3_mobile_app',
+        level: Level.WARNING.value,
+        stackTrace: s);
   }
   return SimpleOrderData(
     amount: double.tryParse(item.amount) ?? 0,
@@ -127,7 +159,7 @@ SimpleOrderData transactionListItemToSimpleOrder(TransactionListItem item) {
     paymentTypeExtension: paymentTypeExtensionMap[item.paymentTypeExtension] ??
         PaymentTypeExtension.unknown,
     refundedAmount: double.tryParse(item.refundedAmount) ?? 0,
-    state: state,
+    orderState: state,
     actionCode: item.actionCode == null ? null : int.tryParse(item.actionCode!),
     shortDescription: item.shortDescription,
     withLoyalty: item.withLoyalty,
@@ -136,7 +168,73 @@ SimpleOrderData transactionListItemToSimpleOrder(TransactionListItem item) {
   );
 }
 
-Order transactionToOrder(Transaction transaction) {
+Order transactionDtoToOrder(Transaction transaction) {
   //TODO: implement mapper
   return Order();
+}
+
+Merchant merchantDtoToMerchant(
+    MerchantInformationResponseSuccess merchantResponse, String login) {
+  var defaultCurrency =
+      merchantResponse.currencies.firstWhere((cur) => cur.isDefault);
+  return Merchant(
+    login: login,
+    fullName: merchantResponse.fullName,
+    defaultCurrency: Currency(
+      alphabeticCode: defaultCurrency.currencyName,
+      minorUnit: defaultCurrency.minorUnit,
+    ),
+    currencies: merchantResponse.currencies
+        .map(
+          (cur) => Currency(
+            alphabeticCode: cur.currencyName,
+            minorUnit: cur.minorUnit,
+          ),
+        )
+        .toList(),
+    options: merchantResponse.options
+        .map((permissionName) => permissionMap[permissionName])
+        .whereType<Permission>()
+        .toList(),
+    sessionTimeoutMinutes: merchantResponse.sessionTimeoutMinutes,
+    locales: merchantResponse.locales.map((local) => Locale(local)).toList(),
+    mainUrl: merchantResponse.mainUrl,
+    openIdToken: merchantResponse.openIdToken,
+    merchantTerms: merchantResponse.merchantTerms,
+    knp: merchantResponse.knp,
+    email: merchantResponse.email,
+  );
+}
+
+Session authResponseToSession(AuthResponseSuccess response) {
+  return Session(
+    sessionId: response.sessionId,
+    userLogin: response.userLogin,
+    merchantLogin: response.merchantLogin,
+    permissions: response.permissions
+        .map((permissionName) =>
+            permissionMap[permissionName] ?? Permission.unknown)
+        .toList(),
+    accessibleMerchants: response.accessibleMerchants
+        .map(
+          (merchant) {
+            MerchantType? merchantType;
+            try {
+              merchantType = MerchantType.values.byName(merchant.merchantType);
+            } catch (e, s) {
+              log("Merchant type with name ${merchant.merchantType} doesn't exist.",
+                  error: e,
+                  name: 'mp3_mobile_app',
+                  level: Level.WARNING.value,
+                  stackTrace: s);
+            }
+            return AccessibleMerchant(
+              merchantLogin: merchant.merchantLogin,
+              merchantFullName: merchant.merchantFullName,
+              merchantType: merchantType ?? MerchantType.unknown,
+            );
+          }
+        )
+        .toList(),
+  );
 }

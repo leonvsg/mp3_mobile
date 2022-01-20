@@ -8,7 +8,7 @@ part 'page.g.dart';
 class TransactionSearchPage with _$TransactionSearchPage {
   const factory TransactionSearchPage({
     required int count,
-    @JsonKey(name: 'start_index') required int startIndex,
+    required int startIndex,
   }) = _TransactionSearchPage;
 
   factory TransactionSearchPage.fromJson(Map<String, dynamic> json) =>

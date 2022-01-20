@@ -7,8 +7,8 @@ part 'currency.g.dart';
 @freezed
 class Currency with _$Currency {
   const factory Currency({
-    @JsonKey(name: 'currency_name') required String currencyName,
-    @JsonKey(name: 'minor_unit') required int minorUnit,
+    required String currencyName,
+    required int minorUnit,
     @JsonKey(name: 'default') required bool isDefault,
   }) = _Currency;
 

@@ -21,7 +21,7 @@ _$MerchantInformationResponseSuccess
           locales: (json['locales'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
-          email: json['emails'] as String,
+          email: json['emails'] as String?,
           mainUrl: json['main_url'] as String,
           fullName: json['full_name'] as String,
           merchantTerms: (json['merchant_terms'] as List<dynamic>?)
@@ -47,7 +47,7 @@ Map<String, dynamic> _$$MerchantInformationResponseSuccessToJson(
   val['options'] = instance.options;
   val['session_timeout_minutes'] = instance.sessionTimeoutMinutes;
   val['locales'] = instance.locales;
-  val['emails'] = instance.email;
+  writeNotNull('emails', instance.email);
   val['main_url'] = instance.mainUrl;
   val['full_name'] = instance.fullName;
   writeNotNull('merchant_terms', instance.merchantTerms);

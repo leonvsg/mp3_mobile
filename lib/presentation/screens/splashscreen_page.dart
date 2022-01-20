@@ -3,8 +3,7 @@ import 'package:mp3_mobile/data/data_sources/secure_storage_data_provider.dart';
 import 'package:mp3_mobile/data/dto/rbs/merchant_information/merchant_information_request.dart';
 import 'package:mp3_mobile/data/dto/rbs/merchant_information/merchant_information_response.dart';
 import 'package:mp3_mobile/data/data_sources/rbs_api_service.dart';
-import 'package:mp3_mobile/domain/entity/merchant.dart';
-import 'package:mp3_mobile/domain/entity/session.dart';
+import 'package:mp3_mobile/domain/entities/session.dart';
 import 'package:mp3_mobile/presentation/provider/session_model.dart';
 import 'package:mp3_mobile/resources/resources.dart';
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
@@ -50,13 +49,12 @@ class SplashScreen extends StatelessWidget {
       );
       if (merchant is MerchantInformationResponseSuccess) {
         session = Session(
-            sessionId: token,
-            login: merchant.fullName,
-            merchantLogin: merchant.fullName,
-            permissions: merchant.options,
-            accessibleMerchants: <Merchant>[],
-            serverStorage: <String>[],
-            status: 'status');
+          sessionId: token,
+          userLogin: merchant.fullName,
+          merchantLogin: merchant.fullName,
+          permissions: const [],
+          accessibleMerchants: const [],
+        );
       }
     }
     await sessionModel.initSession(context, session);

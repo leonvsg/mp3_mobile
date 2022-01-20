@@ -1,4 +1,3 @@
-import 'package:mp3_mobile/data/dto/rbs/error/error_response.dart';
 import 'package:mp3_mobile/data/dto/rbs/mapper.dart';
 import 'package:mp3_mobile/data/dto/rbs/transaction_details/transaction_details_request.dart';
 import 'package:mp3_mobile/data/dto/rbs/transaction_details/transaction_details_response.dart';
@@ -6,31 +5,29 @@ import 'package:mp3_mobile/data/dto/rbs/transaction_list/page.dart';
 import 'package:mp3_mobile/data/dto/rbs/transaction_list/transaction_list_request.dart';
 import 'package:mp3_mobile/data/dto/rbs/transaction_list/transaction_list_response.dart';
 import 'package:mp3_mobile/data/data_sources/rbs_api_service.dart';
-import 'package:mp3_mobile/data/data_sources/secure_storage_data_provider.dart';
+import 'package:mp3_mobile/data/repositories/rbs_repository_mixin.dart';
 import 'package:mp3_mobile/domain/entities/order.dart';
 import 'package:mp3_mobile/domain/entities/orders_search_filter.dart';
 import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
 import 'package:mp3_mobile/domain/repositories/order_repository.dart';
 
-import '../exceptions.dart';
-
-class RbsApiOrderRepository implements OrderRepository {
+class RbsApiOrderRepository with RbsRepositoryMixin implements OrderRepository {
   final RbsApiService service;
 
   RbsApiOrderRepository(this.service);
 
   @override
   Future<Order?> getOrder(String mdOrder) async {
-    var sessionId = await _getSessionId();
+    var sessionId = await getLocalSessionId();
     var response = await service.fetchTransactionDetails(
       TransactionDetailsRequest(mdOrder: mdOrder),
       sessionId,
     );
     Order? order;
     if (response is TransactionDetailsResponseSuccess) {
-      order = transactionToOrder(response.transaction);
+      order = transactionDtoToOrder(response.transaction);
     } else if (response is TransactionDetailsResponseFail) {
-      _handleError(response.error);
+      handleError(response.error);
     } else {
       throw Exception(
           'Unexpected TransactionListResponse: ${response.toString()}');
@@ -53,7 +50,7 @@ class RbsApiOrderRepository implements OrderRepository {
       search: searchParameters,
       nextPage: nextPage,
     );
-    var sessionId = await _getSessionId();
+    var sessionId = await getLocalSessionId();
     var response = await service.fetchTransactionList(request, sessionId);
     List<SimpleOrderData> resultList = [];
     if (response is TransactionListResponseSuccess) {
@@ -61,27 +58,11 @@ class RbsApiOrderRepository implements OrderRepository {
           .map((transaction) => transactionListItemToSimpleOrder(transaction))
           .toList();
     } else if (response is TransactionListResponseFail) {
-      _handleError(response.error);
+      handleError(response.error);
     } else {
       throw Exception(
           'Unexpected TransactionListResponse: ${response.toString()}');
     }
     return resultList;
-  }
-
-  Future<String> _getSessionId() async {
-    var sessionId = await SecureStorageDataProvider.getSessionId();
-    if (sessionId == null) {
-      throw UnauthorizedException("SessionId doesn't exist");
-    }
-    return sessionId;
-  }
-
-  void _handleError(ErrorResponse response) {
-    if (response.code == "no.session") {
-      throw UnauthorizedException("SessionId not valid");
-    } else {
-      throw RbsApiException('Unexpected RBS API error response: $response');
-    }
   }
 }

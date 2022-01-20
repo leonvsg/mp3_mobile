@@ -12,7 +12,7 @@ class UiSettingsResponse with _$UiSettingsResponse {
 
   @FreezedUnionValue('SUCCESS')
   const factory UiSettingsResponse.success({
-    @JsonKey(name: 'ui_settings') required List<Attribute> uiSettings,
+    required List<Attribute> uiSettings,
     required String status,
   }) = UiSettingsResponseSuccess;
 

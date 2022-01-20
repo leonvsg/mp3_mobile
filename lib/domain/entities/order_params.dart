@@ -53,3 +53,15 @@ enum PaymentSystem {
   cup,
   mir,
 }
+
+enum Permission {
+  editMerchantSettings,
+  refund,
+  deposit,
+  sendPaymentForm,
+  ofdRefund,
+  bundleCatalogEdit,
+  reverseHold,
+  reverseDeposit,
+  unknown
+}

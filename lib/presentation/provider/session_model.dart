@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mp3_mobile/data/dto/rbs/auth/auth_response.dart';
-import 'package:mp3_mobile/domain/entity/session.dart';
+import 'package:mp3_mobile/domain/entities/session.dart';
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
 
 class SessionModel {
@@ -15,11 +15,10 @@ class SessionModel {
           .pushNamed(NavigationRoutes.authPageRoute)) as AuthResponseSuccess;
       _session = Session(
         sessionId: response.sessionId,
-        accessibleMerchants: response.accessibleMerchants,
-        login: response.userLogin,
+        accessibleMerchants: const [],
+        userLogin: response.userLogin,
         merchantLogin: response.merchantLogin,
-        permissions: response.permissions,
-        status: response.status,
+        permissions: const [],
       );
     }
   }

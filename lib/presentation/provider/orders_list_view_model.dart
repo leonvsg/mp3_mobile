@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/data/repositories/rbs_api_order_repository.dart';
+import 'package:mp3_mobile/data/repositories/rbs_order_repository.dart';
 import 'package:mp3_mobile/data/data_sources/rbs_api_service.dart';
 import 'package:mp3_mobile/domain/entities/date_period.dart';
 import 'package:mp3_mobile/domain/entities/orders_search_filter.dart';
+import 'package:mp3_mobile/domain/entities/session.dart';
 import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
-import 'package:mp3_mobile/domain/entity/session.dart';
 import 'package:mp3_mobile/domain/use_cases/order_list_search_result.dart';
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
 
