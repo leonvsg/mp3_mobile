@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
 import '../error/error_response.dart';
 import 'transaction_list_item.dart';

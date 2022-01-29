@@ -11,7 +11,7 @@ import 'package:mp3_mobile/data/dto/rbs/transaction_list/transaction_list_reques
 import 'package:mp3_mobile/data/dto/rbs/transaction_list/transaction_list_response.dart';
 import 'package:mp3_mobile/data/dto/rbs/ui_settings/ui_settings_response.dart';
 
-import '../exceptions.dart';
+import '../../domain/exceptions.dart';
 
 enum HttpMethod { get, post }
 
@@ -46,7 +46,7 @@ class RbsApiService {
     if (_acceptedResponseCodes.contains(response.statusCode)) {
       return response.body;
     } else {
-      throw RbsApiException(
+      throw RemoteRepositoryException(
           'RBS service not available. Response code is ${response.statusCode}. Response body: ${response.body}');
     }
   }

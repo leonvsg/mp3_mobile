@@ -7,7 +7,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   BlocOverrides.runZoned(
         () => runApp(const Mp3MobileApp()),
-    blocObserver: SimpleBlocObserver(),
+    blocObserver: DebugBlocObserver(),
   );
   //runApp(const Mp3MobileApp());
 }

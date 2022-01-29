@@ -6,3 +6,5 @@ abstract class OrdersListEvent extends Equatable {
 }
 
 class OrdersListFetch extends OrdersListEvent {}
+
+class OrderListClear extends OrdersListEvent {}

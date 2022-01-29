@@ -24,18 +24,18 @@ class _$TransactionSearchParametersTearOff {
   const _$TransactionSearchParametersTearOff();
 
   _TransactionSearchParameters call(
-      {@JsonKey(name: 'amount_range') Range? amountRange,
-      @JsonKey(name: 'merchant_logins') List<String>? merchantLogins,
-      @JsonKey(name: 'ofd_statuses') List<String>? ofdStatuses,
-      @JsonKey(name: 'payment_type') String? paymentType,
+      {Range? amountRange,
+      List<String>? merchantLogins,
+      List<String>? ofdStatuses,
+      String? paymentType,
       required Range period,
-      @JsonKey(name: 'order_number') String? orderNumber,
+      String? orderNumber,
       List<String>? states,
-      @JsonKey(name: 'md_order') String? mdOrder,
-      @JsonKey(name: 'action_code') String? actionCode,
-      @JsonKey(name: 'pan_last_four_digits') String? panLastFourDigits,
-      @JsonKey(name: 'payer_email') String? payerEmail,
-      @JsonKey(name: 'payment_systems') List<String>? paymentSystems}) {
+      String? mdOrder,
+      String? actionCode,
+      String? panLastFourDigits,
+      String? payerEmail,
+      List<String>? paymentSystems}) {
     return _TransactionSearchParameters(
       amountRange: amountRange,
       merchantLogins: merchantLogins,
@@ -62,27 +62,17 @@ const $TransactionSearchParameters = _$TransactionSearchParametersTearOff();
 
 /// @nodoc
 mixin _$TransactionSearchParameters {
-  @JsonKey(name: 'amount_range')
   Range? get amountRange => throw _privateConstructorUsedError;
-  @JsonKey(name: 'merchant_logins')
   List<String>? get merchantLogins => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ofd_statuses')
   List<String>? get ofdStatuses => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_type')
   String? get paymentType => throw _privateConstructorUsedError;
   Range get period => throw _privateConstructorUsedError;
-  @JsonKey(name: 'order_number')
   String? get orderNumber => throw _privateConstructorUsedError;
   List<String>? get states => throw _privateConstructorUsedError;
-  @JsonKey(name: 'md_order')
   String? get mdOrder => throw _privateConstructorUsedError;
-  @JsonKey(name: 'action_code')
   String? get actionCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'pan_last_four_digits')
   String? get panLastFourDigits => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payer_email')
   String? get payerEmail => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_systems')
   List<String>? get paymentSystems => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -98,18 +88,18 @@ abstract class $TransactionSearchParametersCopyWith<$Res> {
           $Res Function(TransactionSearchParameters) then) =
       _$TransactionSearchParametersCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'amount_range') Range? amountRange,
-      @JsonKey(name: 'merchant_logins') List<String>? merchantLogins,
-      @JsonKey(name: 'ofd_statuses') List<String>? ofdStatuses,
-      @JsonKey(name: 'payment_type') String? paymentType,
+      {Range? amountRange,
+      List<String>? merchantLogins,
+      List<String>? ofdStatuses,
+      String? paymentType,
       Range period,
-      @JsonKey(name: 'order_number') String? orderNumber,
+      String? orderNumber,
       List<String>? states,
-      @JsonKey(name: 'md_order') String? mdOrder,
-      @JsonKey(name: 'action_code') String? actionCode,
-      @JsonKey(name: 'pan_last_four_digits') String? panLastFourDigits,
-      @JsonKey(name: 'payer_email') String? payerEmail,
-      @JsonKey(name: 'payment_systems') List<String>? paymentSystems});
+      String? mdOrder,
+      String? actionCode,
+      String? panLastFourDigits,
+      String? payerEmail,
+      List<String>? paymentSystems});
 
   $RangeCopyWith<$Res>? get amountRange;
   $RangeCopyWith<$Res> get period;
@@ -219,18 +209,18 @@ abstract class _$TransactionSearchParametersCopyWith<$Res>
       __$TransactionSearchParametersCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'amount_range') Range? amountRange,
-      @JsonKey(name: 'merchant_logins') List<String>? merchantLogins,
-      @JsonKey(name: 'ofd_statuses') List<String>? ofdStatuses,
-      @JsonKey(name: 'payment_type') String? paymentType,
+      {Range? amountRange,
+      List<String>? merchantLogins,
+      List<String>? ofdStatuses,
+      String? paymentType,
       Range period,
-      @JsonKey(name: 'order_number') String? orderNumber,
+      String? orderNumber,
       List<String>? states,
-      @JsonKey(name: 'md_order') String? mdOrder,
-      @JsonKey(name: 'action_code') String? actionCode,
-      @JsonKey(name: 'pan_last_four_digits') String? panLastFourDigits,
-      @JsonKey(name: 'payer_email') String? payerEmail,
-      @JsonKey(name: 'payment_systems') List<String>? paymentSystems});
+      String? mdOrder,
+      String? actionCode,
+      String? panLastFourDigits,
+      String? payerEmail,
+      List<String>? paymentSystems});
 
   @override
   $RangeCopyWith<$Res>? get amountRange;
@@ -321,83 +311,52 @@ class __$TransactionSearchParametersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TransactionSearchParameters
-    with DiagnosticableTreeMixin
-    implements _TransactionSearchParameters {
+class _$_TransactionSearchParameters implements _TransactionSearchParameters {
   const _$_TransactionSearchParameters(
-      {@JsonKey(name: 'amount_range') this.amountRange,
-      @JsonKey(name: 'merchant_logins') this.merchantLogins,
-      @JsonKey(name: 'ofd_statuses') this.ofdStatuses,
-      @JsonKey(name: 'payment_type') this.paymentType,
+      {this.amountRange,
+      this.merchantLogins,
+      this.ofdStatuses,
+      this.paymentType,
       required this.period,
-      @JsonKey(name: 'order_number') this.orderNumber,
+      this.orderNumber,
       this.states,
-      @JsonKey(name: 'md_order') this.mdOrder,
-      @JsonKey(name: 'action_code') this.actionCode,
-      @JsonKey(name: 'pan_last_four_digits') this.panLastFourDigits,
-      @JsonKey(name: 'payer_email') this.payerEmail,
-      @JsonKey(name: 'payment_systems') this.paymentSystems});
+      this.mdOrder,
+      this.actionCode,
+      this.panLastFourDigits,
+      this.payerEmail,
+      this.paymentSystems});
 
   factory _$_TransactionSearchParameters.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionSearchParametersFromJson(json);
 
   @override
-  @JsonKey(name: 'amount_range')
   final Range? amountRange;
   @override
-  @JsonKey(name: 'merchant_logins')
   final List<String>? merchantLogins;
   @override
-  @JsonKey(name: 'ofd_statuses')
   final List<String>? ofdStatuses;
   @override
-  @JsonKey(name: 'payment_type')
   final String? paymentType;
   @override
   final Range period;
   @override
-  @JsonKey(name: 'order_number')
   final String? orderNumber;
   @override
   final List<String>? states;
   @override
-  @JsonKey(name: 'md_order')
   final String? mdOrder;
   @override
-  @JsonKey(name: 'action_code')
   final String? actionCode;
   @override
-  @JsonKey(name: 'pan_last_four_digits')
   final String? panLastFourDigits;
   @override
-  @JsonKey(name: 'payer_email')
   final String? payerEmail;
   @override
-  @JsonKey(name: 'payment_systems')
   final List<String>? paymentSystems;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionSearchParameters(amountRange: $amountRange, merchantLogins: $merchantLogins, ofdStatuses: $ofdStatuses, paymentType: $paymentType, period: $period, orderNumber: $orderNumber, states: $states, mdOrder: $mdOrder, actionCode: $actionCode, panLastFourDigits: $panLastFourDigits, payerEmail: $payerEmail, paymentSystems: $paymentSystems)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionSearchParameters'))
-      ..add(DiagnosticsProperty('amountRange', amountRange))
-      ..add(DiagnosticsProperty('merchantLogins', merchantLogins))
-      ..add(DiagnosticsProperty('ofdStatuses', ofdStatuses))
-      ..add(DiagnosticsProperty('paymentType', paymentType))
-      ..add(DiagnosticsProperty('period', period))
-      ..add(DiagnosticsProperty('orderNumber', orderNumber))
-      ..add(DiagnosticsProperty('states', states))
-      ..add(DiagnosticsProperty('mdOrder', mdOrder))
-      ..add(DiagnosticsProperty('actionCode', actionCode))
-      ..add(DiagnosticsProperty('panLastFourDigits', panLastFourDigits))
-      ..add(DiagnosticsProperty('payerEmail', payerEmail))
-      ..add(DiagnosticsProperty('paymentSystems', paymentSystems));
   }
 
   @override
@@ -459,56 +418,45 @@ class _$_TransactionSearchParameters
 abstract class _TransactionSearchParameters
     implements TransactionSearchParameters {
   const factory _TransactionSearchParameters(
-          {@JsonKey(name: 'amount_range') Range? amountRange,
-          @JsonKey(name: 'merchant_logins') List<String>? merchantLogins,
-          @JsonKey(name: 'ofd_statuses') List<String>? ofdStatuses,
-          @JsonKey(name: 'payment_type') String? paymentType,
-          required Range period,
-          @JsonKey(name: 'order_number') String? orderNumber,
-          List<String>? states,
-          @JsonKey(name: 'md_order') String? mdOrder,
-          @JsonKey(name: 'action_code') String? actionCode,
-          @JsonKey(name: 'pan_last_four_digits') String? panLastFourDigits,
-          @JsonKey(name: 'payer_email') String? payerEmail,
-          @JsonKey(name: 'payment_systems') List<String>? paymentSystems}) =
-      _$_TransactionSearchParameters;
+      {Range? amountRange,
+      List<String>? merchantLogins,
+      List<String>? ofdStatuses,
+      String? paymentType,
+      required Range period,
+      String? orderNumber,
+      List<String>? states,
+      String? mdOrder,
+      String? actionCode,
+      String? panLastFourDigits,
+      String? payerEmail,
+      List<String>? paymentSystems}) = _$_TransactionSearchParameters;
 
   factory _TransactionSearchParameters.fromJson(Map<String, dynamic> json) =
       _$_TransactionSearchParameters.fromJson;
 
   @override
-  @JsonKey(name: 'amount_range')
   Range? get amountRange;
   @override
-  @JsonKey(name: 'merchant_logins')
   List<String>? get merchantLogins;
   @override
-  @JsonKey(name: 'ofd_statuses')
   List<String>? get ofdStatuses;
   @override
-  @JsonKey(name: 'payment_type')
   String? get paymentType;
   @override
   Range get period;
   @override
-  @JsonKey(name: 'order_number')
   String? get orderNumber;
   @override
   List<String>? get states;
   @override
-  @JsonKey(name: 'md_order')
   String? get mdOrder;
   @override
-  @JsonKey(name: 'action_code')
   String? get actionCode;
   @override
-  @JsonKey(name: 'pan_last_four_digits')
   String? get panLastFourDigits;
   @override
-  @JsonKey(name: 'payer_email')
   String? get payerEmail;
   @override
-  @JsonKey(name: 'payment_systems')
   List<String>? get paymentSystems;
   @override
   @JsonKey(ignore: true)

@@ -23,9 +23,7 @@ TransactionSearchPage _$TransactionSearchPageFromJson(
 class _$TransactionSearchPageTearOff {
   const _$TransactionSearchPageTearOff();
 
-  _TransactionSearchPage call(
-      {required int count,
-      @JsonKey(name: 'start_index') required int startIndex}) {
+  _TransactionSearchPage call({required int count, required int startIndex}) {
     return _TransactionSearchPage(
       count: count,
       startIndex: startIndex,
@@ -43,7 +41,6 @@ const $TransactionSearchPage = _$TransactionSearchPageTearOff();
 /// @nodoc
 mixin _$TransactionSearchPage {
   int get count => throw _privateConstructorUsedError;
-  @JsonKey(name: 'start_index')
   int get startIndex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,7 +54,7 @@ abstract class $TransactionSearchPageCopyWith<$Res> {
   factory $TransactionSearchPageCopyWith(TransactionSearchPage value,
           $Res Function(TransactionSearchPage) then) =
       _$TransactionSearchPageCopyWithImpl<$Res>;
-  $Res call({int count, @JsonKey(name: 'start_index') int startIndex});
+  $Res call({int count, int startIndex});
 }
 
 /// @nodoc
@@ -94,7 +91,7 @@ abstract class _$TransactionSearchPageCopyWith<$Res>
           $Res Function(_TransactionSearchPage) then) =
       __$TransactionSearchPageCopyWithImpl<$Res>;
   @override
-  $Res call({int count, @JsonKey(name: 'start_index') int startIndex});
+  $Res call({int count, int startIndex});
 }
 
 /// @nodoc
@@ -128,12 +125,9 @@ class __$TransactionSearchPageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TransactionSearchPage
-    with DiagnosticableTreeMixin
-    implements _TransactionSearchPage {
+class _$_TransactionSearchPage implements _TransactionSearchPage {
   const _$_TransactionSearchPage(
-      {required this.count,
-      @JsonKey(name: 'start_index') required this.startIndex});
+      {required this.count, required this.startIndex});
 
   factory _$_TransactionSearchPage.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionSearchPageFromJson(json);
@@ -141,21 +135,11 @@ class _$_TransactionSearchPage
   @override
   final int count;
   @override
-  @JsonKey(name: 'start_index')
   final int startIndex;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionSearchPage(count: $count, startIndex: $startIndex)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionSearchPage'))
-      ..add(DiagnosticsProperty('count', count))
-      ..add(DiagnosticsProperty('startIndex', startIndex));
   }
 
   @override
@@ -188,9 +172,7 @@ class _$_TransactionSearchPage
 
 abstract class _TransactionSearchPage implements TransactionSearchPage {
   const factory _TransactionSearchPage(
-          {required int count,
-          @JsonKey(name: 'start_index') required int startIndex}) =
-      _$_TransactionSearchPage;
+      {required int count, required int startIndex}) = _$_TransactionSearchPage;
 
   factory _TransactionSearchPage.fromJson(Map<String, dynamic> json) =
       _$_TransactionSearchPage.fromJson;
@@ -198,7 +180,6 @@ abstract class _TransactionSearchPage implements TransactionSearchPage {
   @override
   int get count;
   @override
-  @JsonKey(name: 'start_index')
   int get startIndex;
   @override
   @JsonKey(ignore: true)

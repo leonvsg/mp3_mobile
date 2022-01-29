@@ -23,8 +23,7 @@ TransactionDetailsRequest _$TransactionDetailsRequestFromJson(
 class _$TransactionDetailsRequestTearOff {
   const _$TransactionDetailsRequestTearOff();
 
-  _TransactionDetailsRequest call(
-      {@JsonKey(name: 'md_order') required String mdOrder}) {
+  _TransactionDetailsRequest call({required String mdOrder}) {
     return _TransactionDetailsRequest(
       mdOrder: mdOrder,
     );
@@ -40,7 +39,6 @@ const $TransactionDetailsRequest = _$TransactionDetailsRequestTearOff();
 
 /// @nodoc
 mixin _$TransactionDetailsRequest {
-  @JsonKey(name: 'md_order')
   String get mdOrder => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +52,7 @@ abstract class $TransactionDetailsRequestCopyWith<$Res> {
   factory $TransactionDetailsRequestCopyWith(TransactionDetailsRequest value,
           $Res Function(TransactionDetailsRequest) then) =
       _$TransactionDetailsRequestCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'md_order') String mdOrder});
+  $Res call({String mdOrder});
 }
 
 /// @nodoc
@@ -86,7 +84,7 @@ abstract class _$TransactionDetailsRequestCopyWith<$Res>
           $Res Function(_TransactionDetailsRequest) then) =
       __$TransactionDetailsRequestCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'md_order') String mdOrder});
+  $Res call({String mdOrder});
 }
 
 /// @nodoc
@@ -116,30 +114,18 @@ class __$TransactionDetailsRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TransactionDetailsRequest
-    with DiagnosticableTreeMixin
-    implements _TransactionDetailsRequest {
-  const _$_TransactionDetailsRequest(
-      {@JsonKey(name: 'md_order') required this.mdOrder});
+class _$_TransactionDetailsRequest implements _TransactionDetailsRequest {
+  const _$_TransactionDetailsRequest({required this.mdOrder});
 
   factory _$_TransactionDetailsRequest.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionDetailsRequestFromJson(json);
 
   @override
-  @JsonKey(name: 'md_order')
   final String mdOrder;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionDetailsRequest(mdOrder: $mdOrder)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionDetailsRequest'))
-      ..add(DiagnosticsProperty('mdOrder', mdOrder));
   }
 
   @override
@@ -168,15 +154,13 @@ class _$_TransactionDetailsRequest
 }
 
 abstract class _TransactionDetailsRequest implements TransactionDetailsRequest {
-  const factory _TransactionDetailsRequest(
-          {@JsonKey(name: 'md_order') required String mdOrder}) =
+  const factory _TransactionDetailsRequest({required String mdOrder}) =
       _$_TransactionDetailsRequest;
 
   factory _TransactionDetailsRequest.fromJson(Map<String, dynamic> json) =
       _$_TransactionDetailsRequest.fromJson;
 
   @override
-  @JsonKey(name: 'md_order')
   String get mdOrder;
   @override
   @JsonKey(ignore: true)

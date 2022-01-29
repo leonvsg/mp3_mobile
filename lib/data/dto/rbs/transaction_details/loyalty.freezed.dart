@@ -23,9 +23,7 @@ class _$LoyaltyTearOff {
   const _$LoyaltyTearOff();
 
   _Loyalty call(
-      {@JsonKey(name: 'loyalty_service_name') String? loyaltyServiceName,
-      @JsonKey(name: 'loyalty_award') int? loyaltyAward,
-      @JsonKey(name: 'loyalty_payment') int? loyaltyPayment}) {
+      {String? loyaltyServiceName, int? loyaltyAward, int? loyaltyPayment}) {
     return _Loyalty(
       loyaltyServiceName: loyaltyServiceName,
       loyaltyAward: loyaltyAward,
@@ -44,11 +42,8 @@ const $Loyalty = _$LoyaltyTearOff();
 /// @nodoc
 mixin _$Loyalty {
 //SBRF_SPASIBO, SBRF_SBERMILES
-  @JsonKey(name: 'loyalty_service_name')
   String? get loyaltyServiceName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'loyalty_award')
   int? get loyaltyAward => throw _privateConstructorUsedError;
-  @JsonKey(name: 'loyalty_payment')
   int? get loyaltyPayment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,9 +56,7 @@ abstract class $LoyaltyCopyWith<$Res> {
   factory $LoyaltyCopyWith(Loyalty value, $Res Function(Loyalty) then) =
       _$LoyaltyCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'loyalty_service_name') String? loyaltyServiceName,
-      @JsonKey(name: 'loyalty_award') int? loyaltyAward,
-      @JsonKey(name: 'loyalty_payment') int? loyaltyPayment});
+      {String? loyaltyServiceName, int? loyaltyAward, int? loyaltyPayment});
 }
 
 /// @nodoc
@@ -103,9 +96,7 @@ abstract class _$LoyaltyCopyWith<$Res> implements $LoyaltyCopyWith<$Res> {
       __$LoyaltyCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'loyalty_service_name') String? loyaltyServiceName,
-      @JsonKey(name: 'loyalty_award') int? loyaltyAward,
-      @JsonKey(name: 'loyalty_payment') int? loyaltyPayment});
+      {String? loyaltyServiceName, int? loyaltyAward, int? loyaltyPayment});
 }
 
 /// @nodoc
@@ -142,38 +133,23 @@ class __$LoyaltyCopyWithImpl<$Res> extends _$LoyaltyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Loyalty with DiagnosticableTreeMixin implements _Loyalty {
+class _$_Loyalty implements _Loyalty {
   const _$_Loyalty(
-      {@JsonKey(name: 'loyalty_service_name') this.loyaltyServiceName,
-      @JsonKey(name: 'loyalty_award') this.loyaltyAward,
-      @JsonKey(name: 'loyalty_payment') this.loyaltyPayment});
+      {this.loyaltyServiceName, this.loyaltyAward, this.loyaltyPayment});
 
   factory _$_Loyalty.fromJson(Map<String, dynamic> json) =>
       _$$_LoyaltyFromJson(json);
 
   @override //SBRF_SPASIBO, SBRF_SBERMILES
-  @JsonKey(name: 'loyalty_service_name')
   final String? loyaltyServiceName;
   @override
-  @JsonKey(name: 'loyalty_award')
   final int? loyaltyAward;
   @override
-  @JsonKey(name: 'loyalty_payment')
   final int? loyaltyPayment;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Loyalty(loyaltyServiceName: $loyaltyServiceName, loyaltyAward: $loyaltyAward, loyaltyPayment: $loyaltyPayment)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Loyalty'))
-      ..add(DiagnosticsProperty('loyaltyServiceName', loyaltyServiceName))
-      ..add(DiagnosticsProperty('loyaltyAward', loyaltyAward))
-      ..add(DiagnosticsProperty('loyaltyPayment', loyaltyPayment));
   }
 
   @override
@@ -209,20 +185,17 @@ class _$_Loyalty with DiagnosticableTreeMixin implements _Loyalty {
 
 abstract class _Loyalty implements Loyalty {
   const factory _Loyalty(
-      {@JsonKey(name: 'loyalty_service_name') String? loyaltyServiceName,
-      @JsonKey(name: 'loyalty_award') int? loyaltyAward,
-      @JsonKey(name: 'loyalty_payment') int? loyaltyPayment}) = _$_Loyalty;
+      {String? loyaltyServiceName,
+      int? loyaltyAward,
+      int? loyaltyPayment}) = _$_Loyalty;
 
   factory _Loyalty.fromJson(Map<String, dynamic> json) = _$_Loyalty.fromJson;
 
   @override //SBRF_SPASIBO, SBRF_SBERMILES
-  @JsonKey(name: 'loyalty_service_name')
   String? get loyaltyServiceName;
   @override
-  @JsonKey(name: 'loyalty_award')
   int? get loyaltyAward;
   @override
-  @JsonKey(name: 'loyalty_payment')
   int? get loyaltyPayment;
   @override
   @JsonKey(ignore: true)

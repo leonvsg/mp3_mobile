@@ -23,8 +23,7 @@ MerchantInformationRequest _$MerchantInformationRequestFromJson(
 class _$MerchantInformationRequestTearOff {
   const _$MerchantInformationRequestTearOff();
 
-  _MerchantInformationRequest call(
-      {@JsonKey(name: 'merchant_login') required String merchantLogin}) {
+  _MerchantInformationRequest call({required String merchantLogin}) {
     return _MerchantInformationRequest(
       merchantLogin: merchantLogin,
     );
@@ -40,7 +39,6 @@ const $MerchantInformationRequest = _$MerchantInformationRequestTearOff();
 
 /// @nodoc
 mixin _$MerchantInformationRequest {
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +52,7 @@ abstract class $MerchantInformationRequestCopyWith<$Res> {
   factory $MerchantInformationRequestCopyWith(MerchantInformationRequest value,
           $Res Function(MerchantInformationRequest) then) =
       _$MerchantInformationRequestCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'merchant_login') String merchantLogin});
+  $Res call({String merchantLogin});
 }
 
 /// @nodoc
@@ -87,7 +85,7 @@ abstract class _$MerchantInformationRequestCopyWith<$Res>
           $Res Function(_MerchantInformationRequest) then) =
       __$MerchantInformationRequestCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'merchant_login') String merchantLogin});
+  $Res call({String merchantLogin});
 }
 
 /// @nodoc
@@ -117,30 +115,18 @@ class __$MerchantInformationRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MerchantInformationRequest
-    with DiagnosticableTreeMixin
-    implements _MerchantInformationRequest {
-  const _$_MerchantInformationRequest(
-      {@JsonKey(name: 'merchant_login') required this.merchantLogin});
+class _$_MerchantInformationRequest implements _MerchantInformationRequest {
+  const _$_MerchantInformationRequest({required this.merchantLogin});
 
   factory _$_MerchantInformationRequest.fromJson(Map<String, dynamic> json) =>
       _$$_MerchantInformationRequestFromJson(json);
 
   @override
-  @JsonKey(name: 'merchant_login')
   final String merchantLogin;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'MerchantInformationRequest(merchantLogin: $merchantLogin)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'MerchantInformationRequest'))
-      ..add(DiagnosticsProperty('merchantLogin', merchantLogin));
   }
 
   @override
@@ -170,15 +156,13 @@ class _$_MerchantInformationRequest
 
 abstract class _MerchantInformationRequest
     implements MerchantInformationRequest {
-  const factory _MerchantInformationRequest(
-          {@JsonKey(name: 'merchant_login') required String merchantLogin}) =
+  const factory _MerchantInformationRequest({required String merchantLogin}) =
       _$_MerchantInformationRequest;
 
   factory _MerchantInformationRequest.fromJson(Map<String, dynamic> json) =
       _$_MerchantInformationRequest.fromJson;
 
   @override
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin;
   @override
   @JsonKey(ignore: true)

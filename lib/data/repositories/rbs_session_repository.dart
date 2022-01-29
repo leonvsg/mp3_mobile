@@ -35,4 +35,8 @@ class RbsSessionRepository
     }
     return session;
   }
+
+  @override
+  // TODO: implement session
+  Future<Session?> get session => throw UnimplementedError();
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
-import 'package:mp3_mobile/presentation/provider/order_list_item_model.dart';
-import 'package:mp3_mobile/presentation/screens/main/components/order_list_item_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:mp3_mobile/presentation/ui/pages/orders_list/components/order_list_item.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   final SimpleOrderData orderData;
@@ -42,10 +40,7 @@ class OrderDetailsScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                Provider(
-                  create: (context) => OrderListItemModel(orderData: orderData),
-                  child: OrderListItemWidget(orderData),
-                ),
+                OrderListItem(orderData),
               ],
             ),
             Container(),

@@ -137,7 +137,7 @@ class __$ShoppingCartCopyWithImpl<$Res> extends _$ShoppingCartCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShoppingCart with DiagnosticableTreeMixin implements _ShoppingCart {
+class _$_ShoppingCart implements _ShoppingCart {
   const _$_ShoppingCart(
       {this.items, required this.complete, required this.ignored});
 
@@ -152,18 +152,8 @@ class _$_ShoppingCart with DiagnosticableTreeMixin implements _ShoppingCart {
   final bool ignored;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ShoppingCart(items: $items, complete: $complete, ignored: $ignored)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ShoppingCart'))
-      ..add(DiagnosticsProperty('items', items))
-      ..add(DiagnosticsProperty('complete', complete))
-      ..add(DiagnosticsProperty('ignored', ignored));
   }
 
   @override

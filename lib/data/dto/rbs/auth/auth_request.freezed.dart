@@ -150,7 +150,7 @@ class __$AuthRequestCopyWithImpl<$Res> extends _$AuthRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
+class _$_AuthRequest implements _AuthRequest {
   const _$_AuthRequest(
       {required this.password,
       required this.login,
@@ -171,19 +171,8 @@ class _$_AuthRequest with DiagnosticableTreeMixin implements _AuthRequest {
   final String? code;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthRequest(password: $password, login: $login, language: $language, code: $code)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthRequest'))
-      ..add(DiagnosticsProperty('password', password))
-      ..add(DiagnosticsProperty('login', login))
-      ..add(DiagnosticsProperty('language', language))
-      ..add(DiagnosticsProperty('code', code));
   }
 
   @override

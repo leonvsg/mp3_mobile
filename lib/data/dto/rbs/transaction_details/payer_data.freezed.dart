@@ -28,7 +28,7 @@ class _$PayerDataTearOff {
       String? address,
       String? city,
       String? country,
-      @JsonKey(name: 'postal_code') String? postalCode,
+      String? postalCode,
       String? state,
       String? email}) {
     return _PayerData(
@@ -58,7 +58,6 @@ mixin _$PayerData {
   String? get address => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
-  @JsonKey(name: 'postal_code')
   String? get postalCode => throw _privateConstructorUsedError;
   String? get state => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -79,7 +78,7 @@ abstract class $PayerDataCopyWith<$Res> {
       String? address,
       String? city,
       String? country,
-      @JsonKey(name: 'postal_code') String? postalCode,
+      String? postalCode,
       String? state,
       String? email});
 }
@@ -152,7 +151,7 @@ abstract class _$PayerDataCopyWith<$Res> implements $PayerDataCopyWith<$Res> {
       String? address,
       String? city,
       String? country,
-      @JsonKey(name: 'postal_code') String? postalCode,
+      String? postalCode,
       String? state,
       String? email});
 }
@@ -216,14 +215,14 @@ class __$PayerDataCopyWithImpl<$Res> extends _$PayerDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PayerData with DiagnosticableTreeMixin implements _PayerData {
+class _$_PayerData implements _PayerData {
   const _$_PayerData(
       {this.phone,
       this.name,
       this.address,
       this.city,
       this.country,
-      @JsonKey(name: 'postal_code') this.postalCode,
+      this.postalCode,
       this.state,
       this.email});
 
@@ -241,7 +240,6 @@ class _$_PayerData with DiagnosticableTreeMixin implements _PayerData {
   @override
   final String? country;
   @override
-  @JsonKey(name: 'postal_code')
   final String? postalCode;
   @override
   final String? state;
@@ -249,23 +247,8 @@ class _$_PayerData with DiagnosticableTreeMixin implements _PayerData {
   final String? email;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PayerData(phone: $phone, name: $name, address: $address, city: $city, country: $country, postalCode: $postalCode, state: $state, email: $email)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PayerData'))
-      ..add(DiagnosticsProperty('phone', phone))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('address', address))
-      ..add(DiagnosticsProperty('city', city))
-      ..add(DiagnosticsProperty('country', country))
-      ..add(DiagnosticsProperty('postalCode', postalCode))
-      ..add(DiagnosticsProperty('state', state))
-      ..add(DiagnosticsProperty('email', email));
   }
 
   @override
@@ -314,7 +297,7 @@ abstract class _PayerData implements PayerData {
       String? address,
       String? city,
       String? country,
-      @JsonKey(name: 'postal_code') String? postalCode,
+      String? postalCode,
       String? state,
       String? email}) = _$_PayerData;
 
@@ -332,7 +315,6 @@ abstract class _PayerData implements PayerData {
   @override
   String? get country;
   @override
-  @JsonKey(name: 'postal_code')
   String? get postalCode;
   @override
   String? get state;

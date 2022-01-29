@@ -25,8 +25,8 @@ class _$TransactionListRequestTearOff {
 
   _TransactionListRequest call(
       {required TransactionSearchParameters search,
-      @JsonKey(name: 'next_page') required TransactionSearchPage nextPage,
-      @JsonKey(name: 'merchant_login') String? merchantLogin,
+      required TransactionSearchPage nextPage,
+      String? merchantLogin,
       List<String>? columns}) {
     return _TransactionListRequest(
       search: search,
@@ -47,9 +47,7 @@ const $TransactionListRequest = _$TransactionListRequestTearOff();
 /// @nodoc
 mixin _$TransactionListRequest {
   TransactionSearchParameters get search => throw _privateConstructorUsedError;
-  @JsonKey(name: 'next_page')
   TransactionSearchPage get nextPage => throw _privateConstructorUsedError;
-  @JsonKey(name: 'merchant_login')
   String? get merchantLogin =>
       throw _privateConstructorUsedError; //"PAYMENT_TYPE, PAYMENT_SYSTEM, CREATED_DATE, UPDATED_DATE, AMOUNT, CURRENCY, MERCHANT_LOGIN, ORDER_NUMBER, STATE, PAN, PAYMENT_DATE, COMPLETION_DATE, REFUNDED_DATE, ACTION_CODE, EMAIL, PROCESSING_ID, TERMINAL_ID, REFERENCE_NUMBER, CARDHOLDER, MD_ORDER, FEE_AMOUNT, REFUNDED_AMOUNT, ORDER_PARAMS, OFD_STATUS, SHORT_DESCRIPTION, CREDIT_RIGHT_TERMS, CREDIT_TERM, CREDIT_PRODUCT_ID, CREDIT_PRODUCT_TYPE, CREDIT_INITIAL_AMOUNT, CREDIT_DOCUMENT_UID, CREDIT_BANK_CODE_TYPE, CREDIT_BANK_NAME"
   List<String>? get columns => throw _privateConstructorUsedError;
@@ -67,8 +65,8 @@ abstract class $TransactionListRequestCopyWith<$Res> {
       _$TransactionListRequestCopyWithImpl<$Res>;
   $Res call(
       {TransactionSearchParameters search,
-      @JsonKey(name: 'next_page') TransactionSearchPage nextPage,
-      @JsonKey(name: 'merchant_login') String? merchantLogin,
+      TransactionSearchPage nextPage,
+      String? merchantLogin,
       List<String>? columns});
 
   $TransactionSearchParametersCopyWith<$Res> get search;
@@ -135,8 +133,8 @@ abstract class _$TransactionListRequestCopyWith<$Res>
   @override
   $Res call(
       {TransactionSearchParameters search,
-      @JsonKey(name: 'next_page') TransactionSearchPage nextPage,
-      @JsonKey(name: 'merchant_login') String? merchantLogin,
+      TransactionSearchPage nextPage,
+      String? merchantLogin,
       List<String>? columns});
 
   @override
@@ -186,13 +184,11 @@ class __$TransactionListRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TransactionListRequest
-    with DiagnosticableTreeMixin
-    implements _TransactionListRequest {
+class _$_TransactionListRequest implements _TransactionListRequest {
   const _$_TransactionListRequest(
       {required this.search,
-      @JsonKey(name: 'next_page') required this.nextPage,
-      @JsonKey(name: 'merchant_login') this.merchantLogin,
+      required this.nextPage,
+      this.merchantLogin,
       this.columns});
 
   factory _$_TransactionListRequest.fromJson(Map<String, dynamic> json) =>
@@ -201,28 +197,15 @@ class _$_TransactionListRequest
   @override
   final TransactionSearchParameters search;
   @override
-  @JsonKey(name: 'next_page')
   final TransactionSearchPage nextPage;
   @override
-  @JsonKey(name: 'merchant_login')
   final String? merchantLogin;
   @override //"PAYMENT_TYPE, PAYMENT_SYSTEM, CREATED_DATE, UPDATED_DATE, AMOUNT, CURRENCY, MERCHANT_LOGIN, ORDER_NUMBER, STATE, PAN, PAYMENT_DATE, COMPLETION_DATE, REFUNDED_DATE, ACTION_CODE, EMAIL, PROCESSING_ID, TERMINAL_ID, REFERENCE_NUMBER, CARDHOLDER, MD_ORDER, FEE_AMOUNT, REFUNDED_AMOUNT, ORDER_PARAMS, OFD_STATUS, SHORT_DESCRIPTION, CREDIT_RIGHT_TERMS, CREDIT_TERM, CREDIT_PRODUCT_ID, CREDIT_PRODUCT_TYPE, CREDIT_INITIAL_AMOUNT, CREDIT_DOCUMENT_UID, CREDIT_BANK_CODE_TYPE, CREDIT_BANK_NAME"
   final List<String>? columns;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionListRequest(search: $search, nextPage: $nextPage, merchantLogin: $merchantLogin, columns: $columns)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionListRequest'))
-      ..add(DiagnosticsProperty('search', search))
-      ..add(DiagnosticsProperty('nextPage', nextPage))
-      ..add(DiagnosticsProperty('merchantLogin', merchantLogin))
-      ..add(DiagnosticsProperty('columns', columns));
   }
 
   @override
@@ -260,8 +243,8 @@ class _$_TransactionListRequest
 abstract class _TransactionListRequest implements TransactionListRequest {
   const factory _TransactionListRequest(
       {required TransactionSearchParameters search,
-      @JsonKey(name: 'next_page') required TransactionSearchPage nextPage,
-      @JsonKey(name: 'merchant_login') String? merchantLogin,
+      required TransactionSearchPage nextPage,
+      String? merchantLogin,
       List<String>? columns}) = _$_TransactionListRequest;
 
   factory _TransactionListRequest.fromJson(Map<String, dynamic> json) =
@@ -270,10 +253,8 @@ abstract class _TransactionListRequest implements TransactionListRequest {
   @override
   TransactionSearchParameters get search;
   @override
-  @JsonKey(name: 'next_page')
   TransactionSearchPage get nextPage;
   @override
-  @JsonKey(name: 'merchant_login')
   String? get merchantLogin;
   @override //"PAYMENT_TYPE, PAYMENT_SYSTEM, CREATED_DATE, UPDATED_DATE, AMOUNT, CURRENCY, MERCHANT_LOGIN, ORDER_NUMBER, STATE, PAN, PAYMENT_DATE, COMPLETION_DATE, REFUNDED_DATE, ACTION_CODE, EMAIL, PROCESSING_ID, TERMINAL_ID, REFERENCE_NUMBER, CARDHOLDER, MD_ORDER, FEE_AMOUNT, REFUNDED_AMOUNT, ORDER_PARAMS, OFD_STATUS, SHORT_DESCRIPTION, CREDIT_RIGHT_TERMS, CREDIT_TERM, CREDIT_PRODUCT_ID, CREDIT_PRODUCT_TYPE, CREDIT_INITIAL_AMOUNT, CREDIT_DOCUMENT_UID, CREDIT_BANK_CODE_TYPE, CREDIT_BANK_NAME"
   List<String>? get columns;

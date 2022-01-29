@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
-import 'package:mp3_mobile/presentation/screens/main/components/help_view_widget.dart';
-import 'package:mp3_mobile/presentation/screens/main/components/statistic_view_widget.dart';
-import 'package:mp3_mobile/presentation/ui/pages/orders/orders_list_screen.dart';
+import 'package:mp3_mobile/presentation/ui/pages/help/help_page.dart';
+import 'package:mp3_mobile/presentation/ui/pages/orders_list/orders_list_page.dart';
+import 'package:mp3_mobile/presentation/ui/pages/statistic/statistic_page.dart';
 
 class _BottomNavigationBarOption {
   final String label;
@@ -24,12 +24,12 @@ class MainScreenModel extends ChangeNotifier {
     _BottomNavigationBarOption(
       icon: Icon(Icons.stacked_line_chart_sharp),
       label: 'Статистика',
-      widget: StatisticView(),
+      widget: StatisticPage(),
     ),
     _BottomNavigationBarOption(
       icon: Icon(Icons.payment),
       label: 'Заказы',
-      widget: OrdersListScreen(),
+      widget: OrdersListPage(),
     ),
     _BottomNavigationBarOption(
       icon: Icon(Icons.help_center),
@@ -53,7 +53,7 @@ class MainScreenModel extends ChangeNotifier {
   }
 
   Widget? showFab(Widget fab) {
-    if (widgetOptions[selectedTabIndex].widget is OrdersListScreen) {
+    if (widgetOptions[selectedTabIndex].widget is OrdersListPage) {
       return fab;
     }
     return null;

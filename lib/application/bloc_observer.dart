@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 
-class SimpleBlocObserver extends BlocObserver {
+class DebugBlocObserver extends BlocObserver {
   @override
   void onTransition(Bloc bloc, Transition transition) {
     log('Emitted state (transition) for bloc ${bloc.runtimeType} $transition');

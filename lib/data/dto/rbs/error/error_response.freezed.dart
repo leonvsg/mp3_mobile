@@ -26,7 +26,7 @@ class _$ErrorResponseTearOff {
       {required String code,
       required String description,
       required String message,
-      @JsonKey(name: 'invalid_field_name') String? invalidFieldName}) {
+      String? invalidFieldName}) {
     return _ErrorResponse(
       code: code,
       description: description,
@@ -48,7 +48,6 @@ mixin _$ErrorResponse {
   String get code => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'invalid_field_name')
   String? get invalidFieldName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -66,7 +65,7 @@ abstract class $ErrorResponseCopyWith<$Res> {
       {String code,
       String description,
       String message,
-      @JsonKey(name: 'invalid_field_name') String? invalidFieldName});
+      String? invalidFieldName});
 }
 
 /// @nodoc
@@ -117,7 +116,7 @@ abstract class _$ErrorResponseCopyWith<$Res>
       {String code,
       String description,
       String message,
-      @JsonKey(name: 'invalid_field_name') String? invalidFieldName});
+      String? invalidFieldName});
 }
 
 /// @nodoc
@@ -161,12 +160,12 @@ class __$ErrorResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
+class _$_ErrorResponse implements _ErrorResponse {
   const _$_ErrorResponse(
       {required this.code,
       required this.description,
       required this.message,
-      @JsonKey(name: 'invalid_field_name') this.invalidFieldName});
+      this.invalidFieldName});
 
   factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
       _$$_ErrorResponseFromJson(json);
@@ -178,23 +177,11 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
   @override
   final String message;
   @override
-  @JsonKey(name: 'invalid_field_name')
   final String? invalidFieldName;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ErrorResponse(code: $code, description: $description, message: $message, invalidFieldName: $invalidFieldName)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ErrorResponse'))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('message', message))
-      ..add(DiagnosticsProperty('invalidFieldName', invalidFieldName));
   }
 
   @override
@@ -231,11 +218,10 @@ class _$_ErrorResponse with DiagnosticableTreeMixin implements _ErrorResponse {
 
 abstract class _ErrorResponse implements ErrorResponse {
   const factory _ErrorResponse(
-          {required String code,
-          required String description,
-          required String message,
-          @JsonKey(name: 'invalid_field_name') String? invalidFieldName}) =
-      _$_ErrorResponse;
+      {required String code,
+      required String description,
+      required String message,
+      String? invalidFieldName}) = _$_ErrorResponse;
 
   factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
       _$_ErrorResponse.fromJson;
@@ -247,7 +233,6 @@ abstract class _ErrorResponse implements ErrorResponse {
   @override
   String get message;
   @override
-  @JsonKey(name: 'invalid_field_name')
   String? get invalidFieldName;
   @override
   @JsonKey(ignore: true)

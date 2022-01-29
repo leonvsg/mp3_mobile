@@ -22,9 +22,7 @@ Issuer _$IssuerFromJson(Map<String, dynamic> json) {
 class _$IssuerTearOff {
   const _$IssuerTearOff();
 
-  _Issuer call(
-      {@JsonKey(name: 'issuer_bank_name') String? issuerBankName,
-      @JsonKey(name: 'issuer_country_name') String? issuerCountryName}) {
+  _Issuer call({String? issuerBankName, String? issuerCountryName}) {
     return _Issuer(
       issuerBankName: issuerBankName,
       issuerCountryName: issuerCountryName,
@@ -41,9 +39,7 @@ const $Issuer = _$IssuerTearOff();
 
 /// @nodoc
 mixin _$Issuer {
-  @JsonKey(name: 'issuer_bank_name')
   String? get issuerBankName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'issuer_country_name')
   String? get issuerCountryName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,9 +51,7 @@ mixin _$Issuer {
 abstract class $IssuerCopyWith<$Res> {
   factory $IssuerCopyWith(Issuer value, $Res Function(Issuer) then) =
       _$IssuerCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'issuer_bank_name') String? issuerBankName,
-      @JsonKey(name: 'issuer_country_name') String? issuerCountryName});
+  $Res call({String? issuerBankName, String? issuerCountryName});
 }
 
 /// @nodoc
@@ -91,9 +85,7 @@ abstract class _$IssuerCopyWith<$Res> implements $IssuerCopyWith<$Res> {
   factory _$IssuerCopyWith(_Issuer value, $Res Function(_Issuer) then) =
       __$IssuerCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'issuer_bank_name') String? issuerBankName,
-      @JsonKey(name: 'issuer_country_name') String? issuerCountryName});
+  $Res call({String? issuerBankName, String? issuerCountryName});
 }
 
 /// @nodoc
@@ -125,33 +117,20 @@ class __$IssuerCopyWithImpl<$Res> extends _$IssuerCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Issuer with DiagnosticableTreeMixin implements _Issuer {
-  const _$_Issuer(
-      {@JsonKey(name: 'issuer_bank_name') this.issuerBankName,
-      @JsonKey(name: 'issuer_country_name') this.issuerCountryName});
+class _$_Issuer implements _Issuer {
+  const _$_Issuer({this.issuerBankName, this.issuerCountryName});
 
   factory _$_Issuer.fromJson(Map<String, dynamic> json) =>
       _$$_IssuerFromJson(json);
 
   @override
-  @JsonKey(name: 'issuer_bank_name')
   final String? issuerBankName;
   @override
-  @JsonKey(name: 'issuer_country_name')
   final String? issuerCountryName;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Issuer(issuerBankName: $issuerBankName, issuerCountryName: $issuerCountryName)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Issuer'))
-      ..add(DiagnosticsProperty('issuerBankName', issuerBankName))
-      ..add(DiagnosticsProperty('issuerCountryName', issuerCountryName));
   }
 
   @override
@@ -183,18 +162,14 @@ class _$_Issuer with DiagnosticableTreeMixin implements _Issuer {
 }
 
 abstract class _Issuer implements Issuer {
-  const factory _Issuer(
-          {@JsonKey(name: 'issuer_bank_name') String? issuerBankName,
-          @JsonKey(name: 'issuer_country_name') String? issuerCountryName}) =
+  const factory _Issuer({String? issuerBankName, String? issuerCountryName}) =
       _$_Issuer;
 
   factory _Issuer.fromJson(Map<String, dynamic> json) = _$_Issuer.fromJson;
 
   @override
-  @JsonKey(name: 'issuer_bank_name')
   String? get issuerBankName;
   @override
-  @JsonKey(name: 'issuer_country_name')
   String? get issuerCountryName;
   @override
   @JsonKey(ignore: true)

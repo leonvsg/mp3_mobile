@@ -25,8 +25,8 @@ class _$HistoryTearOff {
   _History call(
       {required String type,
       required String date,
-      @JsonKey(name: 'short_description') required String shortDescription,
-      @JsonKey(name: 'full_description') required String fullDescription,
+      required String shortDescription,
+      required String fullDescription,
       required bool successful}) {
     return _History(
       type: type,
@@ -49,9 +49,7 @@ const $History = _$HistoryTearOff();
 mixin _$History {
   String get type => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
-  @JsonKey(name: 'short_description')
   String get shortDescription => throw _privateConstructorUsedError;
-  @JsonKey(name: 'full_description')
   String get fullDescription => throw _privateConstructorUsedError;
   bool get successful => throw _privateConstructorUsedError;
 
@@ -67,8 +65,8 @@ abstract class $HistoryCopyWith<$Res> {
   $Res call(
       {String type,
       String date,
-      @JsonKey(name: 'short_description') String shortDescription,
-      @JsonKey(name: 'full_description') String fullDescription,
+      String shortDescription,
+      String fullDescription,
       bool successful});
 }
 
@@ -121,8 +119,8 @@ abstract class _$HistoryCopyWith<$Res> implements $HistoryCopyWith<$Res> {
   $Res call(
       {String type,
       String date,
-      @JsonKey(name: 'short_description') String shortDescription,
-      @JsonKey(name: 'full_description') String fullDescription,
+      String shortDescription,
+      String fullDescription,
       bool successful});
 }
 
@@ -170,12 +168,12 @@ class __$HistoryCopyWithImpl<$Res> extends _$HistoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_History with DiagnosticableTreeMixin implements _History {
+class _$_History implements _History {
   const _$_History(
       {required this.type,
       required this.date,
-      @JsonKey(name: 'short_description') required this.shortDescription,
-      @JsonKey(name: 'full_description') required this.fullDescription,
+      required this.shortDescription,
+      required this.fullDescription,
       required this.successful});
 
   factory _$_History.fromJson(Map<String, dynamic> json) =>
@@ -186,29 +184,15 @@ class _$_History with DiagnosticableTreeMixin implements _History {
   @override
   final String date;
   @override
-  @JsonKey(name: 'short_description')
   final String shortDescription;
   @override
-  @JsonKey(name: 'full_description')
   final String fullDescription;
   @override
   final bool successful;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'History(type: $type, date: $date, shortDescription: $shortDescription, fullDescription: $fullDescription, successful: $successful)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'History'))
-      ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('date', date))
-      ..add(DiagnosticsProperty('shortDescription', shortDescription))
-      ..add(DiagnosticsProperty('fullDescription', fullDescription))
-      ..add(DiagnosticsProperty('successful', successful));
   }
 
   @override
@@ -250,8 +234,8 @@ abstract class _History implements History {
   const factory _History(
       {required String type,
       required String date,
-      @JsonKey(name: 'short_description') required String shortDescription,
-      @JsonKey(name: 'full_description') required String fullDescription,
+      required String shortDescription,
+      required String fullDescription,
       required bool successful}) = _$_History;
 
   factory _History.fromJson(Map<String, dynamic> json) = _$_History.fromJson;
@@ -261,10 +245,8 @@ abstract class _History implements History {
   @override
   String get date;
   @override
-  @JsonKey(name: 'short_description')
   String get shortDescription;
   @override
-  @JsonKey(name: 'full_description')
   String get fullDescription;
   @override
   bool get successful;

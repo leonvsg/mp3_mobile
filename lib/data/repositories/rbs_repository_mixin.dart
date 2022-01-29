@@ -1,7 +1,7 @@
 import 'package:mp3_mobile/data/data_sources/secure_storage_data_provider.dart';
 import 'package:mp3_mobile/data/dto/rbs/error/error_response.dart';
 
-import '../exceptions.dart';
+import '../../domain/exceptions.dart';
 
 mixin RbsRepositoryMixin {
   Future<String> getLocalSessionId() async {
@@ -20,11 +20,11 @@ mixin RbsRepositoryMixin {
     return sessionId;
   }
 
-  void handleError(ErrorResponse response) {
+  Never handleError(ErrorResponse response) {
     if (response.code == "no.session") {
       throw UnauthorizedException("SessionId not valid");
     } else {
-      throw RbsApiException('Unexpected RBS API error response: $response');
+      throw RemoteRepositoryException('Unexpected RBS API error response: $response');
     }
   }
 }

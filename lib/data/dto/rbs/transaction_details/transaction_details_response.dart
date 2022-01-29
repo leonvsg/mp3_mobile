@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mp3_mobile/data/dto/rbs/error/error_response.dart';
 

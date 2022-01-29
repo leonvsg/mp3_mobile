@@ -32,16 +32,12 @@ class _$AuthResponseTearOff {
   const _$AuthResponseTearOff();
 
   AuthResponseSuccess success(
-      {@JsonKey(name: 'session_id')
-          required String sessionId,
-      @JsonKey(name: 'login')
-          required String userLogin,
-      @JsonKey(name: 'merchant_login')
-          required String merchantLogin,
+      {required String sessionId,
+      @JsonKey(name: 'login') required String userLogin,
+      required String merchantLogin,
       String? email,
       required List<String> permissions,
-      @JsonKey(name: 'accessible_merchants')
-          required List<AccessibleMerchant> accessibleMerchants,
+      required List<AccessibleMerchant> accessibleMerchants,
       required String status}) {
     return AuthResponseSuccess(
       sessionId: sessionId,
@@ -77,16 +73,12 @@ mixin _$AuthResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
@@ -95,16 +87,12 @@ mixin _$AuthResponse {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -113,16 +101,12 @@ mixin _$AuthResponse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -191,16 +175,12 @@ abstract class $AuthResponseSuccessCopyWith<$Res>
       _$AuthResponseSuccessCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'session_id')
-          String sessionId,
-      @JsonKey(name: 'login')
-          String userLogin,
-      @JsonKey(name: 'merchant_login')
-          String merchantLogin,
+      {String sessionId,
+      @JsonKey(name: 'login') String userLogin,
+      String merchantLogin,
       String? email,
       List<String> permissions,
-      @JsonKey(name: 'accessible_merchants')
-          List<AccessibleMerchant> accessibleMerchants,
+      List<AccessibleMerchant> accessibleMerchants,
       String status});
 }
 
@@ -261,15 +241,14 @@ class _$AuthResponseSuccessCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('SUCCESS')
-class _$AuthResponseSuccess extends AuthResponseSuccess
-    with DiagnosticableTreeMixin {
+class _$AuthResponseSuccess extends AuthResponseSuccess {
   const _$AuthResponseSuccess(
-      {@JsonKey(name: 'session_id') required this.sessionId,
+      {required this.sessionId,
       @JsonKey(name: 'login') required this.userLogin,
-      @JsonKey(name: 'merchant_login') required this.merchantLogin,
+      required this.merchantLogin,
       this.email,
       required this.permissions,
-      @JsonKey(name: 'accessible_merchants') required this.accessibleMerchants,
+      required this.accessibleMerchants,
       required this.status})
       : super._();
 
@@ -277,41 +256,24 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
       _$$AuthResponseSuccessFromJson(json);
 
   @override
-  @JsonKey(name: 'session_id')
   final String sessionId;
   @override
   @JsonKey(name: 'login')
   final String userLogin;
   @override
-  @JsonKey(name: 'merchant_login')
   final String merchantLogin;
   @override
   final String? email;
   @override
   final List<String> permissions;
   @override
-  @JsonKey(name: 'accessible_merchants')
   final List<AccessibleMerchant> accessibleMerchants;
   @override
   final String status;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthResponse.success(sessionId: $sessionId, userLogin: $userLogin, merchantLogin: $merchantLogin, email: $email, permissions: $permissions, accessibleMerchants: $accessibleMerchants, status: $status)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthResponse.success'))
-      ..add(DiagnosticsProperty('sessionId', sessionId))
-      ..add(DiagnosticsProperty('userLogin', userLogin))
-      ..add(DiagnosticsProperty('merchantLogin', merchantLogin))
-      ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('permissions', permissions))
-      ..add(DiagnosticsProperty('accessibleMerchants', accessibleMerchants))
-      ..add(DiagnosticsProperty('status', status));
   }
 
   @override
@@ -351,16 +313,12 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
@@ -373,16 +331,12 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -395,16 +349,12 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -456,31 +406,24 @@ class _$AuthResponseSuccess extends AuthResponseSuccess
 
 abstract class AuthResponseSuccess extends AuthResponse {
   const factory AuthResponseSuccess(
-      {@JsonKey(name: 'session_id')
-          required String sessionId,
-      @JsonKey(name: 'login')
-          required String userLogin,
-      @JsonKey(name: 'merchant_login')
-          required String merchantLogin,
+      {required String sessionId,
+      @JsonKey(name: 'login') required String userLogin,
+      required String merchantLogin,
       String? email,
       required List<String> permissions,
-      @JsonKey(name: 'accessible_merchants')
-          required List<AccessibleMerchant> accessibleMerchants,
+      required List<AccessibleMerchant> accessibleMerchants,
       required String status}) = _$AuthResponseSuccess;
   const AuthResponseSuccess._() : super._();
 
   factory AuthResponseSuccess.fromJson(Map<String, dynamic> json) =
       _$AuthResponseSuccess.fromJson;
 
-  @JsonKey(name: 'session_id')
   String get sessionId;
   @JsonKey(name: 'login')
   String get userLogin;
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin;
   String? get email;
   List<String> get permissions;
-  @JsonKey(name: 'accessible_merchants')
   List<AccessibleMerchant> get accessibleMerchants;
   @override
   String get status;
@@ -541,8 +484,7 @@ class _$AuthResponseErrorCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('FAIL')
-class _$AuthResponseError extends AuthResponseError
-    with DiagnosticableTreeMixin {
+class _$AuthResponseError extends AuthResponseError {
   const _$AuthResponseError({required this.status, required this.error})
       : super._();
 
@@ -555,17 +497,8 @@ class _$AuthResponseError extends AuthResponseError
   final ErrorResponse error;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthResponse.error(status: $status, error: $error)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthResponse.error'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -592,16 +525,12 @@ class _$AuthResponseError extends AuthResponseError
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
@@ -613,16 +542,12 @@ class _$AuthResponseError extends AuthResponseError
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,
@@ -634,16 +559,12 @@ class _$AuthResponseError extends AuthResponseError
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            @JsonKey(name: 'session_id')
-                String sessionId,
-            @JsonKey(name: 'login')
-                String userLogin,
-            @JsonKey(name: 'merchant_login')
-                String merchantLogin,
+            String sessionId,
+            @JsonKey(name: 'login') String userLogin,
+            String merchantLogin,
             String? email,
             List<String> permissions,
-            @JsonKey(name: 'accessible_merchants')
-                List<AccessibleMerchant> accessibleMerchants,
+            List<AccessibleMerchant> accessibleMerchants,
             String status)?
         success,
     TResult Function(String status, ErrorResponse error)? error,

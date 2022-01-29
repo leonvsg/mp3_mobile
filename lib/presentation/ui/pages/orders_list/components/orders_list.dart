@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mp3_mobile/domain/bloc/orders_list_bloc.dart';
+import 'package:mp3_mobile/domain/bloc/orders_list/orders_list_bloc.dart';
 import 'package:mp3_mobile/presentation/navigation/main_navigation.dart';
+import 'package:mp3_mobile/presentation/ui/widgets/custom_sliver_app_bar.dart';
 
 import 'order_list_item.dart';
 import 'shimmer_list_item.dart';
@@ -35,21 +34,31 @@ class _OrdersListState extends State<OrdersList> {
             if (state.orders.isEmpty) {
               return const Center(child: Text('No orders found'));
             }
-            return ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return index >= state.orders.length
-                    ? const ShimmerItem()
-                    : InkWell(
-                        child: OrderListItem(state.orders[index]),
-                        onTap: () => Navigator.of(context).pushNamed(
-                            NavigationRoutes.orderPageRoute,
-                            arguments: state.orders[index]),
-                      );
-              },
-              itemCount: state.hasReachedMax
-                  ? state.orders.length
-                  : state.orders.length + 1,
+            return CustomScrollView(
               controller: _scrollController,
+              slivers: [
+                const CustomSliverAppBar(
+                  title: Text('Заказы'),
+                  expandedHeight: 100,
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return index >= state.orders.length
+                          ? const ShimmerItem()
+                          : InkWell(
+                              child: OrderListItem(state.orders[index]),
+                              onTap: () => Navigator.of(context).pushNamed(
+                                  NavigationRoutes.orderPageRoute,
+                                  arguments: state.orders[index]),
+                            );
+                    },
+                    childCount: state.hasReachedMax
+                        ? state.orders.length
+                        : state.orders.length + 1,
+                  ),
+                ),
+              ],
             );
           default:
             return const Center(child: CircularProgressIndicator.adaptive());
@@ -68,7 +77,6 @@ class _OrdersListState extends State<OrdersList> {
 
   void _onScroll() {
     if (_isBottom) {
-      log('is bottom');
       context.read<OrdersListBloc>().add(OrdersListFetch());
     }
   }

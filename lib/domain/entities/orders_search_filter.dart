@@ -1,21 +1,23 @@
+import 'package:equatable/equatable.dart';
+
 import 'date_period.dart';
 import 'amount_range.dart';
 import 'order_params.dart';
 
-class OrdersSearchFilter {
-  AmountRange? amountRange;
-  List<String>? merchantLogins;
-  List<OfdStatus>? ofdStatuses;
-  PaymentType? paymentType;
-  DatePeriod period;
-  String? orderNumber;
-  List<OrderState>? states;
-  String? mdOrder;
-  int? actionCode;
-  List<PaymentSystem>? paymentSystems;
-  String? payerEmail;
+class OrdersSearchFilter extends Equatable {
+  final AmountRange? amountRange;
+  final List<String>? merchantLogins;
+  final List<OfdStatus>? ofdStatuses;
+  final PaymentType? paymentType;
+  final DatePeriod period;
+  final String? orderNumber;
+  final List<OrderState>? states;
+  final String? mdOrder;
+  final int? actionCode;
+  final List<PaymentSystem>? paymentSystems;
+  final String? payerEmail;
 
-  OrdersSearchFilter({
+  const OrdersSearchFilter({
     this.amountRange,
     this.merchantLogins,
     this.ofdStatuses,
@@ -28,54 +30,6 @@ class OrdersSearchFilter {
     this.paymentSystems,
     this.payerEmail,
   });
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is OrdersSearchFilter &&
-          runtimeType == other.runtimeType &&
-          amountRange == other.amountRange &&
-          merchantLogins == other.merchantLogins &&
-          ofdStatuses == other.ofdStatuses &&
-          paymentType == other.paymentType &&
-          period == other.period &&
-          orderNumber == other.orderNumber &&
-          states == other.states &&
-          mdOrder == other.mdOrder &&
-          actionCode == other.actionCode &&
-          paymentSystems == other.paymentSystems &&
-          payerEmail == other.payerEmail);
-
-  @override
-  int get hashCode =>
-      amountRange.hashCode ^
-      merchantLogins.hashCode ^
-      ofdStatuses.hashCode ^
-      paymentType.hashCode ^
-      period.hashCode ^
-      orderNumber.hashCode ^
-      states.hashCode ^
-      mdOrder.hashCode ^
-      actionCode.hashCode ^
-      paymentSystems.hashCode ^
-      payerEmail.hashCode;
-
-  @override
-  String toString() {
-    return 'OrdersSearchFilter{'
-        ' amountRange: $amountRange,'
-        ' merchantLogins: $merchantLogins,'
-        ' ofdStatuses: $ofdStatuses,'
-        ' paymentType: $paymentType,'
-        ' period: $period,'
-        ' orderNumber: $orderNumber,'
-        ' states: $states,'
-        ' mdOrder: $mdOrder,'
-        ' actionCode: $actionCode,'
-        ' paymentSystems: $paymentSystems,'
-        ' payerEmail: $payerEmail,'
-        '}';
-  }
 
   OrdersSearchFilter copyWith({
     AmountRange? amountRange,
@@ -104,6 +58,25 @@ class OrdersSearchFilter {
       payerEmail: payerEmail ?? this.payerEmail,
     );
   }
+
+  @override
+  bool get stringify => true;
+
+  @override
+  List<Object?> get props =>
+      [
+        amountRange,
+        merchantLogins,
+        ofdStatuses,
+        paymentType,
+        period,
+        orderNumber,
+        states,
+        mdOrder,
+        actionCode,
+        paymentSystems,
+        payerEmail,
+      ];
 }
 
 

@@ -22,10 +22,7 @@ AvsInfo _$AvsInfoFromJson(Map<String, dynamic> json) {
 class _$AvsInfoTearOff {
   const _$AvsInfoTearOff();
 
-  _AvsInfo call(
-      {@JsonKey(name: 'avs_code') String? avsCode,
-      @JsonKey(name: 'avs_value') int? avsValue,
-      @JsonKey(name: 'avs_description') String? avsDescription}) {
+  _AvsInfo call({String? avsCode, int? avsValue, String? avsDescription}) {
     return _AvsInfo(
       avsCode: avsCode,
       avsValue: avsValue,
@@ -43,11 +40,8 @@ const $AvsInfo = _$AvsInfoTearOff();
 
 /// @nodoc
 mixin _$AvsInfo {
-  @JsonKey(name: 'avs_code')
   String? get avsCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'avs_value')
   int? get avsValue => throw _privateConstructorUsedError;
-  @JsonKey(name: 'avs_description')
   String? get avsDescription => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,10 +53,7 @@ mixin _$AvsInfo {
 abstract class $AvsInfoCopyWith<$Res> {
   factory $AvsInfoCopyWith(AvsInfo value, $Res Function(AvsInfo) then) =
       _$AvsInfoCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'avs_code') String? avsCode,
-      @JsonKey(name: 'avs_value') int? avsValue,
-      @JsonKey(name: 'avs_description') String? avsDescription});
+  $Res call({String? avsCode, int? avsValue, String? avsDescription});
 }
 
 /// @nodoc
@@ -101,10 +92,7 @@ abstract class _$AvsInfoCopyWith<$Res> implements $AvsInfoCopyWith<$Res> {
   factory _$AvsInfoCopyWith(_AvsInfo value, $Res Function(_AvsInfo) then) =
       __$AvsInfoCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'avs_code') String? avsCode,
-      @JsonKey(name: 'avs_value') int? avsValue,
-      @JsonKey(name: 'avs_description') String? avsDescription});
+  $Res call({String? avsCode, int? avsValue, String? avsDescription});
 }
 
 /// @nodoc
@@ -141,38 +129,22 @@ class __$AvsInfoCopyWithImpl<$Res> extends _$AvsInfoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AvsInfo with DiagnosticableTreeMixin implements _AvsInfo {
-  const _$_AvsInfo(
-      {@JsonKey(name: 'avs_code') this.avsCode,
-      @JsonKey(name: 'avs_value') this.avsValue,
-      @JsonKey(name: 'avs_description') this.avsDescription});
+class _$_AvsInfo implements _AvsInfo {
+  const _$_AvsInfo({this.avsCode, this.avsValue, this.avsDescription});
 
   factory _$_AvsInfo.fromJson(Map<String, dynamic> json) =>
       _$$_AvsInfoFromJson(json);
 
   @override
-  @JsonKey(name: 'avs_code')
   final String? avsCode;
   @override
-  @JsonKey(name: 'avs_value')
   final int? avsValue;
   @override
-  @JsonKey(name: 'avs_description')
   final String? avsDescription;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AvsInfo(avsCode: $avsCode, avsValue: $avsValue, avsDescription: $avsDescription)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AvsInfo'))
-      ..add(DiagnosticsProperty('avsCode', avsCode))
-      ..add(DiagnosticsProperty('avsValue', avsValue))
-      ..add(DiagnosticsProperty('avsDescription', avsDescription));
   }
 
   @override
@@ -206,20 +178,15 @@ class _$_AvsInfo with DiagnosticableTreeMixin implements _AvsInfo {
 
 abstract class _AvsInfo implements AvsInfo {
   const factory _AvsInfo(
-      {@JsonKey(name: 'avs_code') String? avsCode,
-      @JsonKey(name: 'avs_value') int? avsValue,
-      @JsonKey(name: 'avs_description') String? avsDescription}) = _$_AvsInfo;
+      {String? avsCode, int? avsValue, String? avsDescription}) = _$_AvsInfo;
 
   factory _AvsInfo.fromJson(Map<String, dynamic> json) = _$_AvsInfo.fromJson;
 
   @override
-  @JsonKey(name: 'avs_code')
   String? get avsCode;
   @override
-  @JsonKey(name: 'avs_value')
   int? get avsValue;
   @override
-  @JsonKey(name: 'avs_description')
   String? get avsDescription;
   @override
   @JsonKey(ignore: true)

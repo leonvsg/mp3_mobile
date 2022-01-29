@@ -14,7 +14,7 @@ _$_Transaction _$$_TransactionFromJson(Map<String, dynamic> json) =>
       actionCode: json['action_code'] as String?,
       currency: json['currency'] as String,
       currencyDetail: CurrencyDetail.fromJson(
-          json['currency_object'] as Map<String, dynamic>),
+          json['currency_detail'] as Map<String, dynamic>),
       merchantLogin: json['merchant_login'] as String,
       createdDate: json['created_date'] as String,
       paymentSystem: json['payment_system'] as String,
@@ -82,7 +82,7 @@ Map<String, dynamic> _$$_TransactionToJson(_$_Transaction instance) {
 
   writeNotNull('action_code', instance.actionCode);
   val['currency'] = instance.currency;
-  val['currency_object'] = instance.currencyDetail.toJson();
+  val['currency_detail'] = instance.currencyDetail.toJson();
   val['merchant_login'] = instance.merchantLogin;
   val['created_date'] = instance.createdDate;
   val['payment_system'] = instance.paymentSystem;

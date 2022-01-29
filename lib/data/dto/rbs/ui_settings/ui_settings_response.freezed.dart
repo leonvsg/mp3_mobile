@@ -32,8 +32,7 @@ class _$UiSettingsResponseTearOff {
   const _$UiSettingsResponseTearOff();
 
   UiSettingsResponseSuccess success(
-      {@JsonKey(name: 'ui_settings') required List<Attribute> uiSettings,
-      required String status}) {
+      {required List<Attribute> uiSettings, required String status}) {
     return UiSettingsResponseSuccess(
       uiSettings: uiSettings,
       status: status,
@@ -62,26 +61,20 @@ mixin _$UiSettingsResponse {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)
+    required TResult Function(List<Attribute> uiSettings, String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)?
-        success,
+    TResult Function(List<Attribute> uiSettings, String status)? success,
     TResult Function(String status, ErrorResponse error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)?
-        success,
+    TResult Function(List<Attribute> uiSettings, String status)? success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),
   }) =>
@@ -148,9 +141,7 @@ abstract class $UiSettingsResponseSuccessCopyWith<$Res>
           $Res Function(UiSettingsResponseSuccess) then) =
       _$UiSettingsResponseSuccessCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-      String status});
+  $Res call({List<Attribute> uiSettings, String status});
 }
 
 /// @nodoc
@@ -186,34 +177,22 @@ class _$UiSettingsResponseSuccessCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('SUCCESS')
-class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess
-    with DiagnosticableTreeMixin {
+class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess {
   const _$UiSettingsResponseSuccess(
-      {@JsonKey(name: 'ui_settings') required this.uiSettings,
-      required this.status})
+      {required this.uiSettings, required this.status})
       : super._();
 
   factory _$UiSettingsResponseSuccess.fromJson(Map<String, dynamic> json) =>
       _$$UiSettingsResponseSuccessFromJson(json);
 
   @override
-  @JsonKey(name: 'ui_settings')
   final List<Attribute> uiSettings;
   @override
   final String status;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'UiSettingsResponse.success(uiSettings: $uiSettings, status: $status)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UiSettingsResponse.success'))
-      ..add(DiagnosticsProperty('uiSettings', uiSettings))
-      ..add(DiagnosticsProperty('status', status));
   }
 
   @override
@@ -241,9 +220,7 @@ class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)
+    required TResult Function(List<Attribute> uiSettings, String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) {
@@ -253,9 +230,7 @@ class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)?
-        success,
+    TResult Function(List<Attribute> uiSettings, String status)? success,
     TResult Function(String status, ErrorResponse error)? error,
   }) {
     return success?.call(uiSettings, status);
@@ -264,9 +239,7 @@ class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)?
-        success,
+    TResult Function(List<Attribute> uiSettings, String status)? success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),
   }) {
@@ -315,14 +288,13 @@ class _$UiSettingsResponseSuccess extends UiSettingsResponseSuccess
 
 abstract class UiSettingsResponseSuccess extends UiSettingsResponse {
   const factory UiSettingsResponseSuccess(
-      {@JsonKey(name: 'ui_settings') required List<Attribute> uiSettings,
+      {required List<Attribute> uiSettings,
       required String status}) = _$UiSettingsResponseSuccess;
   const UiSettingsResponseSuccess._() : super._();
 
   factory UiSettingsResponseSuccess.fromJson(Map<String, dynamic> json) =
       _$UiSettingsResponseSuccess.fromJson;
 
-  @JsonKey(name: 'ui_settings')
   List<Attribute> get uiSettings;
   @override
   String get status;
@@ -383,8 +355,7 @@ class _$UiSettingsResponseErrorCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('FAIL')
-class _$UiSettingsResponseError extends UiSettingsResponseError
-    with DiagnosticableTreeMixin {
+class _$UiSettingsResponseError extends UiSettingsResponseError {
   const _$UiSettingsResponseError({required this.status, required this.error})
       : super._();
 
@@ -397,17 +368,8 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   final ErrorResponse error;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'UiSettingsResponse.error(status: $status, error: $error)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UiSettingsResponse.error'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -434,9 +396,7 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            @JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)
+    required TResult Function(List<Attribute> uiSettings, String status)
         success,
     required TResult Function(String status, ErrorResponse error) error,
   }) {
@@ -446,9 +406,7 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)?
-        success,
+    TResult Function(List<Attribute> uiSettings, String status)? success,
     TResult Function(String status, ErrorResponse error)? error,
   }) {
     return error?.call(status, this.error);
@@ -457,9 +415,7 @@ class _$UiSettingsResponseError extends UiSettingsResponseError
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(@JsonKey(name: 'ui_settings') List<Attribute> uiSettings,
-            String status)?
-        success,
+    TResult Function(List<Attribute> uiSettings, String status)? success,
     TResult Function(String status, ErrorResponse error)? error,
     required TResult orElse(),
   }) {

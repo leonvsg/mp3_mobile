@@ -45,9 +45,9 @@ dependencies:
   shimmer: ^2.0.0
   logging: ^1.0.2
   equatable: ^2.0.3
-  bloc: ^8.0.2
   bloc_concurrency: ^0.2.0
   flutter_bloc: ^8.0.1
+  email_validator: ^2.0.1
 
 dev_dependencies:
   flutter_test:

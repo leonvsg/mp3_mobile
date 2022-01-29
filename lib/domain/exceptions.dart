@@ -4,8 +4,8 @@ class UnauthorizedException implements Exception {
   UnauthorizedException(this.message);
 }
 
-class RbsApiException implements Exception {
+class RemoteRepositoryException implements Exception {
   String message;
 
-  RbsApiException(this.message);
+  RemoteRepositoryException(this.message);
 }

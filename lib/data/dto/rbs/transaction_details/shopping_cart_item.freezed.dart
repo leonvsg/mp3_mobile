@@ -26,34 +26,22 @@ class _$ShoppingCartItemTearOff {
       {required String code,
       required String name,
       required String position,
-      @JsonKey(name: 'position_integer')
-          int? positionInteger,
+      int? positionInteger,
       double? quantity,
       String? measure,
       String? amount,
       String? price,
-      @JsonKey(name: 'tax_type')
-          String? taxType,
-      @JsonKey(name: 'tax_sum')
-          String? taxSum,
-      @JsonKey(name: 'loyalty_payment_enabled')
-          required bool loyaltyPaymentEnabled,
-      @JsonKey(name: 'payment_method')
-          String? paymentMethod,
-      @JsonKey(name: 'payment_object')
-          String? paymentObject,
-      @JsonKey(name: 'item_attributes')
-          List<Attribute>? itemAttributes,
-      @JsonKey(name: 'refunded_quantity')
-          double? refundedQuantity,
-      @JsonKey(name: 'refunded_amount')
-          String? refundedAmount,
-      @JsonKey(name: 'discount_type')
-          String? discountType,
-      @JsonKey(name: 'discount_value')
-          String? discountValue,
-      @JsonKey(name: 'item_details')
-          String? itemDetails,
+      String? taxType,
+      String? taxSum,
+      required bool loyaltyPaymentEnabled,
+      String? paymentMethod,
+      String? paymentObject,
+      List<Attribute>? itemAttributes,
+      double? refundedQuantity,
+      String? refundedAmount,
+      String? discountType,
+      String? discountValue,
+      String? itemDetails,
       required bool solid}) {
     return _ShoppingCartItem(
       code: code,
@@ -92,33 +80,21 @@ mixin _$ShoppingCartItem {
   String get code => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get position => throw _privateConstructorUsedError;
-  @JsonKey(name: 'position_integer')
   int? get positionInteger => throw _privateConstructorUsedError;
   double? get quantity => throw _privateConstructorUsedError;
   String? get measure => throw _privateConstructorUsedError;
   String? get amount => throw _privateConstructorUsedError;
   String? get price => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tax_type')
   String? get taxType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tax_sum')
   String? get taxSum => throw _privateConstructorUsedError;
-  @JsonKey(name: 'loyalty_payment_enabled')
   bool get loyaltyPaymentEnabled => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_method')
   String? get paymentMethod => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_object')
   String? get paymentObject => throw _privateConstructorUsedError;
-  @JsonKey(name: 'item_attributes')
   List<Attribute>? get itemAttributes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'refunded_quantity')
   double? get refundedQuantity => throw _privateConstructorUsedError;
-  @JsonKey(name: 'refunded_amount')
   String? get refundedAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'discount_type')
   String? get discountType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'discount_value')
   String? get discountValue => throw _privateConstructorUsedError;
-  @JsonKey(name: 'item_details')
   String? get itemDetails => throw _privateConstructorUsedError;
   bool get solid => throw _privateConstructorUsedError;
 
@@ -137,22 +113,22 @@ abstract class $ShoppingCartItemCopyWith<$Res> {
       {String code,
       String name,
       String position,
-      @JsonKey(name: 'position_integer') int? positionInteger,
+      int? positionInteger,
       double? quantity,
       String? measure,
       String? amount,
       String? price,
-      @JsonKey(name: 'tax_type') String? taxType,
-      @JsonKey(name: 'tax_sum') String? taxSum,
-      @JsonKey(name: 'loyalty_payment_enabled') bool loyaltyPaymentEnabled,
-      @JsonKey(name: 'payment_method') String? paymentMethod,
-      @JsonKey(name: 'payment_object') String? paymentObject,
-      @JsonKey(name: 'item_attributes') List<Attribute>? itemAttributes,
-      @JsonKey(name: 'refunded_quantity') double? refundedQuantity,
-      @JsonKey(name: 'refunded_amount') String? refundedAmount,
-      @JsonKey(name: 'discount_type') String? discountType,
-      @JsonKey(name: 'discount_value') String? discountValue,
-      @JsonKey(name: 'item_details') String? itemDetails,
+      String? taxType,
+      String? taxSum,
+      bool loyaltyPaymentEnabled,
+      String? paymentMethod,
+      String? paymentObject,
+      List<Attribute>? itemAttributes,
+      double? refundedQuantity,
+      String? refundedAmount,
+      String? discountType,
+      String? discountValue,
+      String? itemDetails,
       bool solid});
 }
 
@@ -284,22 +260,22 @@ abstract class _$ShoppingCartItemCopyWith<$Res>
       {String code,
       String name,
       String position,
-      @JsonKey(name: 'position_integer') int? positionInteger,
+      int? positionInteger,
       double? quantity,
       String? measure,
       String? amount,
       String? price,
-      @JsonKey(name: 'tax_type') String? taxType,
-      @JsonKey(name: 'tax_sum') String? taxSum,
-      @JsonKey(name: 'loyalty_payment_enabled') bool loyaltyPaymentEnabled,
-      @JsonKey(name: 'payment_method') String? paymentMethod,
-      @JsonKey(name: 'payment_object') String? paymentObject,
-      @JsonKey(name: 'item_attributes') List<Attribute>? itemAttributes,
-      @JsonKey(name: 'refunded_quantity') double? refundedQuantity,
-      @JsonKey(name: 'refunded_amount') String? refundedAmount,
-      @JsonKey(name: 'discount_type') String? discountType,
-      @JsonKey(name: 'discount_value') String? discountValue,
-      @JsonKey(name: 'item_details') String? itemDetails,
+      String? taxType,
+      String? taxSum,
+      bool loyaltyPaymentEnabled,
+      String? paymentMethod,
+      String? paymentObject,
+      List<Attribute>? itemAttributes,
+      double? refundedQuantity,
+      String? refundedAmount,
+      String? discountType,
+      String? discountValue,
+      String? itemDetails,
       bool solid});
 }
 
@@ -424,41 +400,27 @@ class __$ShoppingCartItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShoppingCartItem
-    with DiagnosticableTreeMixin
-    implements _ShoppingCartItem {
+class _$_ShoppingCartItem implements _ShoppingCartItem {
   const _$_ShoppingCartItem(
       {required this.code,
       required this.name,
       required this.position,
-      @JsonKey(name: 'position_integer')
-          this.positionInteger,
+      this.positionInteger,
       this.quantity,
       this.measure,
       this.amount,
       this.price,
-      @JsonKey(name: 'tax_type')
-          this.taxType,
-      @JsonKey(name: 'tax_sum')
-          this.taxSum,
-      @JsonKey(name: 'loyalty_payment_enabled')
-          required this.loyaltyPaymentEnabled,
-      @JsonKey(name: 'payment_method')
-          this.paymentMethod,
-      @JsonKey(name: 'payment_object')
-          this.paymentObject,
-      @JsonKey(name: 'item_attributes')
-          this.itemAttributes,
-      @JsonKey(name: 'refunded_quantity')
-          this.refundedQuantity,
-      @JsonKey(name: 'refunded_amount')
-          this.refundedAmount,
-      @JsonKey(name: 'discount_type')
-          this.discountType,
-      @JsonKey(name: 'discount_value')
-          this.discountValue,
-      @JsonKey(name: 'item_details')
-          this.itemDetails,
+      this.taxType,
+      this.taxSum,
+      required this.loyaltyPaymentEnabled,
+      this.paymentMethod,
+      this.paymentObject,
+      this.itemAttributes,
+      this.refundedQuantity,
+      this.refundedAmount,
+      this.discountType,
+      this.discountValue,
+      this.itemDetails,
       required this.solid});
 
   factory _$_ShoppingCartItem.fromJson(Map<String, dynamic> json) =>
@@ -471,7 +433,6 @@ class _$_ShoppingCartItem
   @override
   final String position;
   @override
-  @JsonKey(name: 'position_integer')
   final int? positionInteger;
   @override
   final double? quantity;
@@ -482,71 +443,33 @@ class _$_ShoppingCartItem
   @override
   final String? price;
   @override
-  @JsonKey(name: 'tax_type')
   final String? taxType;
   @override
-  @JsonKey(name: 'tax_sum')
   final String? taxSum;
   @override
-  @JsonKey(name: 'loyalty_payment_enabled')
   final bool loyaltyPaymentEnabled;
   @override
-  @JsonKey(name: 'payment_method')
   final String? paymentMethod;
   @override
-  @JsonKey(name: 'payment_object')
   final String? paymentObject;
   @override
-  @JsonKey(name: 'item_attributes')
   final List<Attribute>? itemAttributes;
   @override
-  @JsonKey(name: 'refunded_quantity')
   final double? refundedQuantity;
   @override
-  @JsonKey(name: 'refunded_amount')
   final String? refundedAmount;
   @override
-  @JsonKey(name: 'discount_type')
   final String? discountType;
   @override
-  @JsonKey(name: 'discount_value')
   final String? discountValue;
   @override
-  @JsonKey(name: 'item_details')
   final String? itemDetails;
   @override
   final bool solid;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ShoppingCartItem(code: $code, name: $name, position: $position, positionInteger: $positionInteger, quantity: $quantity, measure: $measure, amount: $amount, price: $price, taxType: $taxType, taxSum: $taxSum, loyaltyPaymentEnabled: $loyaltyPaymentEnabled, paymentMethod: $paymentMethod, paymentObject: $paymentObject, itemAttributes: $itemAttributes, refundedQuantity: $refundedQuantity, refundedAmount: $refundedAmount, discountType: $discountType, discountValue: $discountValue, itemDetails: $itemDetails, solid: $solid)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ShoppingCartItem'))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('position', position))
-      ..add(DiagnosticsProperty('positionInteger', positionInteger))
-      ..add(DiagnosticsProperty('quantity', quantity))
-      ..add(DiagnosticsProperty('measure', measure))
-      ..add(DiagnosticsProperty('amount', amount))
-      ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('taxType', taxType))
-      ..add(DiagnosticsProperty('taxSum', taxSum))
-      ..add(DiagnosticsProperty('loyaltyPaymentEnabled', loyaltyPaymentEnabled))
-      ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
-      ..add(DiagnosticsProperty('paymentObject', paymentObject))
-      ..add(DiagnosticsProperty('itemAttributes', itemAttributes))
-      ..add(DiagnosticsProperty('refundedQuantity', refundedQuantity))
-      ..add(DiagnosticsProperty('refundedAmount', refundedAmount))
-      ..add(DiagnosticsProperty('discountType', discountType))
-      ..add(DiagnosticsProperty('discountValue', discountValue))
-      ..add(DiagnosticsProperty('itemDetails', itemDetails))
-      ..add(DiagnosticsProperty('solid', solid));
   }
 
   @override
@@ -627,34 +550,22 @@ abstract class _ShoppingCartItem implements ShoppingCartItem {
       {required String code,
       required String name,
       required String position,
-      @JsonKey(name: 'position_integer')
-          int? positionInteger,
+      int? positionInteger,
       double? quantity,
       String? measure,
       String? amount,
       String? price,
-      @JsonKey(name: 'tax_type')
-          String? taxType,
-      @JsonKey(name: 'tax_sum')
-          String? taxSum,
-      @JsonKey(name: 'loyalty_payment_enabled')
-          required bool loyaltyPaymentEnabled,
-      @JsonKey(name: 'payment_method')
-          String? paymentMethod,
-      @JsonKey(name: 'payment_object')
-          String? paymentObject,
-      @JsonKey(name: 'item_attributes')
-          List<Attribute>? itemAttributes,
-      @JsonKey(name: 'refunded_quantity')
-          double? refundedQuantity,
-      @JsonKey(name: 'refunded_amount')
-          String? refundedAmount,
-      @JsonKey(name: 'discount_type')
-          String? discountType,
-      @JsonKey(name: 'discount_value')
-          String? discountValue,
-      @JsonKey(name: 'item_details')
-          String? itemDetails,
+      String? taxType,
+      String? taxSum,
+      required bool loyaltyPaymentEnabled,
+      String? paymentMethod,
+      String? paymentObject,
+      List<Attribute>? itemAttributes,
+      double? refundedQuantity,
+      String? refundedAmount,
+      String? discountType,
+      String? discountValue,
+      String? itemDetails,
       required bool solid}) = _$_ShoppingCartItem;
 
   factory _ShoppingCartItem.fromJson(Map<String, dynamic> json) =
@@ -667,7 +578,6 @@ abstract class _ShoppingCartItem implements ShoppingCartItem {
   @override
   String get position;
   @override
-  @JsonKey(name: 'position_integer')
   int? get positionInteger;
   @override
   double? get quantity;
@@ -678,37 +588,26 @@ abstract class _ShoppingCartItem implements ShoppingCartItem {
   @override
   String? get price;
   @override
-  @JsonKey(name: 'tax_type')
   String? get taxType;
   @override
-  @JsonKey(name: 'tax_sum')
   String? get taxSum;
   @override
-  @JsonKey(name: 'loyalty_payment_enabled')
   bool get loyaltyPaymentEnabled;
   @override
-  @JsonKey(name: 'payment_method')
   String? get paymentMethod;
   @override
-  @JsonKey(name: 'payment_object')
   String? get paymentObject;
   @override
-  @JsonKey(name: 'item_attributes')
   List<Attribute>? get itemAttributes;
   @override
-  @JsonKey(name: 'refunded_quantity')
   double? get refundedQuantity;
   @override
-  @JsonKey(name: 'refunded_amount')
   String? get refundedAmount;
   @override
-  @JsonKey(name: 'discount_type')
   String? get discountType;
   @override
-  @JsonKey(name: 'discount_value')
   String? get discountValue;
   @override
-  @JsonKey(name: 'item_details')
   String? get itemDetails;
   @override
   bool get solid;

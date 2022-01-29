@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mp3_mobile/domain/entities/simple_order_data.dart';
 import 'package:mp3_mobile/presentation/provider/auth_screen_model.dart';
-import 'package:mp3_mobile/presentation/provider/main_screen_model.dart';
 import 'package:mp3_mobile/presentation/screens/auth/auth_screen.dart';
-import 'package:mp3_mobile/presentation/screens/main/main_screen.dart';
-import 'package:mp3_mobile/presentation/screens/order_details/order_details_screen.dart';
-import 'package:mp3_mobile/presentation/screens/settings/settings_screen.dart';
+import 'package:mp3_mobile/presentation/ui/pages/order_details/order_details_screen.dart';
+import 'package:mp3_mobile/presentation/ui/pages/settings/settings_screen.dart';
+import 'package:mp3_mobile/presentation/ui/pages/main/main_screen.dart';
+import 'package:mp3_mobile/presentation/ui/pages/main/main_screen_model.dart';
 import 'package:provider/provider.dart';
 
 abstract class NavigationRoutes {

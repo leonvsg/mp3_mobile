@@ -180,8 +180,7 @@ class _$TransactionListResponseSuccessCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('SUCCESS')
-class _$TransactionListResponseSuccess extends TransactionListResponseSuccess
-    with DiagnosticableTreeMixin {
+class _$TransactionListResponseSuccess extends TransactionListResponseSuccess {
   const _$TransactionListResponseSuccess(
       {required this.status, required this.list})
       : super._();
@@ -196,17 +195,8 @@ class _$TransactionListResponseSuccess extends TransactionListResponseSuccess
   final List<TransactionListItem> list;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionListResponse.success(status: $status, list: $list)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionListResponse.success'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('list', list));
   }
 
   @override
@@ -370,8 +360,7 @@ class _$TransactionListResponseFailCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @FreezedUnionValue('FAIL')
-class _$TransactionListResponseFail extends TransactionListResponseFail
-    with DiagnosticableTreeMixin {
+class _$TransactionListResponseFail extends TransactionListResponseFail {
   const _$TransactionListResponseFail(
       {required this.status, required this.error})
       : super._();
@@ -385,17 +374,8 @@ class _$TransactionListResponseFail extends TransactionListResponseFail
   final ErrorResponse error;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionListResponse.error(status: $status, error: $error)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionListResponse.error'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('error', error));
   }
 
   @override

@@ -117,7 +117,7 @@ class __$RangeCopyWithImpl<$Res> extends _$RangeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Range with DiagnosticableTreeMixin implements _Range {
+class _$_Range implements _Range {
   const _$_Range({required this.from, required this.to});
 
   factory _$_Range.fromJson(Map<String, dynamic> json) =>
@@ -129,17 +129,8 @@ class _$_Range with DiagnosticableTreeMixin implements _Range {
   final String to;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Range(from: $from, to: $to)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Range'))
-      ..add(DiagnosticsProperty('from', from))
-      ..add(DiagnosticsProperty('to', to));
   }
 
   @override

@@ -23,8 +23,7 @@ class _$CurrencyDetailTearOff {
   const _$CurrencyDetailTearOff();
 
   _CurrencyDetail call(
-      {@JsonKey(name: 'alphabetic_code') required String alphabeticCode,
-      @JsonKey(name: 'minor_unit') required int minorUnit}) {
+      {required String alphabeticCode, required int minorUnit}) {
     return _CurrencyDetail(
       alphabeticCode: alphabeticCode,
       minorUnit: minorUnit,
@@ -41,9 +40,7 @@ const $CurrencyDetail = _$CurrencyDetailTearOff();
 
 /// @nodoc
 mixin _$CurrencyDetail {
-  @JsonKey(name: 'alphabetic_code')
   String get alphabeticCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'minor_unit')
   int get minorUnit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,9 +54,7 @@ abstract class $CurrencyDetailCopyWith<$Res> {
   factory $CurrencyDetailCopyWith(
           CurrencyDetail value, $Res Function(CurrencyDetail) then) =
       _$CurrencyDetailCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'alphabetic_code') String alphabeticCode,
-      @JsonKey(name: 'minor_unit') int minorUnit});
+  $Res call({String alphabeticCode, int minorUnit});
 }
 
 /// @nodoc
@@ -96,9 +91,7 @@ abstract class _$CurrencyDetailCopyWith<$Res>
           _CurrencyDetail value, $Res Function(_CurrencyDetail) then) =
       __$CurrencyDetailCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'alphabetic_code') String alphabeticCode,
-      @JsonKey(name: 'minor_unit') int minorUnit});
+  $Res call({String alphabeticCode, int minorUnit});
 }
 
 /// @nodoc
@@ -132,35 +125,21 @@ class __$CurrencyDetailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CurrencyDetail
-    with DiagnosticableTreeMixin
-    implements _CurrencyDetail {
+class _$_CurrencyDetail implements _CurrencyDetail {
   const _$_CurrencyDetail(
-      {@JsonKey(name: 'alphabetic_code') required this.alphabeticCode,
-      @JsonKey(name: 'minor_unit') required this.minorUnit});
+      {required this.alphabeticCode, required this.minorUnit});
 
   factory _$_CurrencyDetail.fromJson(Map<String, dynamic> json) =>
       _$$_CurrencyDetailFromJson(json);
 
   @override
-  @JsonKey(name: 'alphabetic_code')
   final String alphabeticCode;
   @override
-  @JsonKey(name: 'minor_unit')
   final int minorUnit;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CurrencyDetail(alphabeticCode: $alphabeticCode, minorUnit: $minorUnit)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CurrencyDetail'))
-      ..add(DiagnosticsProperty('alphabeticCode', alphabeticCode))
-      ..add(DiagnosticsProperty('minorUnit', minorUnit));
   }
 
   @override
@@ -192,17 +171,15 @@ class _$_CurrencyDetail
 
 abstract class _CurrencyDetail implements CurrencyDetail {
   const factory _CurrencyDetail(
-      {@JsonKey(name: 'alphabetic_code') required String alphabeticCode,
-      @JsonKey(name: 'minor_unit') required int minorUnit}) = _$_CurrencyDetail;
+      {required String alphabeticCode,
+      required int minorUnit}) = _$_CurrencyDetail;
 
   factory _CurrencyDetail.fromJson(Map<String, dynamic> json) =
       _$_CurrencyDetail.fromJson;
 
   @override
-  @JsonKey(name: 'alphabetic_code')
   String get alphabeticCode;
   @override
-  @JsonKey(name: 'minor_unit')
   int get minorUnit;
   @override
   @JsonKey(ignore: true)

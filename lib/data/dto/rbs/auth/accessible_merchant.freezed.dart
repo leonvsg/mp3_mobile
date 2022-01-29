@@ -23,9 +23,9 @@ class _$AccessibleMerchantTearOff {
   const _$AccessibleMerchantTearOff();
 
   _AccessibleMerchant call(
-      {@JsonKey(name: 'merchant_login') required String merchantLogin,
-      @JsonKey(name: 'merchant_full_name') required String merchantFullName,
-      @JsonKey(name: 'merchant_type') required String merchantType}) {
+      {required String merchantLogin,
+      required String merchantFullName,
+      required String merchantType}) {
     return _AccessibleMerchant(
       merchantLogin: merchantLogin,
       merchantFullName: merchantFullName,
@@ -43,12 +43,8 @@ const $AccessibleMerchant = _$AccessibleMerchantTearOff();
 
 /// @nodoc
 mixin _$AccessibleMerchant {
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin => throw _privateConstructorUsedError;
-  @JsonKey(name: 'merchant_full_name')
-  String get merchantFullName =>
-      throw _privateConstructorUsedError; //PARENT, CHILD, VIEWABLE
-  @JsonKey(name: 'merchant_type')
+  String get merchantFullName => throw _privateConstructorUsedError;
   String get merchantType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,9 +59,7 @@ abstract class $AccessibleMerchantCopyWith<$Res> {
           AccessibleMerchant value, $Res Function(AccessibleMerchant) then) =
       _$AccessibleMerchantCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'merchant_login') String merchantLogin,
-      @JsonKey(name: 'merchant_full_name') String merchantFullName,
-      @JsonKey(name: 'merchant_type') String merchantType});
+      {String merchantLogin, String merchantFullName, String merchantType});
 }
 
 /// @nodoc
@@ -108,9 +102,7 @@ abstract class _$AccessibleMerchantCopyWith<$Res>
       __$AccessibleMerchantCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'merchant_login') String merchantLogin,
-      @JsonKey(name: 'merchant_full_name') String merchantFullName,
-      @JsonKey(name: 'merchant_type') String merchantType});
+      {String merchantLogin, String merchantFullName, String merchantType});
 }
 
 /// @nodoc
@@ -149,40 +141,25 @@ class __$AccessibleMerchantCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AccessibleMerchant
-    with DiagnosticableTreeMixin
-    implements _AccessibleMerchant {
+class _$_AccessibleMerchant implements _AccessibleMerchant {
   const _$_AccessibleMerchant(
-      {@JsonKey(name: 'merchant_login') required this.merchantLogin,
-      @JsonKey(name: 'merchant_full_name') required this.merchantFullName,
-      @JsonKey(name: 'merchant_type') required this.merchantType});
+      {required this.merchantLogin,
+      required this.merchantFullName,
+      required this.merchantType});
 
   factory _$_AccessibleMerchant.fromJson(Map<String, dynamic> json) =>
       _$$_AccessibleMerchantFromJson(json);
 
   @override
-  @JsonKey(name: 'merchant_login')
   final String merchantLogin;
   @override
-  @JsonKey(name: 'merchant_full_name')
   final String merchantFullName;
-  @override //PARENT, CHILD, VIEWABLE
-  @JsonKey(name: 'merchant_type')
+  @override
   final String merchantType;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AccessibleMerchant(merchantLogin: $merchantLogin, merchantFullName: $merchantFullName, merchantType: $merchantType)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AccessibleMerchant'))
-      ..add(DiagnosticsProperty('merchantLogin', merchantLogin))
-      ..add(DiagnosticsProperty('merchantFullName', merchantFullName))
-      ..add(DiagnosticsProperty('merchantType', merchantType));
   }
 
   @override
@@ -218,22 +195,18 @@ class _$_AccessibleMerchant
 
 abstract class _AccessibleMerchant implements AccessibleMerchant {
   const factory _AccessibleMerchant(
-          {@JsonKey(name: 'merchant_login') required String merchantLogin,
-          @JsonKey(name: 'merchant_full_name') required String merchantFullName,
-          @JsonKey(name: 'merchant_type') required String merchantType}) =
-      _$_AccessibleMerchant;
+      {required String merchantLogin,
+      required String merchantFullName,
+      required String merchantType}) = _$_AccessibleMerchant;
 
   factory _AccessibleMerchant.fromJson(Map<String, dynamic> json) =
       _$_AccessibleMerchant.fromJson;
 
   @override
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin;
   @override
-  @JsonKey(name: 'merchant_full_name')
   String get merchantFullName;
-  @override //PARENT, CHILD, VIEWABLE
-  @JsonKey(name: 'merchant_type')
+  @override
   String get merchantType;
   @override
   @JsonKey(ignore: true)

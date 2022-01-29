@@ -23,37 +23,23 @@ class _$TransactionListItemTearOff {
   const _$TransactionListItemTearOff();
 
   _TransactionListItem call(
-      {@JsonKey(name: 'action_code')
-          String? actionCode,
+      {String? actionCode,
       required String amount,
-      @JsonKey(name: 'created_date')
-          required String createdDate,
+      required String createdDate,
       required String currency,
-      @JsonKey(name: 'fee_amount')
-          required String feeAmount,
-      @JsonKey(name: 'md_order')
-          required String mdOrder,
-      @JsonKey(name: 'merchant_login')
-          required String merchantLogin,
-      @JsonKey(name: 'ofd_status')
-          String? ofdStatus,
-      @JsonKey(name: 'order_number')
-          required String orderNumber,
-      @JsonKey(name: 'payment_date')
-          String? paymentDate,
-      @JsonKey(name: 'payment_system')
-          required String paymentSystem,
-      @JsonKey(name: 'payment_type')
-          required String paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          required String paymentTypeExtension,
-      @JsonKey(name: 'refunded_amount')
-          required String refundedAmount,
+      required String feeAmount,
+      required String mdOrder,
+      required String merchantLogin,
+      String? ofdStatus,
+      required String orderNumber,
+      String? paymentDate,
+      required String paymentSystem,
+      required String paymentType,
+      required String paymentTypeExtension,
+      required String refundedAmount,
       required String state,
-      @JsonKey(name: 'short_description')
-          String? shortDescription,
-      @JsonKey(name: 'with_loyalty')
-          bool? withLoyalty}) {
+      String? shortDescription,
+      bool? withLoyalty}) {
     return _TransactionListItem(
       actionCode: actionCode,
       amount: amount,
@@ -85,36 +71,22 @@ const $TransactionListItem = _$TransactionListItemTearOff();
 
 /// @nodoc
 mixin _$TransactionListItem {
-  @JsonKey(name: 'action_code')
   String? get actionCode => throw _privateConstructorUsedError;
   String get amount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_date')
   String get createdDate => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
-  @JsonKey(name: 'fee_amount')
   String get feeAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'md_order')
   String get mdOrder => throw _privateConstructorUsedError;
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ofd_status')
   String? get ofdStatus => throw _privateConstructorUsedError;
-  @JsonKey(name: 'order_number')
   String get orderNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_date')
   String? get paymentDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_system')
   String get paymentSystem => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_type')
   String get paymentType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_type_extension')
   String get paymentTypeExtension => throw _privateConstructorUsedError;
-  @JsonKey(name: 'refunded_amount')
   String get refundedAmount => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
-  @JsonKey(name: 'short_description')
   String? get shortDescription => throw _privateConstructorUsedError;
-  @JsonKey(name: 'with_loyalty')
   bool? get withLoyalty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -129,23 +101,23 @@ abstract class $TransactionListItemCopyWith<$Res> {
           TransactionListItem value, $Res Function(TransactionListItem) then) =
       _$TransactionListItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'action_code') String? actionCode,
+      {String? actionCode,
       String amount,
-      @JsonKey(name: 'created_date') String createdDate,
+      String createdDate,
       String currency,
-      @JsonKey(name: 'fee_amount') String feeAmount,
-      @JsonKey(name: 'md_order') String mdOrder,
-      @JsonKey(name: 'merchant_login') String merchantLogin,
-      @JsonKey(name: 'ofd_status') String? ofdStatus,
-      @JsonKey(name: 'order_number') String orderNumber,
-      @JsonKey(name: 'payment_date') String? paymentDate,
-      @JsonKey(name: 'payment_system') String paymentSystem,
-      @JsonKey(name: 'payment_type') String paymentType,
-      @JsonKey(name: 'payment_type_extension') String paymentTypeExtension,
-      @JsonKey(name: 'refunded_amount') String refundedAmount,
+      String feeAmount,
+      String mdOrder,
+      String merchantLogin,
+      String? ofdStatus,
+      String orderNumber,
+      String? paymentDate,
+      String paymentSystem,
+      String paymentType,
+      String paymentTypeExtension,
+      String refundedAmount,
       String state,
-      @JsonKey(name: 'short_description') String? shortDescription,
-      @JsonKey(name: 'with_loyalty') bool? withLoyalty});
+      String? shortDescription,
+      bool? withLoyalty});
 }
 
 /// @nodoc
@@ -258,23 +230,23 @@ abstract class _$TransactionListItemCopyWith<$Res>
       __$TransactionListItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'action_code') String? actionCode,
+      {String? actionCode,
       String amount,
-      @JsonKey(name: 'created_date') String createdDate,
+      String createdDate,
       String currency,
-      @JsonKey(name: 'fee_amount') String feeAmount,
-      @JsonKey(name: 'md_order') String mdOrder,
-      @JsonKey(name: 'merchant_login') String merchantLogin,
-      @JsonKey(name: 'ofd_status') String? ofdStatus,
-      @JsonKey(name: 'order_number') String orderNumber,
-      @JsonKey(name: 'payment_date') String? paymentDate,
-      @JsonKey(name: 'payment_system') String paymentSystem,
-      @JsonKey(name: 'payment_type') String paymentType,
-      @JsonKey(name: 'payment_type_extension') String paymentTypeExtension,
-      @JsonKey(name: 'refunded_amount') String refundedAmount,
+      String feeAmount,
+      String mdOrder,
+      String merchantLogin,
+      String? ofdStatus,
+      String orderNumber,
+      String? paymentDate,
+      String paymentSystem,
+      String paymentType,
+      String paymentTypeExtension,
+      String refundedAmount,
       String state,
-      @JsonKey(name: 'short_description') String? shortDescription,
-      @JsonKey(name: 'with_loyalty') bool? withLoyalty});
+      String? shortDescription,
+      bool? withLoyalty});
 }
 
 /// @nodoc
@@ -383,121 +355,67 @@ class __$TransactionListItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TransactionListItem
-    with DiagnosticableTreeMixin
-    implements _TransactionListItem {
+class _$_TransactionListItem implements _TransactionListItem {
   const _$_TransactionListItem(
-      {@JsonKey(name: 'action_code')
-          this.actionCode,
+      {this.actionCode,
       required this.amount,
-      @JsonKey(name: 'created_date')
-          required this.createdDate,
+      required this.createdDate,
       required this.currency,
-      @JsonKey(name: 'fee_amount')
-          required this.feeAmount,
-      @JsonKey(name: 'md_order')
-          required this.mdOrder,
-      @JsonKey(name: 'merchant_login')
-          required this.merchantLogin,
-      @JsonKey(name: 'ofd_status')
-          this.ofdStatus,
-      @JsonKey(name: 'order_number')
-          required this.orderNumber,
-      @JsonKey(name: 'payment_date')
-          this.paymentDate,
-      @JsonKey(name: 'payment_system')
-          required this.paymentSystem,
-      @JsonKey(name: 'payment_type')
-          required this.paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          required this.paymentTypeExtension,
-      @JsonKey(name: 'refunded_amount')
-          required this.refundedAmount,
+      required this.feeAmount,
+      required this.mdOrder,
+      required this.merchantLogin,
+      this.ofdStatus,
+      required this.orderNumber,
+      this.paymentDate,
+      required this.paymentSystem,
+      required this.paymentType,
+      required this.paymentTypeExtension,
+      required this.refundedAmount,
       required this.state,
-      @JsonKey(name: 'short_description')
-          this.shortDescription,
-      @JsonKey(name: 'with_loyalty')
-          this.withLoyalty});
+      this.shortDescription,
+      this.withLoyalty});
 
   factory _$_TransactionListItem.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionListItemFromJson(json);
 
   @override
-  @JsonKey(name: 'action_code')
   final String? actionCode;
   @override
   final String amount;
   @override
-  @JsonKey(name: 'created_date')
   final String createdDate;
   @override
   final String currency;
   @override
-  @JsonKey(name: 'fee_amount')
   final String feeAmount;
   @override
-  @JsonKey(name: 'md_order')
   final String mdOrder;
   @override
-  @JsonKey(name: 'merchant_login')
   final String merchantLogin;
   @override
-  @JsonKey(name: 'ofd_status')
   final String? ofdStatus;
   @override
-  @JsonKey(name: 'order_number')
   final String orderNumber;
   @override
-  @JsonKey(name: 'payment_date')
   final String? paymentDate;
   @override
-  @JsonKey(name: 'payment_system')
   final String paymentSystem;
   @override
-  @JsonKey(name: 'payment_type')
   final String paymentType;
   @override
-  @JsonKey(name: 'payment_type_extension')
   final String paymentTypeExtension;
   @override
-  @JsonKey(name: 'refunded_amount')
   final String refundedAmount;
   @override
   final String state;
   @override
-  @JsonKey(name: 'short_description')
   final String? shortDescription;
   @override
-  @JsonKey(name: 'with_loyalty')
   final bool? withLoyalty;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TransactionListItem(actionCode: $actionCode, amount: $amount, createdDate: $createdDate, currency: $currency, feeAmount: $feeAmount, mdOrder: $mdOrder, merchantLogin: $merchantLogin, ofdStatus: $ofdStatus, orderNumber: $orderNumber, paymentDate: $paymentDate, paymentSystem: $paymentSystem, paymentType: $paymentType, paymentTypeExtension: $paymentTypeExtension, refundedAmount: $refundedAmount, state: $state, shortDescription: $shortDescription, withLoyalty: $withLoyalty)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TransactionListItem'))
-      ..add(DiagnosticsProperty('actionCode', actionCode))
-      ..add(DiagnosticsProperty('amount', amount))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('currency', currency))
-      ..add(DiagnosticsProperty('feeAmount', feeAmount))
-      ..add(DiagnosticsProperty('mdOrder', mdOrder))
-      ..add(DiagnosticsProperty('merchantLogin', merchantLogin))
-      ..add(DiagnosticsProperty('ofdStatus', ofdStatus))
-      ..add(DiagnosticsProperty('orderNumber', orderNumber))
-      ..add(DiagnosticsProperty('paymentDate', paymentDate))
-      ..add(DiagnosticsProperty('paymentSystem', paymentSystem))
-      ..add(DiagnosticsProperty('paymentType', paymentType))
-      ..add(DiagnosticsProperty('paymentTypeExtension', paymentTypeExtension))
-      ..add(DiagnosticsProperty('refundedAmount', refundedAmount))
-      ..add(DiagnosticsProperty('state', state))
-      ..add(DiagnosticsProperty('shortDescription', shortDescription))
-      ..add(DiagnosticsProperty('withLoyalty', withLoyalty));
   }
 
   @override
@@ -570,88 +488,60 @@ class _$_TransactionListItem
 
 abstract class _TransactionListItem implements TransactionListItem {
   const factory _TransactionListItem(
-      {@JsonKey(name: 'action_code')
-          String? actionCode,
+      {String? actionCode,
       required String amount,
-      @JsonKey(name: 'created_date')
-          required String createdDate,
+      required String createdDate,
       required String currency,
-      @JsonKey(name: 'fee_amount')
-          required String feeAmount,
-      @JsonKey(name: 'md_order')
-          required String mdOrder,
-      @JsonKey(name: 'merchant_login')
-          required String merchantLogin,
-      @JsonKey(name: 'ofd_status')
-          String? ofdStatus,
-      @JsonKey(name: 'order_number')
-          required String orderNumber,
-      @JsonKey(name: 'payment_date')
-          String? paymentDate,
-      @JsonKey(name: 'payment_system')
-          required String paymentSystem,
-      @JsonKey(name: 'payment_type')
-          required String paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          required String paymentTypeExtension,
-      @JsonKey(name: 'refunded_amount')
-          required String refundedAmount,
+      required String feeAmount,
+      required String mdOrder,
+      required String merchantLogin,
+      String? ofdStatus,
+      required String orderNumber,
+      String? paymentDate,
+      required String paymentSystem,
+      required String paymentType,
+      required String paymentTypeExtension,
+      required String refundedAmount,
       required String state,
-      @JsonKey(name: 'short_description')
-          String? shortDescription,
-      @JsonKey(name: 'with_loyalty')
-          bool? withLoyalty}) = _$_TransactionListItem;
+      String? shortDescription,
+      bool? withLoyalty}) = _$_TransactionListItem;
 
   factory _TransactionListItem.fromJson(Map<String, dynamic> json) =
       _$_TransactionListItem.fromJson;
 
   @override
-  @JsonKey(name: 'action_code')
   String? get actionCode;
   @override
   String get amount;
   @override
-  @JsonKey(name: 'created_date')
   String get createdDate;
   @override
   String get currency;
   @override
-  @JsonKey(name: 'fee_amount')
   String get feeAmount;
   @override
-  @JsonKey(name: 'md_order')
   String get mdOrder;
   @override
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin;
   @override
-  @JsonKey(name: 'ofd_status')
   String? get ofdStatus;
   @override
-  @JsonKey(name: 'order_number')
   String get orderNumber;
   @override
-  @JsonKey(name: 'payment_date')
   String? get paymentDate;
   @override
-  @JsonKey(name: 'payment_system')
   String get paymentSystem;
   @override
-  @JsonKey(name: 'payment_type')
   String get paymentType;
   @override
-  @JsonKey(name: 'payment_type_extension')
   String get paymentTypeExtension;
   @override
-  @JsonKey(name: 'refunded_amount')
   String get refundedAmount;
   @override
   String get state;
   @override
-  @JsonKey(name: 'short_description')
   String? get shortDescription;
   @override
-  @JsonKey(name: 'with_loyalty')
   bool? get withLoyalty;
   @override
   @JsonKey(ignore: true)

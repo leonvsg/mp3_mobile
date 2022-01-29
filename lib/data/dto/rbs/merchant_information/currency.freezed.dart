@@ -23,8 +23,8 @@ class _$CurrencyTearOff {
   const _$CurrencyTearOff();
 
   _Currency call(
-      {@JsonKey(name: 'currency_name') required String currencyName,
-      @JsonKey(name: 'minor_unit') required int minorUnit,
+      {required String currencyName,
+      required int minorUnit,
       @JsonKey(name: 'default') required bool isDefault}) {
     return _Currency(
       currencyName: currencyName,
@@ -43,9 +43,7 @@ const $Currency = _$CurrencyTearOff();
 
 /// @nodoc
 mixin _$Currency {
-  @JsonKey(name: 'currency_name')
   String get currencyName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'minor_unit')
   int get minorUnit => throw _privateConstructorUsedError;
   @JsonKey(name: 'default')
   bool get isDefault => throw _privateConstructorUsedError;
@@ -61,8 +59,8 @@ abstract class $CurrencyCopyWith<$Res> {
   factory $CurrencyCopyWith(Currency value, $Res Function(Currency) then) =
       _$CurrencyCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'currency_name') String currencyName,
-      @JsonKey(name: 'minor_unit') int minorUnit,
+      {String currencyName,
+      int minorUnit,
       @JsonKey(name: 'default') bool isDefault});
 }
 
@@ -103,8 +101,8 @@ abstract class _$CurrencyCopyWith<$Res> implements $CurrencyCopyWith<$Res> {
       __$CurrencyCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'currency_name') String currencyName,
-      @JsonKey(name: 'minor_unit') int minorUnit,
+      {String currencyName,
+      int minorUnit,
       @JsonKey(name: 'default') bool isDefault});
 }
 
@@ -142,38 +140,26 @@ class __$CurrencyCopyWithImpl<$Res> extends _$CurrencyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Currency with DiagnosticableTreeMixin implements _Currency {
+class _$_Currency implements _Currency {
   const _$_Currency(
-      {@JsonKey(name: 'currency_name') required this.currencyName,
-      @JsonKey(name: 'minor_unit') required this.minorUnit,
+      {required this.currencyName,
+      required this.minorUnit,
       @JsonKey(name: 'default') required this.isDefault});
 
   factory _$_Currency.fromJson(Map<String, dynamic> json) =>
       _$$_CurrencyFromJson(json);
 
   @override
-  @JsonKey(name: 'currency_name')
   final String currencyName;
   @override
-  @JsonKey(name: 'minor_unit')
   final int minorUnit;
   @override
   @JsonKey(name: 'default')
   final bool isDefault;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Currency(currencyName: $currencyName, minorUnit: $minorUnit, isDefault: $isDefault)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Currency'))
-      ..add(DiagnosticsProperty('currencyName', currencyName))
-      ..add(DiagnosticsProperty('minorUnit', minorUnit))
-      ..add(DiagnosticsProperty('isDefault', isDefault));
   }
 
   @override
@@ -207,17 +193,15 @@ class _$_Currency with DiagnosticableTreeMixin implements _Currency {
 
 abstract class _Currency implements Currency {
   const factory _Currency(
-      {@JsonKey(name: 'currency_name') required String currencyName,
-      @JsonKey(name: 'minor_unit') required int minorUnit,
+      {required String currencyName,
+      required int minorUnit,
       @JsonKey(name: 'default') required bool isDefault}) = _$_Currency;
 
   factory _Currency.fromJson(Map<String, dynamic> json) = _$_Currency.fromJson;
 
   @override
-  @JsonKey(name: 'currency_name')
   String get currencyName;
   @override
-  @JsonKey(name: 'minor_unit')
   int get minorUnit;
   @override
   @JsonKey(name: 'default')

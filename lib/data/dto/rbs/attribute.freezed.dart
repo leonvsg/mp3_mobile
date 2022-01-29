@@ -119,7 +119,7 @@ class __$AttributeCopyWithImpl<$Res> extends _$AttributeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Attribute with DiagnosticableTreeMixin implements _Attribute {
+class _$_Attribute implements _Attribute {
   const _$_Attribute({required this.name, required this.value});
 
   factory _$_Attribute.fromJson(Map<String, dynamic> json) =>
@@ -131,17 +131,8 @@ class _$_Attribute with DiagnosticableTreeMixin implements _Attribute {
   final String value;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Attribute(name: $name, value: $value)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Attribute'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('value', value));
   }
 
   @override

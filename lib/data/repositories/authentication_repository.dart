@@ -6,8 +6,6 @@ import 'package:mp3_mobile/data/dto/rbs/auth/auth_response.dart';
 import 'package:mp3_mobile/data/dto/rbs/mapper.dart';
 import 'package:mp3_mobile/domain/repositories.dart';
 
-enum AuthenticationStatus { unknown, authenticated, unauthenticated, error }
-
 class RbsAuthenticationRepository implements AuthenticationRepository {
   final _controller = StreamController<AuthenticationStatus>();
   final RbsApiService _remoteService;
@@ -15,12 +13,14 @@ class RbsAuthenticationRepository implements AuthenticationRepository {
 
   RbsAuthenticationRepository(this._remoteService, this._localService);
 
+  @override
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
     yield AuthenticationStatus.unauthenticated;
     yield* _controller.stream;
   }
 
+  @override
   Future<void> logIn({
     required String login,
     required String password,
@@ -41,10 +41,12 @@ class RbsAuthenticationRepository implements AuthenticationRepository {
     }
   }
 
-  void logOut() {
+  @override
+  Future<void> logOut() async {
     //TODO: implement log out
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 
+  @override
   void dispose() => _controller.close();
 }

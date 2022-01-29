@@ -23,77 +23,46 @@ class _$TransactionTearOff {
   const _$TransactionTearOff();
 
   _Transaction call(
-      {@JsonKey(name: 'md_order')
-          required String mdOrder,
-      @JsonKey(name: 'order_number')
-          required String orderNumber,
+      {required String mdOrder,
+      required String orderNumber,
       required String state,
-      @JsonKey(name: 'action_code')
-          String? actionCode,
+      String? actionCode,
       required String currency,
-      @JsonKey(name: 'currency_object')
-          required CurrencyDetail currencyDetail,
-      @JsonKey(name: 'merchant_login')
-          required String merchantLogin,
-      @JsonKey(name: 'created_date')
-          required String createdDate,
-      @JsonKey(name: 'payment_system')
-          required String paymentSystem,
-      @JsonKey(name: 'fraud_status')
-          required String fraudStatus,
-      @JsonKey(name: 'registered_amount')
-          required String registeredAmount,
-      @JsonKey(name: 'deposited_amount')
-          String? depositedAmount,
-      @JsonKey(name: 'refunded_amount')
-          String? refundedAmount,
-      @JsonKey(name: 'fee_amount')
-          required String feeAmount,
+      required CurrencyDetail currencyDetail,
+      required String merchantLogin,
+      required String createdDate,
+      required String paymentSystem,
+      required String fraudStatus,
+      required String registeredAmount,
+      String? depositedAmount,
+      String? refundedAmount,
+      required String feeAmount,
       required String amount,
       String? ip,
-      @JsonKey(name: 'auth_date')
-          String? authDate,
-      @JsonKey(name: 'payment_type')
-          required String paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          required String paymentTypeExtension,
-      @JsonKey(name: 'ofd_status')
-          String? ofdStatus,
-      @JsonKey(name: 'masked_pan')
-          String? maskedPan,
-      @JsonKey(name: 'issuer_info')
-          Issuer? issuer,
+      String? authDate,
+      required String paymentType,
+      required String paymentTypeExtension,
+      String? ofdStatus,
+      String? maskedPan,
+      @JsonKey(name: 'issuer_info') Issuer? issuer,
       String? cardholder,
-      @JsonKey(name: 'card_expiry')
-          String? cardExpiry,
+      String? cardExpiry,
       String? eci,
-      @JsonKey(name: 'order_params')
-          required List<Attribute> orderParams,
+      required List<Attribute> orderParams,
       required List<History> history,
-      @JsonKey(name: 'payer_data')
-          PayerData? payerData,
-      @JsonKey(name: 'with_loyalty')
-          required bool withLoyalty,
+      PayerData? payerData,
+      required bool withLoyalty,
       List<Loyalty>? loyalties,
-      @JsonKey(name: 'credit_operation')
-          required bool creditOperation,
-      @JsonKey(name: 'expiration_date')
-          String? expirationDate,
-      @JsonKey(name: 'last_refunded_date')
-          String? lastRefundedDate,
-      @JsonKey(name: 'completion_date')
-          String? completionDate,
+      required bool creditOperation,
+      String? expirationDate,
+      String? lastRefundedDate,
+      String? completionDate,
       String? description,
-      @JsonKey(name: 'payment_page_url')
-          String? paymentPageUrl,
-      @JsonKey(name: 'payment_method')
-          String? paymentMethod,
-      @JsonKey(name: 'external_sca_exemption_indicator')
-          String? externalScaExemptionIndicator,
-      @JsonKey(name: 'avs_info')
-          AvsInfo? avsInfo,
-      @JsonKey(name: 'shopping_cart')
-          ShoppingCart? shoppingCart}) {
+      String? paymentPageUrl,
+      String? paymentMethod,
+      String? externalScaExemptionIndicator,
+      AvsInfo? avsInfo,
+      ShoppingCart? shoppingCart}) {
     return _Transaction(
       mdOrder: mdOrder,
       orderNumber: orderNumber,
@@ -148,32 +117,20 @@ const $Transaction = _$TransactionTearOff();
 
 /// @nodoc
 mixin _$Transaction {
-  @JsonKey(name: 'md_order')
   String get mdOrder => throw _privateConstructorUsedError;
-  @JsonKey(name: 'order_number')
   String get orderNumber => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
-  @JsonKey(name: 'action_code')
   String? get actionCode => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
-  @JsonKey(name: 'currency_object')
   CurrencyDetail get currencyDetail => throw _privateConstructorUsedError;
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_date')
   String get createdDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_system')
   String get paymentSystem => throw _privateConstructorUsedError;
-  @JsonKey(name: 'fraud_status')
   String get fraudStatus =>
       throw _privateConstructorUsedError; //NO_FRAUD, FRAUD_DETECTED
-  @JsonKey(name: 'registered_amount')
   String get registeredAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'deposited_amount')
   String? get depositedAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'refunded_amount')
   String? get refundedAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'fee_amount')
   String get feeAmount =>
       throw _privateConstructorUsedError; // the value of this column depends on the order state
 // CREATED, REVERSED, DECLINED: the registered amount
@@ -181,50 +138,32 @@ mixin _$Transaction {
 // DEPOSITED, REFUNDED: deposited amount
   String get amount => throw _privateConstructorUsedError;
   String? get ip => throw _privateConstructorUsedError;
-  @JsonKey(name: 'auth_date')
   String? get authDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_type')
   String get paymentType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_type_extension')
   String get paymentTypeExtension => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ofd_status')
   String? get ofdStatus => throw _privateConstructorUsedError;
-  @JsonKey(name: 'masked_pan')
   String? get maskedPan => throw _privateConstructorUsedError;
   @JsonKey(name: 'issuer_info')
   Issuer? get issuer => throw _privateConstructorUsedError;
   String? get cardholder => throw _privateConstructorUsedError;
-  @JsonKey(name: 'card_expiry')
   String? get cardExpiry => throw _privateConstructorUsedError;
   String? get eci =>
       throw _privateConstructorUsedError; //01, 02, 05, 06, 07, 09, 10
-  @JsonKey(name: 'order_params')
   List<Attribute> get orderParams => throw _privateConstructorUsedError;
   List<History> get history => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payer_data')
   PayerData? get payerData => throw _privateConstructorUsedError;
-  @JsonKey(name: 'with_loyalty')
   bool get withLoyalty => throw _privateConstructorUsedError;
   List<Loyalty>? get loyalties => throw _privateConstructorUsedError;
-  @JsonKey(name: 'credit_operation')
   bool get creditOperation => throw _privateConstructorUsedError;
-  @JsonKey(name: 'expiration_date')
   String? get expirationDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'last_refunded_date')
   String? get lastRefundedDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'completion_date')
   String? get completionDate => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_page_url')
   String? get paymentPageUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'payment_method')
   String? get paymentMethod => throw _privateConstructorUsedError;
-  @JsonKey(name: 'external_sca_exemption_indicator')
   String? get externalScaExemptionIndicator =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: 'avs_info')
   AvsInfo? get avsInfo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'shopping_cart')
   ShoppingCart? get shoppingCart => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -239,77 +178,46 @@ abstract class $TransactionCopyWith<$Res> {
           Transaction value, $Res Function(Transaction) then) =
       _$TransactionCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'md_order')
-          String mdOrder,
-      @JsonKey(name: 'order_number')
-          String orderNumber,
+      {String mdOrder,
+      String orderNumber,
       String state,
-      @JsonKey(name: 'action_code')
-          String? actionCode,
+      String? actionCode,
       String currency,
-      @JsonKey(name: 'currency_object')
-          CurrencyDetail currencyDetail,
-      @JsonKey(name: 'merchant_login')
-          String merchantLogin,
-      @JsonKey(name: 'created_date')
-          String createdDate,
-      @JsonKey(name: 'payment_system')
-          String paymentSystem,
-      @JsonKey(name: 'fraud_status')
-          String fraudStatus,
-      @JsonKey(name: 'registered_amount')
-          String registeredAmount,
-      @JsonKey(name: 'deposited_amount')
-          String? depositedAmount,
-      @JsonKey(name: 'refunded_amount')
-          String? refundedAmount,
-      @JsonKey(name: 'fee_amount')
-          String feeAmount,
+      CurrencyDetail currencyDetail,
+      String merchantLogin,
+      String createdDate,
+      String paymentSystem,
+      String fraudStatus,
+      String registeredAmount,
+      String? depositedAmount,
+      String? refundedAmount,
+      String feeAmount,
       String amount,
       String? ip,
-      @JsonKey(name: 'auth_date')
-          String? authDate,
-      @JsonKey(name: 'payment_type')
-          String paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          String paymentTypeExtension,
-      @JsonKey(name: 'ofd_status')
-          String? ofdStatus,
-      @JsonKey(name: 'masked_pan')
-          String? maskedPan,
-      @JsonKey(name: 'issuer_info')
-          Issuer? issuer,
+      String? authDate,
+      String paymentType,
+      String paymentTypeExtension,
+      String? ofdStatus,
+      String? maskedPan,
+      @JsonKey(name: 'issuer_info') Issuer? issuer,
       String? cardholder,
-      @JsonKey(name: 'card_expiry')
-          String? cardExpiry,
+      String? cardExpiry,
       String? eci,
-      @JsonKey(name: 'order_params')
-          List<Attribute> orderParams,
+      List<Attribute> orderParams,
       List<History> history,
-      @JsonKey(name: 'payer_data')
-          PayerData? payerData,
-      @JsonKey(name: 'with_loyalty')
-          bool withLoyalty,
+      PayerData? payerData,
+      bool withLoyalty,
       List<Loyalty>? loyalties,
-      @JsonKey(name: 'credit_operation')
-          bool creditOperation,
-      @JsonKey(name: 'expiration_date')
-          String? expirationDate,
-      @JsonKey(name: 'last_refunded_date')
-          String? lastRefundedDate,
-      @JsonKey(name: 'completion_date')
-          String? completionDate,
+      bool creditOperation,
+      String? expirationDate,
+      String? lastRefundedDate,
+      String? completionDate,
       String? description,
-      @JsonKey(name: 'payment_page_url')
-          String? paymentPageUrl,
-      @JsonKey(name: 'payment_method')
-          String? paymentMethod,
-      @JsonKey(name: 'external_sca_exemption_indicator')
-          String? externalScaExemptionIndicator,
-      @JsonKey(name: 'avs_info')
-          AvsInfo? avsInfo,
-      @JsonKey(name: 'shopping_cart')
-          ShoppingCart? shoppingCart});
+      String? paymentPageUrl,
+      String? paymentMethod,
+      String? externalScaExemptionIndicator,
+      AvsInfo? avsInfo,
+      ShoppingCart? shoppingCart});
 
   $CurrencyDetailCopyWith<$Res> get currencyDetail;
   $IssuerCopyWith<$Res>? get issuer;
@@ -593,77 +501,46 @@ abstract class _$TransactionCopyWith<$Res>
       __$TransactionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'md_order')
-          String mdOrder,
-      @JsonKey(name: 'order_number')
-          String orderNumber,
+      {String mdOrder,
+      String orderNumber,
       String state,
-      @JsonKey(name: 'action_code')
-          String? actionCode,
+      String? actionCode,
       String currency,
-      @JsonKey(name: 'currency_object')
-          CurrencyDetail currencyDetail,
-      @JsonKey(name: 'merchant_login')
-          String merchantLogin,
-      @JsonKey(name: 'created_date')
-          String createdDate,
-      @JsonKey(name: 'payment_system')
-          String paymentSystem,
-      @JsonKey(name: 'fraud_status')
-          String fraudStatus,
-      @JsonKey(name: 'registered_amount')
-          String registeredAmount,
-      @JsonKey(name: 'deposited_amount')
-          String? depositedAmount,
-      @JsonKey(name: 'refunded_amount')
-          String? refundedAmount,
-      @JsonKey(name: 'fee_amount')
-          String feeAmount,
+      CurrencyDetail currencyDetail,
+      String merchantLogin,
+      String createdDate,
+      String paymentSystem,
+      String fraudStatus,
+      String registeredAmount,
+      String? depositedAmount,
+      String? refundedAmount,
+      String feeAmount,
       String amount,
       String? ip,
-      @JsonKey(name: 'auth_date')
-          String? authDate,
-      @JsonKey(name: 'payment_type')
-          String paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          String paymentTypeExtension,
-      @JsonKey(name: 'ofd_status')
-          String? ofdStatus,
-      @JsonKey(name: 'masked_pan')
-          String? maskedPan,
-      @JsonKey(name: 'issuer_info')
-          Issuer? issuer,
+      String? authDate,
+      String paymentType,
+      String paymentTypeExtension,
+      String? ofdStatus,
+      String? maskedPan,
+      @JsonKey(name: 'issuer_info') Issuer? issuer,
       String? cardholder,
-      @JsonKey(name: 'card_expiry')
-          String? cardExpiry,
+      String? cardExpiry,
       String? eci,
-      @JsonKey(name: 'order_params')
-          List<Attribute> orderParams,
+      List<Attribute> orderParams,
       List<History> history,
-      @JsonKey(name: 'payer_data')
-          PayerData? payerData,
-      @JsonKey(name: 'with_loyalty')
-          bool withLoyalty,
+      PayerData? payerData,
+      bool withLoyalty,
       List<Loyalty>? loyalties,
-      @JsonKey(name: 'credit_operation')
-          bool creditOperation,
-      @JsonKey(name: 'expiration_date')
-          String? expirationDate,
-      @JsonKey(name: 'last_refunded_date')
-          String? lastRefundedDate,
-      @JsonKey(name: 'completion_date')
-          String? completionDate,
+      bool creditOperation,
+      String? expirationDate,
+      String? lastRefundedDate,
+      String? completionDate,
       String? description,
-      @JsonKey(name: 'payment_page_url')
-          String? paymentPageUrl,
-      @JsonKey(name: 'payment_method')
-          String? paymentMethod,
-      @JsonKey(name: 'external_sca_exemption_indicator')
-          String? externalScaExemptionIndicator,
-      @JsonKey(name: 'avs_info')
-          AvsInfo? avsInfo,
-      @JsonKey(name: 'shopping_cart')
-          ShoppingCart? shoppingCart});
+      String? paymentPageUrl,
+      String? paymentMethod,
+      String? externalScaExemptionIndicator,
+      AvsInfo? avsInfo,
+      ShoppingCart? shoppingCart});
 
   @override
   $CurrencyDetailCopyWith<$Res> get currencyDetail;
@@ -897,122 +774,79 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
+class _$_Transaction implements _Transaction {
   const _$_Transaction(
-      {@JsonKey(name: 'md_order')
-          required this.mdOrder,
-      @JsonKey(name: 'order_number')
-          required this.orderNumber,
+      {required this.mdOrder,
+      required this.orderNumber,
       required this.state,
-      @JsonKey(name: 'action_code')
-          this.actionCode,
+      this.actionCode,
       required this.currency,
-      @JsonKey(name: 'currency_object')
-          required this.currencyDetail,
-      @JsonKey(name: 'merchant_login')
-          required this.merchantLogin,
-      @JsonKey(name: 'created_date')
-          required this.createdDate,
-      @JsonKey(name: 'payment_system')
-          required this.paymentSystem,
-      @JsonKey(name: 'fraud_status')
-          required this.fraudStatus,
-      @JsonKey(name: 'registered_amount')
-          required this.registeredAmount,
-      @JsonKey(name: 'deposited_amount')
-          this.depositedAmount,
-      @JsonKey(name: 'refunded_amount')
-          this.refundedAmount,
-      @JsonKey(name: 'fee_amount')
-          required this.feeAmount,
+      required this.currencyDetail,
+      required this.merchantLogin,
+      required this.createdDate,
+      required this.paymentSystem,
+      required this.fraudStatus,
+      required this.registeredAmount,
+      this.depositedAmount,
+      this.refundedAmount,
+      required this.feeAmount,
       required this.amount,
       this.ip,
-      @JsonKey(name: 'auth_date')
-          this.authDate,
-      @JsonKey(name: 'payment_type')
-          required this.paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          required this.paymentTypeExtension,
-      @JsonKey(name: 'ofd_status')
-          this.ofdStatus,
-      @JsonKey(name: 'masked_pan')
-          this.maskedPan,
-      @JsonKey(name: 'issuer_info')
-          this.issuer,
+      this.authDate,
+      required this.paymentType,
+      required this.paymentTypeExtension,
+      this.ofdStatus,
+      this.maskedPan,
+      @JsonKey(name: 'issuer_info') this.issuer,
       this.cardholder,
-      @JsonKey(name: 'card_expiry')
-          this.cardExpiry,
+      this.cardExpiry,
       this.eci,
-      @JsonKey(name: 'order_params')
-          required this.orderParams,
+      required this.orderParams,
       required this.history,
-      @JsonKey(name: 'payer_data')
-          this.payerData,
-      @JsonKey(name: 'with_loyalty')
-          required this.withLoyalty,
+      this.payerData,
+      required this.withLoyalty,
       this.loyalties,
-      @JsonKey(name: 'credit_operation')
-          required this.creditOperation,
-      @JsonKey(name: 'expiration_date')
-          this.expirationDate,
-      @JsonKey(name: 'last_refunded_date')
-          this.lastRefundedDate,
-      @JsonKey(name: 'completion_date')
-          this.completionDate,
+      required this.creditOperation,
+      this.expirationDate,
+      this.lastRefundedDate,
+      this.completionDate,
       this.description,
-      @JsonKey(name: 'payment_page_url')
-          this.paymentPageUrl,
-      @JsonKey(name: 'payment_method')
-          this.paymentMethod,
-      @JsonKey(name: 'external_sca_exemption_indicator')
-          this.externalScaExemptionIndicator,
-      @JsonKey(name: 'avs_info')
-          this.avsInfo,
-      @JsonKey(name: 'shopping_cart')
-          this.shoppingCart});
+      this.paymentPageUrl,
+      this.paymentMethod,
+      this.externalScaExemptionIndicator,
+      this.avsInfo,
+      this.shoppingCart});
 
   factory _$_Transaction.fromJson(Map<String, dynamic> json) =>
       _$$_TransactionFromJson(json);
 
   @override
-  @JsonKey(name: 'md_order')
   final String mdOrder;
   @override
-  @JsonKey(name: 'order_number')
   final String orderNumber;
   @override
   final String state;
   @override
-  @JsonKey(name: 'action_code')
   final String? actionCode;
   @override
   final String currency;
   @override
-  @JsonKey(name: 'currency_object')
   final CurrencyDetail currencyDetail;
   @override
-  @JsonKey(name: 'merchant_login')
   final String merchantLogin;
   @override
-  @JsonKey(name: 'created_date')
   final String createdDate;
   @override
-  @JsonKey(name: 'payment_system')
   final String paymentSystem;
   @override
-  @JsonKey(name: 'fraud_status')
   final String fraudStatus;
   @override //NO_FRAUD, FRAUD_DETECTED
-  @JsonKey(name: 'registered_amount')
   final String registeredAmount;
   @override
-  @JsonKey(name: 'deposited_amount')
   final String? depositedAmount;
   @override
-  @JsonKey(name: 'refunded_amount')
   final String? refundedAmount;
   @override
-  @JsonKey(name: 'fee_amount')
   final String feeAmount;
   @override // the value of this column depends on the order state
 // CREATED, REVERSED, DECLINED: the registered amount
@@ -1022,19 +856,14 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
   @override
   final String? ip;
   @override
-  @JsonKey(name: 'auth_date')
   final String? authDate;
   @override
-  @JsonKey(name: 'payment_type')
   final String paymentType;
   @override
-  @JsonKey(name: 'payment_type_extension')
   final String paymentTypeExtension;
   @override
-  @JsonKey(name: 'ofd_status')
   final String? ofdStatus;
   @override
-  @JsonKey(name: 'masked_pan')
   final String? maskedPan;
   @override
   @JsonKey(name: 'issuer_info')
@@ -1042,104 +871,43 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
   @override
   final String? cardholder;
   @override
-  @JsonKey(name: 'card_expiry')
   final String? cardExpiry;
   @override
   final String? eci;
   @override //01, 02, 05, 06, 07, 09, 10
-  @JsonKey(name: 'order_params')
   final List<Attribute> orderParams;
   @override
   final List<History> history;
   @override
-  @JsonKey(name: 'payer_data')
   final PayerData? payerData;
   @override
-  @JsonKey(name: 'with_loyalty')
   final bool withLoyalty;
   @override
   final List<Loyalty>? loyalties;
   @override
-  @JsonKey(name: 'credit_operation')
   final bool creditOperation;
   @override
-  @JsonKey(name: 'expiration_date')
   final String? expirationDate;
   @override
-  @JsonKey(name: 'last_refunded_date')
   final String? lastRefundedDate;
   @override
-  @JsonKey(name: 'completion_date')
   final String? completionDate;
   @override
   final String? description;
   @override
-  @JsonKey(name: 'payment_page_url')
   final String? paymentPageUrl;
   @override
-  @JsonKey(name: 'payment_method')
   final String? paymentMethod;
   @override
-  @JsonKey(name: 'external_sca_exemption_indicator')
   final String? externalScaExemptionIndicator;
   @override
-  @JsonKey(name: 'avs_info')
   final AvsInfo? avsInfo;
   @override
-  @JsonKey(name: 'shopping_cart')
   final ShoppingCart? shoppingCart;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Transaction(mdOrder: $mdOrder, orderNumber: $orderNumber, state: $state, actionCode: $actionCode, currency: $currency, currencyDetail: $currencyDetail, merchantLogin: $merchantLogin, createdDate: $createdDate, paymentSystem: $paymentSystem, fraudStatus: $fraudStatus, registeredAmount: $registeredAmount, depositedAmount: $depositedAmount, refundedAmount: $refundedAmount, feeAmount: $feeAmount, amount: $amount, ip: $ip, authDate: $authDate, paymentType: $paymentType, paymentTypeExtension: $paymentTypeExtension, ofdStatus: $ofdStatus, maskedPan: $maskedPan, issuer: $issuer, cardholder: $cardholder, cardExpiry: $cardExpiry, eci: $eci, orderParams: $orderParams, history: $history, payerData: $payerData, withLoyalty: $withLoyalty, loyalties: $loyalties, creditOperation: $creditOperation, expirationDate: $expirationDate, lastRefundedDate: $lastRefundedDate, completionDate: $completionDate, description: $description, paymentPageUrl: $paymentPageUrl, paymentMethod: $paymentMethod, externalScaExemptionIndicator: $externalScaExemptionIndicator, avsInfo: $avsInfo, shoppingCart: $shoppingCart)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Transaction'))
-      ..add(DiagnosticsProperty('mdOrder', mdOrder))
-      ..add(DiagnosticsProperty('orderNumber', orderNumber))
-      ..add(DiagnosticsProperty('state', state))
-      ..add(DiagnosticsProperty('actionCode', actionCode))
-      ..add(DiagnosticsProperty('currency', currency))
-      ..add(DiagnosticsProperty('currencyDetail', currencyDetail))
-      ..add(DiagnosticsProperty('merchantLogin', merchantLogin))
-      ..add(DiagnosticsProperty('createdDate', createdDate))
-      ..add(DiagnosticsProperty('paymentSystem', paymentSystem))
-      ..add(DiagnosticsProperty('fraudStatus', fraudStatus))
-      ..add(DiagnosticsProperty('registeredAmount', registeredAmount))
-      ..add(DiagnosticsProperty('depositedAmount', depositedAmount))
-      ..add(DiagnosticsProperty('refundedAmount', refundedAmount))
-      ..add(DiagnosticsProperty('feeAmount', feeAmount))
-      ..add(DiagnosticsProperty('amount', amount))
-      ..add(DiagnosticsProperty('ip', ip))
-      ..add(DiagnosticsProperty('authDate', authDate))
-      ..add(DiagnosticsProperty('paymentType', paymentType))
-      ..add(DiagnosticsProperty('paymentTypeExtension', paymentTypeExtension))
-      ..add(DiagnosticsProperty('ofdStatus', ofdStatus))
-      ..add(DiagnosticsProperty('maskedPan', maskedPan))
-      ..add(DiagnosticsProperty('issuer', issuer))
-      ..add(DiagnosticsProperty('cardholder', cardholder))
-      ..add(DiagnosticsProperty('cardExpiry', cardExpiry))
-      ..add(DiagnosticsProperty('eci', eci))
-      ..add(DiagnosticsProperty('orderParams', orderParams))
-      ..add(DiagnosticsProperty('history', history))
-      ..add(DiagnosticsProperty('payerData', payerData))
-      ..add(DiagnosticsProperty('withLoyalty', withLoyalty))
-      ..add(DiagnosticsProperty('loyalties', loyalties))
-      ..add(DiagnosticsProperty('creditOperation', creditOperation))
-      ..add(DiagnosticsProperty('expirationDate', expirationDate))
-      ..add(DiagnosticsProperty('lastRefundedDate', lastRefundedDate))
-      ..add(DiagnosticsProperty('completionDate', completionDate))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('paymentPageUrl', paymentPageUrl))
-      ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
-      ..add(DiagnosticsProperty(
-          'externalScaExemptionIndicator', externalScaExemptionIndicator))
-      ..add(DiagnosticsProperty('avsInfo', avsInfo))
-      ..add(DiagnosticsProperty('shoppingCart', shoppingCart));
   }
 
   @override
@@ -1273,120 +1041,77 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
 
 abstract class _Transaction implements Transaction {
   const factory _Transaction(
-      {@JsonKey(name: 'md_order')
-          required String mdOrder,
-      @JsonKey(name: 'order_number')
-          required String orderNumber,
+      {required String mdOrder,
+      required String orderNumber,
       required String state,
-      @JsonKey(name: 'action_code')
-          String? actionCode,
+      String? actionCode,
       required String currency,
-      @JsonKey(name: 'currency_object')
-          required CurrencyDetail currencyDetail,
-      @JsonKey(name: 'merchant_login')
-          required String merchantLogin,
-      @JsonKey(name: 'created_date')
-          required String createdDate,
-      @JsonKey(name: 'payment_system')
-          required String paymentSystem,
-      @JsonKey(name: 'fraud_status')
-          required String fraudStatus,
-      @JsonKey(name: 'registered_amount')
-          required String registeredAmount,
-      @JsonKey(name: 'deposited_amount')
-          String? depositedAmount,
-      @JsonKey(name: 'refunded_amount')
-          String? refundedAmount,
-      @JsonKey(name: 'fee_amount')
-          required String feeAmount,
+      required CurrencyDetail currencyDetail,
+      required String merchantLogin,
+      required String createdDate,
+      required String paymentSystem,
+      required String fraudStatus,
+      required String registeredAmount,
+      String? depositedAmount,
+      String? refundedAmount,
+      required String feeAmount,
       required String amount,
       String? ip,
-      @JsonKey(name: 'auth_date')
-          String? authDate,
-      @JsonKey(name: 'payment_type')
-          required String paymentType,
-      @JsonKey(name: 'payment_type_extension')
-          required String paymentTypeExtension,
-      @JsonKey(name: 'ofd_status')
-          String? ofdStatus,
-      @JsonKey(name: 'masked_pan')
-          String? maskedPan,
-      @JsonKey(name: 'issuer_info')
-          Issuer? issuer,
+      String? authDate,
+      required String paymentType,
+      required String paymentTypeExtension,
+      String? ofdStatus,
+      String? maskedPan,
+      @JsonKey(name: 'issuer_info') Issuer? issuer,
       String? cardholder,
-      @JsonKey(name: 'card_expiry')
-          String? cardExpiry,
+      String? cardExpiry,
       String? eci,
-      @JsonKey(name: 'order_params')
-          required List<Attribute> orderParams,
+      required List<Attribute> orderParams,
       required List<History> history,
-      @JsonKey(name: 'payer_data')
-          PayerData? payerData,
-      @JsonKey(name: 'with_loyalty')
-          required bool withLoyalty,
+      PayerData? payerData,
+      required bool withLoyalty,
       List<Loyalty>? loyalties,
-      @JsonKey(name: 'credit_operation')
-          required bool creditOperation,
-      @JsonKey(name: 'expiration_date')
-          String? expirationDate,
-      @JsonKey(name: 'last_refunded_date')
-          String? lastRefundedDate,
-      @JsonKey(name: 'completion_date')
-          String? completionDate,
+      required bool creditOperation,
+      String? expirationDate,
+      String? lastRefundedDate,
+      String? completionDate,
       String? description,
-      @JsonKey(name: 'payment_page_url')
-          String? paymentPageUrl,
-      @JsonKey(name: 'payment_method')
-          String? paymentMethod,
-      @JsonKey(name: 'external_sca_exemption_indicator')
-          String? externalScaExemptionIndicator,
-      @JsonKey(name: 'avs_info')
-          AvsInfo? avsInfo,
-      @JsonKey(name: 'shopping_cart')
-          ShoppingCart? shoppingCart}) = _$_Transaction;
+      String? paymentPageUrl,
+      String? paymentMethod,
+      String? externalScaExemptionIndicator,
+      AvsInfo? avsInfo,
+      ShoppingCart? shoppingCart}) = _$_Transaction;
 
   factory _Transaction.fromJson(Map<String, dynamic> json) =
       _$_Transaction.fromJson;
 
   @override
-  @JsonKey(name: 'md_order')
   String get mdOrder;
   @override
-  @JsonKey(name: 'order_number')
   String get orderNumber;
   @override
   String get state;
   @override
-  @JsonKey(name: 'action_code')
   String? get actionCode;
   @override
   String get currency;
   @override
-  @JsonKey(name: 'currency_object')
   CurrencyDetail get currencyDetail;
   @override
-  @JsonKey(name: 'merchant_login')
   String get merchantLogin;
   @override
-  @JsonKey(name: 'created_date')
   String get createdDate;
   @override
-  @JsonKey(name: 'payment_system')
   String get paymentSystem;
   @override
-  @JsonKey(name: 'fraud_status')
   String get fraudStatus;
   @override //NO_FRAUD, FRAUD_DETECTED
-  @JsonKey(name: 'registered_amount')
   String get registeredAmount;
   @override
-  @JsonKey(name: 'deposited_amount')
   String? get depositedAmount;
   @override
-  @JsonKey(name: 'refunded_amount')
   String? get refundedAmount;
   @override
-  @JsonKey(name: 'fee_amount')
   String get feeAmount;
   @override // the value of this column depends on the order state
 // CREATED, REVERSED, DECLINED: the registered amount
@@ -1396,19 +1121,14 @@ abstract class _Transaction implements Transaction {
   @override
   String? get ip;
   @override
-  @JsonKey(name: 'auth_date')
   String? get authDate;
   @override
-  @JsonKey(name: 'payment_type')
   String get paymentType;
   @override
-  @JsonKey(name: 'payment_type_extension')
   String get paymentTypeExtension;
   @override
-  @JsonKey(name: 'ofd_status')
   String? get ofdStatus;
   @override
-  @JsonKey(name: 'masked_pan')
   String? get maskedPan;
   @override
   @JsonKey(name: 'issuer_info')
@@ -1416,51 +1136,38 @@ abstract class _Transaction implements Transaction {
   @override
   String? get cardholder;
   @override
-  @JsonKey(name: 'card_expiry')
   String? get cardExpiry;
   @override
   String? get eci;
   @override //01, 02, 05, 06, 07, 09, 10
-  @JsonKey(name: 'order_params')
   List<Attribute> get orderParams;
   @override
   List<History> get history;
   @override
-  @JsonKey(name: 'payer_data')
   PayerData? get payerData;
   @override
-  @JsonKey(name: 'with_loyalty')
   bool get withLoyalty;
   @override
   List<Loyalty>? get loyalties;
   @override
-  @JsonKey(name: 'credit_operation')
   bool get creditOperation;
   @override
-  @JsonKey(name: 'expiration_date')
   String? get expirationDate;
   @override
-  @JsonKey(name: 'last_refunded_date')
   String? get lastRefundedDate;
   @override
-  @JsonKey(name: 'completion_date')
   String? get completionDate;
   @override
   String? get description;
   @override
-  @JsonKey(name: 'payment_page_url')
   String? get paymentPageUrl;
   @override
-  @JsonKey(name: 'payment_method')
   String? get paymentMethod;
   @override
-  @JsonKey(name: 'external_sca_exemption_indicator')
   String? get externalScaExemptionIndicator;
   @override
-  @JsonKey(name: 'avs_info')
   AvsInfo? get avsInfo;
   @override
-  @JsonKey(name: 'shopping_cart')
   ShoppingCart? get shoppingCart;
   @override
   @JsonKey(ignore: true)

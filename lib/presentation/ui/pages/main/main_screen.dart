@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mp3_mobile/presentation/provider/main_screen_model.dart';
+import 'package:mp3_mobile/presentation/ui/pages/main/main_screen_model.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -10,25 +10,12 @@ class MainScreen extends StatelessWidget {
     final model = Provider.of<MainScreenModel>(context);
     final selectedTabIndex = model.selectedTabIndex;
     final widgetOptions = model.widgetOptions;
-    final label = widgetOptions[selectedTabIndex].label;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(label),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () => model.navigateToSettings(context),
-            icon: const Icon(
-              Icons.settings,
-            ),
-          )
-        ],
-      ),
       body: IndexedStack(
         index: selectedTabIndex,
         children: List.generate(
           widgetOptions.length,
-          (index) => widgetOptions[index].widget,
+              (index) => widgetOptions[index].widget,
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -38,7 +25,7 @@ class MainScreen extends StatelessWidget {
         selectedIconTheme: const IconThemeData(size: 40),
         items: List.generate(
           widgetOptions.length,
-          (index) => BottomNavigationBarItem(
+              (index) => BottomNavigationBarItem(
             icon: widgetOptions[index].icon,
             label: widgetOptions[index].label,
           ),

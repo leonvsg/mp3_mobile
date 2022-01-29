@@ -1,21 +1,34 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:mp3_mobile/presentation/ui/widgets/custom_sliver_app_bar.dart';
 
-class StatisticView extends StatefulWidget {
-  const StatisticView({Key? key}) : super(key: key);
+class StatisticPage extends StatefulWidget {
+  const StatisticPage({Key? key}) : super(key: key);
 
   @override
-  _StatisticViewState createState() => _StatisticViewState();
+  _StatisticPageState createState() => _StatisticPageState();
 }
 
-class _StatisticViewState extends State<StatisticView> {
+class _StatisticPageState extends State<StatisticPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(20),
-      child: Center(
-        child: GroupedFillColorBarChart.withSampleData(),
-      ),
+    return CustomScrollView(
+      slivers: [
+        const CustomSliverAppBar(title: Text('Статистика')),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => Container(
+              width: MediaQuery.of(context).size.width*0.8,
+              height: MediaQuery.of(context).size.width*0.5,
+              margin: const EdgeInsets.all(20),
+              child: Center(
+                child: GroupedFillColorBarChart.withSampleData(),
+              ),
+            ),
+            childCount: 1,
+          ),
+        ),
+      ],
     );
   }
 }
